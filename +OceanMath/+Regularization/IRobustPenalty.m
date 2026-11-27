@@ -14,7 +14,7 @@ classdef IRobustPenalty < handle
     %
     %   IRLS Connection:
     %       The weight() method returns the IRLS weighting function:
-    %           w(d) = rho(d) / d^2
+    %           w(d) = rho'(d) / d
     %       which converts the non-quadratic problem into a sequence of
     %       weighted least-squares sub-problems.
     %
@@ -27,7 +27,7 @@ classdef IRobustPenalty < handle
         % EVALUATE  Compute the penalty value rho(d).
         val = evaluate(obj, d)
 
-        % WEIGHT  Compute the IRLS weight w(d) = rho(d) / d^2.
+        % WEIGHT  Compute the IRLS weight w(d) = rho'(d) / d.
         w = weight(obj, d)
 
         % DERIVATIVE  Compute first derivative rho'(d).

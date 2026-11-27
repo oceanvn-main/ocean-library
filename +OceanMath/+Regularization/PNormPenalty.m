@@ -24,7 +24,8 @@ classdef PNormPenalty < OceanMath.Regularization.IRobustPenalty
         end
 
         function w = weight(obj, d)
-            w = max(abs(d), obj.Epsilon) .^ (obj.P - 2);
+            % w(d) = rho'(d)/d = p*|d|^(p-2), with |d| floored at Epsilon
+            w = obj.P * max(abs(d), obj.Epsilon) .^ (obj.P - 2);
         end
 
         function fp = derivative(obj, d)

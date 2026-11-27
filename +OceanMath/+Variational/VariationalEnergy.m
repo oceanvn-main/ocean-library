@@ -57,7 +57,7 @@ classdef VariationalEnergy < handle
     %   IRLS Normal Equations (solved by IRLSSolver):
     %       (I + lambda * D' * W * D) f_{k+1} = g
     %
-    %   where W = diag(w(D*f)) and w(d) = rho(d)/d^2.
+    %   where W = diag(w(D*f)) and w(d) = rho'(d)/d.
     %
     %   Package: OceanMath.Variational
     %   Author: Ocean Library  |  2026-08-05
@@ -116,7 +116,7 @@ classdef VariationalEnergy < handle
 
         function W_diag = buildWeightMatrix(obj, f)
             % BUILDWEIGHTMATRIX Build sparse diagonal IRLS weight matrix W (K x K).
-            %   w(d_k) = rho(d_k) / d_k^2 is computed element-wise on differences d = D*f.
+            %   w(d_k) = rho'(d_k) / d_k is computed element-wise on differences d = D*f.
             shape = size(f);
             D = obj.buildDifferenceMatrix(shape);
             dv = D * f(:);

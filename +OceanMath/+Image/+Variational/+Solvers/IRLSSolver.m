@@ -11,7 +11,7 @@ classdef IRLSSolver < OceanMath.Image.Variational.Solvers.ISolver
     %   where:
     %       D    — sparse first-difference operator (built by ImageRegularizationEnergy)
     %       W_k  — diagonal IRLS weight matrix: W_k = diag( w(D * f_k) )
-    %       w(.) — penalty weight function: w(d) = rho(d) / d^2
+    %       w(.) — penalty weight function: w(d) = rho'(d) / d
     %
     %   Algorithm properties:
     %     - With QuadraticPenalty (w=1): converges in exactly 1 iteration

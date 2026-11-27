@@ -26,9 +26,10 @@ classdef GNCPenalty < OceanMath.Regularization.IRobustPenalty
         function w = weight(obj, d)
             abs_d2 = d .^ 2;
             mask   = (abs_d2 <= obj.V);
+            % w(d) = rho'(d)/d:  2 in the quadratic zone, 0 where the
+            % penalty is clamped (the edge is treated as a discontinuity).
             w      = zeros(size(d));
-            w(mask)  = 1.0;
-            w(~mask) = obj.V ./ max(abs_d2(~mask), obj.Epsilon);
+            w(mask)  = 2.0;
         end
 
         function fp = derivative(obj, d)

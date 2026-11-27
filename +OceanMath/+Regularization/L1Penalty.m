@@ -21,6 +21,7 @@ classdef L1Penalty < OceanMath.Regularization.IRobustPenalty
         end
 
         function w = weight(obj, d)
+            % w(d) = rho'(d)/d = 1/|d|, with |d| floored at Epsilon
             w = 1.0 ./ max(abs(d), obj.Epsilon);
         end
 

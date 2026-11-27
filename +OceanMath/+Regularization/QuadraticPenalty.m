@@ -10,7 +10,8 @@ classdef QuadraticPenalty < OceanMath.Regularization.IRobustPenalty
         end
 
         function w = weight(~, d)
-            w = ones(size(d));
+            % w(d) = rho'(d)/d = 2d/d = 2
+            w = 2 * ones(size(d));
         end
 
         function fp = derivative(~, d)

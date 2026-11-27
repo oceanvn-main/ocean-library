@@ -25,14 +25,11 @@ classdef HuberPenalty < OceanMath.Regularization.IRobustPenalty
         end
 
         function w = weight(obj, d)
-            % Library convention (see VariationalEnergy): w(d) = rho(d) / d^2.
-            %   |d| <= sigma : (d^2/2) / d^2                 = 1/2
-            %   |d| >  sigma : sigma*(|d| - sigma/2) / d^2
-            % The quadratic zone includes d = 0, where the limit is 1/2.
+            % w(d) = rho'(d)/d:  1 for |d| <= sigma,  sigma/|d| beyond it.
             abs_d = abs(d);
             mask  = (abs_d <= obj.Sigma);
-            w     = 0.5 * ones(size(d));
-            w(~mask) = obj.Sigma * (abs_d(~mask) - 0.5 * obj.Sigma) ./ (abs_d(~mask) .^ 2);
+            w     = ones(size(d));
+            w(~mask) = obj.Sigma ./ max(abs_d(~mask), 1e-12);
         end
 
         function fp = derivative(obj, d)

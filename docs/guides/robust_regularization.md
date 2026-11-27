@@ -88,7 +88,7 @@ The `IRLSSolver` iterates the weighted normal equations:
 ```
 (I  +  lambda * D' * W_k * D) * f_{k+1}  =  g
 
-where W_k = diag(w(D * f_k)),   w(d) = rho(d) / d^2
+where W_k = diag(w(D * f_k)),   w(d) = rho'(d) / d
 ```
 
 The weight function w(d) is exposed via `penalty.weight(d)`.

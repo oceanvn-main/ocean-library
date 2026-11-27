@@ -100,7 +100,10 @@ classdef test_image_regularization < OceanTest.BaseTestCase
         function testIRLSWeightFunction(testCase)
             % For each penalty, verify:
             %   (a) weight(d) is finite at d = 0
-            %   (b) at d = [0.5, 1.0, 2.0], weight = evaluate(d) ./ d^2
+            %   (b) at d = [0.5, 1.0, 2.0], weight = derivative(d) ./ d
+            %       This is the weight for which the IRLS fixed point of
+            %       (I + lambda*D'WD) f = g is a stationary point of
+            %       (1/2)||f-g||^2 + lambda*sum rho(Df).
 
             d_test = [0.5; 1.0; 2.0];
 
@@ -120,12 +123,12 @@ classdef test_image_regularization < OceanTest.BaseTestCase
                 testCase.verifyTrue(isfinite(pen.weight(0)), ...
                     sprintf('%s: weight(0) must be finite (no division-by-zero)', name));
 
-                % (b) At non-zero points, weight = rho(d)/d^2
+                % (b) At non-zero points, weight = rho'(d)/d
                 w_method = pen.weight(d_test);
-                w_ratio  = pen.evaluate(d_test) ./ (d_test .^ 2);
+                w_ratio  = pen.derivative(d_test) ./ d_test;
 
                 testCase.verifyEqual(w_method, w_ratio, 'AbsTol', 1e-6, ...
-                    sprintf('%s: weight(d) must equal evaluate(d)/d^2 for d~=0', name));
+                    sprintf('%s: weight(d) must equal derivative(d)/d for d~=0', name));
             end
         end
 
@@ -134,9 +137,10 @@ classdef test_image_regularization < OceanTest.BaseTestCase
         %         PRIMARY MATLAB built-in cross-check
         % ═════════════════════════════════════════════════════════════════════
         function testL2TikhonovVsDirectSolve(testCase)
-            % With QuadraticPenalty, every IRLS weight = 1, so the first (and
-            % only) iteration exactly solves:
-            %   (I + lambda * D'D) f = g
+            % With QuadraticPenalty rho(d) = d^2, every IRLS weight = 2, so the
+            % first (and only) iteration exactly solves the normal equations of
+            % (1/2)||f-g||^2 + lambda*||Df||^2:
+            %   (I + 2 * lambda * D'D) f = g
             % This must match MATLAB's \ operator on the same system.
 
             rng(42);
@@ -150,7 +154,7 @@ classdef test_image_regularization < OceanTest.BaseTestCase
                          'Lambda', lambda);
             N = rows * cols;
             D = energy.buildDifferenceMatrix(rows, cols);
-            LHS = speye(N) + lambda .* (D' * D);
+            LHS = speye(N) + 2 .* lambda .* (D' * D);
             RHS = g(:);
             f_ref = reshape(LHS \ RHS, rows, cols);
 
@@ -161,7 +165,7 @@ classdef test_image_regularization < OceanTest.BaseTestCase
 
             testCase.verifyEqual(f_ours, f_ref, 'AbsTol', 1e-8, ...
                 ['IRLSSolver with QuadraticPenalty must match direct MATLAB ' ...
-                 'backslash solve of (I + lambda*D''D)f = g']);
+                 'backslash solve of (I + 2*lambda*D''D)f = g']);
         end
 
         % ═════════════════════════════════════════════════════════════════════
