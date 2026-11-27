@@ -1,0 +1,91 @@
+{
+  "id": "ExpectedUtilityRule",
+  "display_name": "Expected-utility delegation rule (optionally risk-adjusted)",
+  "short_description": "Delegates the task to the provider whose believed success probability gives the highest expected utility, optionally after subtracting lambda posterior standard deviations, or takes the outside option when that is better.",
+  "category": "Decision Theory / Trust and Delegation",
+
+  "textbook": {
+    "reference": "von Neumann, J. & Morgenstern, O. (1944). Theory of Games and Economic Behavior. Princeton University Press (expected-utility choice); Russell, S. & Norvig, P. (2021). Artificial Intelligence: A Modern Approach (4th ed.), ch. 16 (maximum expected utility)",
+    "section": "AIMA §16.1",
+    "equations": ["MEU principle"]
+  },
+
+  "pedagogy": {
+    "motivation": "An agent that must hand a task to someone else is betting on that provider's reliability. With a success payoff S, a failure payoff F and a safe outside option O, the rational choice under a believed success probability p is the option with the largest expected utility pS + (1-p)F, compared against O. A cautious agent may also dislike uncertainty: two providers with the same mean estimate are not equally attractive if one estimate rests on two observations and the other on two hundred.",
+    "assumptions": [
+      "Each delegate candidate carries a belief: an estimate p in [0, 1] of its success probability in the current context, and (for Beta beliefs) a posterior variance.",
+      "Payoffs [S F O] for the current context are declared and known to the agent; the world pays the same numbers.",
+      "Utilities are linear in the payoffs (risk attitude enters only through lambda).",
+      "With lambda > 0 every delegate belief must provide a variance; a fixed imported score has none and is rejected rather than treated as certain.",
+      "The rule is deterministic: exact ties go to the lowest action label, and it never draws from the random stream."
+    ],
+    "data_model": "For each legal delegate action j the mind supplies the belief estimate p_j and its variance Var_j. The rule forms a pessimistic estimate p~_j = clamp(p_j - lambda sqrt(Var_j), 0, 1) and scores U_j = p~_j S + (1 - p~_j) F. The outside option scores O. The chosen action maximises the score; the reported probabilities are one-hot on it.",
+    "what_is_missing": "The providers' true success probabilities are unknown; the rule acts on the agent's current belief about them. With lambda = 0 it ignores how uncertain that belief is; with lambda > 0 it discounts uncertain providers (a lower-confidence-bound style penalty).",
+    "how_it_solves": "1. For each legal candidate: if it is the outside option, score O. 2. Otherwise take the estimate p, subtract lambda times the posterior standard deviation, and clamp the result to [0, 1]. 3. Score U = p~ S + (1 - p~) F. 4. Choose the largest score; if several are exactly equal choose the lowest action label. 5. Report the scores and a one-hot probability vector."
+  },
+
+  "equations": {
+    "risk_adjusted_utility": {
+      "label": "Risk-adjusted expected utility",
+      "latex": "\\tilde p = \\mathrm{clamp}(\\hat p - \\lambda\\sigma, 0, 1),\\ U = \\tilde p S + (1-\\tilde p)F",
+      "description": "Score of delegating to a provider with belief mean \\hat p and posterior standard deviation \\sigma; lambda = 0 gives plain expected utility."
+    },
+    "outside": {
+      "label": "Outside option",
+      "latex": "U_{\\text{out}} = O",
+      "description": "Taking the outside option pays O with certainty."
+    },
+    "choice": {
+      "label": "Choice with deterministic tie-break",
+      "latex": "a^{*} = \\min\\{\\, a : U_a = \\max_{b \\in \\mathcal{L}} U_b \\,\\}",
+      "description": "The best legal action; among exact ties, the lowest label."
+    }
+  },
+
+  "Symbols": [
+    {"Symbol": "\\hat p", "Description": "belief estimate of the provider's success probability in the current context"},
+    {"Symbol": "\\sigma", "Description": "posterior standard deviation of that belief (square root of its variance)"},
+    {"Symbol": "\\lambda", "Description": "risk aversion: number of standard deviations subtracted (RiskAversion)"},
+    {"Symbol": "\\tilde p", "Description": "risk-adjusted success probability, clamped to [0, 1]"},
+    {"Symbol": "S", "Description": "utility if the delegated task succeeds"},
+    {"Symbol": "F", "Description": "utility if the delegated task fails"},
+    {"Symbol": "O", "Description": "utility of the outside option"},
+    {"Symbol": "U", "Description": "score (expected utility) of an action"},
+    {"Symbol": "\\mathcal{L}", "Description": "set of legal actions in the current view"},
+    {"Symbol": "a^{*}", "Description": "the chosen action label"}
+  ],
+
+  "parameters": [
+    {
+      "name": "RiskAversion",
+      "latex_symbol": "\\lambda",
+      "default": "0",
+      "description": "How many posterior standard deviations to subtract from each provider's estimate before scoring it.",
+      "effect": "0 gives plain expected utility. Larger values favour well-evidenced providers and the outside option over providers whose estimate is uncertain; very large values make the agent avoid any provider it knows little about."
+    }
+  ],
+
+  "complexity": {
+    "training": "O(1) (no fitting; beliefs are maintained by the belief store)",
+    "prediction": "O(C) per decision for C legal candidates",
+    "memory": "O(C)"
+  },
+
+  "strengths": [
+    "Transparent: every score is a one-line formula of the belief and the payoffs.",
+    "Deterministic and reproducible; draws no random numbers.",
+    "Works with fixed imported scores (lambda = 0) and with Beta posteriors."
+  ],
+  "weaknesses": [
+    "Greedy: with lambda = 0 it never deliberately explores, so a provider that looked bad early may never be retried.",
+    "With lambda > 0 it under-explores even more (optimism, not pessimism, drives exploration).",
+    "Linear utility: it has no notion of risk beyond the variance penalty."
+  ],
+  "when_to_use": "Use when the agent should exploit its current beliefs, e.g. a fixed-belief agent acting on imported scores, an evaluation with frozen beliefs, or a cautious agent (lambda > 0) that prefers providers with a track record. Prefer Thompson sampling when the agent must keep learning which provider is reliable.",
+
+  "references": [
+    "von Neumann, J. & Morgenstern, O. (1944). Theory of Games and Economic Behavior. Princeton University Press.",
+    "Russell, S. & Norvig, P. (2021). Artificial Intelligence: A Modern Approach (4th ed.), ch. 16.",
+    "Auer, P., Cesa-Bianchi, N. & Fischer, P. (2002). Finite-time analysis of the multiarmed bandit problem. Machine Learning 47, 235-256 (confidence bounds; here used pessimistically)."
+  ]
+}

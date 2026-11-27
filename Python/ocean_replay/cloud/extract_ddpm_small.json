@@ -1,0 +1,70 @@
+{
+  "schemaVersion": "1.0",
+  "precision": "float32",
+  "groups": [
+    {
+      "name": "numbers",
+      "level": 0.0,
+      "channels": [
+        "tLevel",
+        "tNext",
+        "alphaBar",
+        "alphaBarNext",
+        "sigma",
+        "varNext",
+        "epsRms",
+        "identityResidual"
+      ],
+      "at": {}
+    },
+    {
+      "name": "images",
+      "level": 1.0,
+      "channels": [
+        "x",
+        "eps",
+        "x0hat",
+        "mu"
+      ],
+      "at": {
+        "step": {
+          "rule": "union",
+          "rules": [
+            {
+              "rule": "every",
+              "k": 20.0,
+              "from": 0.0
+            },
+            {
+              "rule": "window",
+              "center": 50.0,
+              "half": 1.0
+            },
+            {
+              "rule": "list",
+              "values": [
+                1.0
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "final",
+      "level": 1.0,
+      "channels": [
+        "result"
+      ],
+      "at": {}
+    }
+  ],
+  "views": [
+    {
+      "name": "occlusion",
+      "method": "",
+      "params": {},
+      "at": {}
+    }
+  ]
+}

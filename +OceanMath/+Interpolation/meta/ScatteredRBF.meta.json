@@ -1,0 +1,127 @@
+{
+  "id": "ScatteredRBF",
+  "display_name": "Radial Basis Function (RBF) Interpolation",
+  "short_description": "Fits a smooth function to scattered data by solving a linear system of radially symmetric basis functions.",
+  "category": "Kernel / Mesh-free Methods",
+
+  "textbook": {
+    "reference": "Szeliski, R. Computer Vision: Algorithms and Applications (2e), §4.1.1",
+    "section": "§4.1.1",
+    "equations": ["4.3", "4.4", "4.5", "4.6", "4.7", "4.8", "4.11"]
+  },
+
+  "pedagogy": {
+    "motivation": "Suppose you measure a physical quantity (temperature, elevation, pressure) at N irregularly scattered sensor locations, and you need to know the value at any arbitrary new location. A regular grid-based interpolant cannot be used because the data is not on a grid. RBF interpolation solves this by placing a smooth 'bump' function centered at each known measurement location, and computing a weighted sum of all bumps. The shape of each bump (the kernel) determines the smoothness character of the reconstructed function.",
+
+    "assumptions": [
+      "The unknown function is smooth and continuous — no sharp discontinuities.",
+      "The function can be approximated as a superposition of radially symmetric basis functions centered at the training points.",
+      "The kernel phi(r) is chosen to match the expected smoothness of the data (e.g. Gaussian for very smooth data, Thin Plate Spline for piecewise-smooth 2D).",
+      "Training point locations x_k are distinct (no repeated inputs).",
+      "For exact interpolation (Lambda=0), the kernel matrix K must be non-singular — guaranteed for Gaussian and Multiquadric kernels, but can fail for pathological point configurations."
+    ],
+
+    "data_model": "The unknown function f is modeled as a linear combination of radial basis functions, one centered at each of the N training locations: f(x) = sum_{k=1}^{N} w_k * phi(||x - x_k||). Here phi is the chosen kernel (Gaussian, Multiquadric, etc.), ||x - x_k|| is the Euclidean distance from query point x to training point x_k, and w_k are the scalar weights to be determined. The model has exactly N free parameters (the weights w_k), which are solved from N equations (one per training point).",
+
+    "what_is_missing": "The weights w_k are completely unknown before training. The problem is: given N observations d_k = f(x_k) (possibly noisy), find the N weights w_1, ..., w_N such that the reconstructed function best fits the data. This is an inverse problem — we observe outputs d_k and must find the model parameters w_k.",
+
+    "how_it_solves": "1. Build the N x N kernel matrix K where entry K_ij = phi(||x_i - x_j||) — this measures how 'similar' each pair of training locations is under the chosen kernel. 2. For exact interpolation, we require f(x_k) = d_k for all k, which gives the linear system K * w = y. Solve this system for the N unknown weights w. 3. If the data is noisy, we instead minimize the regularized energy E = ||K*w - y||^2 + lambda * ||w||^2, which leads to (K + lambda*I) * w = y — the same structure but with lambda added to the diagonal of K, making the system more stable. 4. At prediction time, for any new point x, compute its distances to all N training points, apply the kernel to get a row vector of N basis values, and take the dot product with the learned weights w."
+  },
+
+  "equations": {
+    "interpolant": {
+      "label": "RBF Interpolant (eq. 4.3)",
+      "latex": "f(\\mathbf{x}) = \\sum_{k=1}^{N} w_k \\, \\phi\\!\\left(\\|\\mathbf{x} - \\mathbf{x}_k\\|\\right)",
+      "description": "The predicted value at any query point x is a weighted sum of N basis functions, each centered at one training point x_k. The kernel phi determines the shape of each basis function."
+    },
+    "exact_system": {
+      "label": "Exact interpolation linear system (eq. 4.8)",
+      "latex": "\\mathbf{K}\\mathbf{w} = \\mathbf{y}, \\quad K_{ij} = \\phi\\!\\left(\\|\\mathbf{x}_i - \\mathbf{x}_j\\|\\right)",
+      "description": "Evaluating the interpolant at all N training locations gives N equations. Stacking them into a matrix K yields this N x N linear system, which is solved for the weight vector w."
+    },
+    "regularized_system": {
+      "label": "Regularized system (eq. 4.11, p=2)",
+      "latex": "\\left(\\mathbf{K} + \\lambda\\mathbf{I}\\right)\\mathbf{w} = \\mathbf{y}",
+      "description": "When training data is noisy, we minimize ||K*w - y||^2 + lambda*||w||^2. The quadratic penalty (p=2) simply adds lambda to every diagonal entry of K, making the system better conditioned and preventing overfitting."
+    },
+    "kernel_gaussian": {
+      "label": "Gaussian kernel (eq. 4.4)",
+      "latex": "\\phi(r) = \\exp\\!\\left(-\\frac{r^2}{c^2}\\right)",
+      "description": "Smooth, infinitely differentiable basis functions. The scale parameter c controls how quickly the influence of each training point decays with distance. Small c = narrow bumps = more local. Large c = wide bumps = more global/smooth."
+    },
+    "kernel_multiquadric": {
+      "label": "Hardy Multiquadric kernel (eq. 4.5)",
+      "latex": "\\phi(r) = \\sqrt{r^2 + c^2}",
+      "description": "Grows with distance rather than decaying. Produces smooth, non-local interpolants. The parameter c controls the shape transition near r=0."
+    },
+    "kernel_inverse_multiquadric": {
+      "label": "Inverse Multiquadric kernel (eq. 4.6)",
+      "latex": "\\phi(r) = \\frac{1}{\\sqrt{r^2 + c^2}}",
+      "description": "Decays monotonically with distance. Similar character to Gaussian but with heavier tails."
+    },
+    "kernel_thinplate": {
+      "label": "Thin Plate Spline kernel (eq. 4.7)",
+      "latex": "\\phi(r) = r^2 \\log r",
+      "description": "The analytic solution to the second-degree variational spline problem in 2D. Produces the smoothest possible surface (minimizes bending energy) and requires no shape parameter c."
+    },
+    "prediction": {
+      "label": "Prediction at query points",
+      "latex": "\\hat{\\mathbf{y}} = \\mathbf{K}_q \\mathbf{w}, \\quad (\\mathbf{K}_q)_{ij} = \\phi\\!\\left(\\|\\mathbf{x}^{(q)}_i - \\mathbf{x}_j\\|\\right)",
+      "description": "For M query points, build the M x N matrix K_q of distances to all training points, then multiply by the learned weights w."
+    }
+  },
+
+  "parameters": [
+    {
+      "name": "Kernel",
+      "latex_symbol": "\\phi",
+      "default": "thinplate",
+      "description": "Which radial basis function to use. Each choice makes a different smoothness assumption about the underlying function.",
+      "effect": "Gaussian and inverse-multiquadric: smooth, local influence. Multiquadric: global, grows with distance. Thin plate spline: minimizes integrated squared curvature — best all-round default for 2D."
+    },
+    {
+      "name": "Epsilon",
+      "latex_symbol": "c",
+      "default": "1.0",
+      "description": "Shape / scale parameter c for Gaussian and Multiquadric kernels. Not used by Thin Plate Spline.",
+      "effect": "Gaussian: increasing c widens each basis function, producing smoother (more global) interpolation. Decreasing c narrows the bumps, producing more local but potentially oscillatory fits. Multiquadric: increasing c also widens the basis."
+    },
+    {
+      "name": "Lambda",
+      "latex_symbol": "\\lambda",
+      "default": "0",
+      "description": "Tikhonov regularization strength. Lambda=0 means exact interpolation (passes through every training point). Lambda > 0 adds a penalty on the magnitude of the weights, producing a smoother fit that does not necessarily pass through training points.",
+      "effect": "Increasing lambda: smoother, more stable, less sensitive to noise — but more bias. Decreasing lambda: closer to exact interpolation — sensitive to noise. Choose via cross-validation (InterpolationCV with TuneParam='rbf-lambda')."
+    }
+  ],
+
+  "complexity": {
+    "training": "O(N^3) — dominated by solving the N x N linear system",
+    "prediction": "O(MN) — M query points times N training points for kernel evaluations",
+    "memory": "O(N^2) — to store the kernel matrix K"
+  },
+
+  "strengths": [
+    "Works in any number of dimensions D without modification.",
+    "Exact interpolation (Lambda=0) guaranteed to pass through all training points.",
+    "Flexible: kernel choice controls smoothness character.",
+    "Well-studied mathematical theory; convergence guarantees exist for many kernels.",
+    "Regularization (Lambda>0) gives principled noise handling equivalent to ridge regression."
+  ],
+
+  "weaknesses": [
+    "Training cost O(N^3) becomes prohibitive for large N (e.g. N > 10,000).",
+    "Kernel matrix K can be ill-conditioned for large c (many overlapping basis functions).",
+    "Thin Plate Spline grows unboundedly — poor extrapolation behaviour outside training domain.",
+    "Choosing c and lambda requires cross-validation; poor choices cause either overfitting or oversmoothing.",
+    "Not adaptive: basis function width is uniform across the domain."
+  ],
+
+  "when_to_use": "Use RBF interpolation when you have a moderate number of scattered observations (N up to a few thousand) from a smooth underlying function, and you need to evaluate it at arbitrary new locations. It is the natural choice when the data is genuinely scattered (not on a grid) and the function is expected to be smooth everywhere. If your data is noisy, set Lambda > 0 and tune it via cross-validation. If you are working in 2D and care about minimal bending energy, use the Thin Plate Spline kernel.",
+
+  "references": [
+    "Szeliski §4.1.1, eq. (4.3)-(4.11)",
+    "Anjyo, Lewis, and Pighin (2014) — scattered data interpolation for graphics",
+    "Buhmann (2003) — Radial Basis Functions: Theory and Implementations"
+  ]
+}

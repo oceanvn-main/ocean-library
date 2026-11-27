@@ -1,0 +1,6 @@
+# Installed ON THE CLOUD VM by startup.sh (PyTorch comes from the Deep Learning VM image).
+diffusers>=0.30
+accelerate
+torchmetrics[image]
+scipy
+pytest

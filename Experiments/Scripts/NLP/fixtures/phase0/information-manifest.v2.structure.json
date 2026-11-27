@@ -1,0 +1,8 @@
+{
+  "formatStatus": "legacy-versioned-prototype",
+  "schemaVersion": "2.0",
+  "description": "Sanitized structural fingerprint of the Phase-0 Information Extractor manifest. Source-derived values are deliberately omitted.",
+  "requiredTopLevelKeys": ["schemaVersion", "extractionMode", "filePath", "sourceOrigin", "language", "lineCount", "characterCount", "declarations", "outputs", "contracts", "dependencies", "documentation", "formulas", "symbols", "plotCandidates", "assessment", "warnings"],
+  "declarationKeys": ["name", "kind", "signature", "line", "endLine"],
+  "assessmentKeys": ["category", "summary", "evidence", "limitations"]
+}

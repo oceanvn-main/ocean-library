@@ -1,0 +1,15 @@
+* text=auto
+
+*.m    text diff=matlab
+*.md   text
+*.py   text
+*.rs   text
+
+# Test fixtures and golden files are compared byte for byte
+*.json -text
+
+*.mlx  binary
+*.mat  binary
+*.slx  binary
+*.png  binary
+*.jpg  binary

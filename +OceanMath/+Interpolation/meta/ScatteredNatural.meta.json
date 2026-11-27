@@ -1,0 +1,89 @@
+{
+  "id": "ScatteredNatural",
+  "display_name": "Delaunay Triangulation Interpolation",
+  "short_description": "Partitions the input domain into non-overlapping triangles (or simplices) using the scattered data locations, then interpolates within each triangle.",
+  "category": "Geometric / Mesh-based Interpolation",
+
+  "textbook": {
+    "reference": "Szeliski, R. Computer Vision: Algorithms and Applications (2e), §4.1",
+    "section": "§4.1",
+    "equations": ["4.1"]
+  },
+
+  "pedagogy": {
+    "motivation": "Before RBF methods were popularized, a natural geometric approach was to connect the scattered data points into a mesh and interpolate within each mesh cell. Delaunay triangulation provides the best possible triangulation of a point set — it maximizes the minimum angle of all triangles, avoiding thin slivers. Once the domain is triangulated, interpolation inside each triangle is just a weighted blend of the three corner values — simple, exact, and geometrically interpretable.",
+
+    "assumptions": [
+      "The scattered data lies in a low-dimensional space (practically: D=1, 2, or 3). Triangulation grows combinatorially for D > 3.",
+      "The query point lies inside the convex hull of the training points. Extrapolation (outside the hull) requires a separate strategy and is inherently less reliable.",
+      "The function is piecewise smooth — it may have different smooth behaviours in different regions, but within each triangle it is well-approximated by a linear or natural-neighbour blend.",
+      "The Delaunay condition: for any triangle, no other training point falls inside its circumscribed circle. This is automatically enforced by the triangulation algorithm."
+    ],
+
+    "data_model": "The domain is partitioned into non-overlapping simplices (triangles in 2D, tetrahedra in 3D) whose vertices are exactly the N training locations. The function value at any interior query point x is estimated from the values at the vertices of the containing simplex. Three interpolation methods are supported: (1) Natural Neighbour — uses the Voronoi tessellation to compute area-weighted contributions from all neighbours, producing C1 smooth interpolation everywhere except at the data points. (2) Linear — barycentric linear interpolation within each simplex, C0 (continuous but not smooth at simplex boundaries). (3) Nearest — returns the value at the closest training vertex, producing a piecewise-constant surface.",
+
+    "what_is_missing": "The function value at any location that is not one of the N training points is unknown. The triangulation tells us which N training points are 'relevant' to each query location (the vertices of its containing triangle), but does not tell us how to blend their values. The interpolation method (natural, linear, nearest) provides this blending rule.",
+
+    "how_it_solves": "1. Build the Delaunay triangulation from the N training locations. This is a one-time computation that produces a mesh covering the convex hull of the training data. 2. For each query point x: (a) find which simplex contains x using a fast triangle-walk algorithm, (b) compute the blending weights for x within that simplex (barycentric coordinates for linear; Voronoi areas for natural neighbour), (c) return the weighted sum of the simplex vertex values. 3. Points outside the convex hull are handled by the ExtrapolationMethod setting (nearest, linear extrapolation, or NaN)."
+  },
+
+  "equations": {
+    "linear_interp": {
+      "label": "Linear interpolation (barycentric coordinates)",
+      "latex": "f(\\mathbf{x}) = \\lambda_1 f(\\mathbf{v}_1) + \\lambda_2 f(\\mathbf{v}_2) + \\lambda_3 f(\\mathbf{v}_3), \\quad \\lambda_1 + \\lambda_2 + \\lambda_3 = 1, \\; \\lambda_i \\geq 0",
+      "description": "Within a triangle with vertices v1, v2, v3, the function value at interior point x is a convex combination of vertex values. The barycentric coordinates lambda_i are the normalized areas of the sub-triangles formed by x and each edge."
+    },
+    "natural_neighbour": {
+      "label": "Natural Neighbour weights (Sibson coordinates)",
+      "latex": "\\lambda_k(\\mathbf{x}) = \\frac{A\\bigl(\\mathcal{V}(\\mathbf{x}) \\cap \\mathcal{V}(\\mathbf{x}_k)\\bigr)}{A\\bigl(\\mathcal{V}(\\mathbf{x})\\bigr)}",
+      "description": "The weight for training point x_k is the fraction of the Voronoi cell of the query point x that overlaps with the Voronoi cell of x_k. This produces a C1 smooth interpolant — the Natural Neighbour method."
+    }
+  },
+
+  "parameters": [
+    {
+      "name": "Method",
+      "latex_symbol": "",
+      "default": "natural",
+      "description": "The blending rule used within each simplex.",
+      "effect": "'natural': C1 smooth, highest quality, uses Voronoi area weights. 'linear': C0, piecewise linear, fast and simple. 'nearest': C-1, piecewise constant, fastest but discontinuous. Use 'natural' for best results unless speed is critical."
+    },
+    {
+      "name": "ExtrapolationMethod",
+      "latex_symbol": "",
+      "default": "none",
+      "description": "How to handle query points outside the convex hull of training data.",
+      "effect": "'none': return 0 (code replaces NaN with 0). 'nearest': extrapolate by returning value of nearest boundary point. 'linear': linear extrapolation beyond the hull boundary. Extrapolation is generally unreliable — prefer dense training data that covers the full query domain."
+    }
+  ],
+
+  "complexity": {
+    "training": "O(N log N) — Delaunay triangulation",
+    "prediction": "O(M log N) — simplex lookup per query point using spatial index",
+    "memory": "O(N) — to store the triangulation"
+  },
+
+  "strengths": [
+    "Exact interpolation: passes through every training point exactly.",
+    "Natural Neighbour method is C1 smooth — derivatives are continuous.",
+    "Efficient prediction O(log N) per query using spatial indexing.",
+    "No kernel shape parameter to tune — purely data-driven geometry.",
+    "Well-suited for 2D spatial data (maps, terrain, image warping)."
+  ],
+
+  "weaknesses": [
+    "Strictly limited to D <= 3 in practice — triangulation size is O(N^{D/2}) in higher dimensions.",
+    "Cannot extrapolate beyond the convex hull of training points.",
+    "The triangulation can degenerate with nearly-collinear or nearly-coplanar points.",
+    "No noise handling — exact interpolation means noise is fully retained.",
+    "Less flexible than RBF: smoothness is fixed by the method (natural/linear/nearest) and cannot be tuned."
+  ],
+
+  "when_to_use": "Use Delaunay interpolation for 1D, 2D, or 3D problems where the training data is reasonably dense and covers the query domain, and where you want exact (noise-free) interpolation with geometric interpretability. It is the standard method for terrain elevation interpolation, 2D scattered-point visualization, and image warping in computer graphics. Avoid it when extrapolation is needed, when the data is in D > 3, or when the data is noisy.",
+
+  "references": [
+    "Szeliski §4.1, eq. (4.1)",
+    "Sibson (1981) — A brief description of natural neighbour interpolation",
+    "MATLAB scatteredInterpolant documentation"
+  ]
+}

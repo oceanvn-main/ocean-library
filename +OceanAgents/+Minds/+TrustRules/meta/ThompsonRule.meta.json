@@ -1,0 +1,89 @@
+{
+  "id": "ThompsonRule",
+  "display_name": "Thompson sampling delegation rule (Beta-Bernoulli)",
+  "short_description": "Draws one plausible success probability for each provider from its Beta posterior and delegates to the provider whose drawn probability gives the highest utility, or takes the outside option when that is better.",
+  "category": "Bayesian Decision Making / Bandits / Trust and Delegation",
+
+  "textbook": {
+    "reference": "Thompson, W. R. (1933). On the likelihood that one unknown probability exceeds another in view of the evidence of two samples. Biometrika 25(3/4), 285-294; Russo, D. et al. (2018). A Tutorial on Thompson Sampling. Foundations and Trends in Machine Learning 11(1), ch. 3 (Beta-Bernoulli bandit)",
+    "section": "Russo et al. §3",
+    "equations": ["Algorithm 2 (BernTS)"]
+  },
+
+  "pedagogy": {
+    "motivation": "An agent that always delegates to the provider it currently believes is best can lock onto a mediocre provider and never learn that another one is better. Thompson sampling resolves this exploration-exploitation dilemma by probability matching: each provider is chosen with the probability that it is the best one, given the evidence so far. Providers the agent knows little about have wide posteriors, so their draws are sometimes high and they get tried; well-known bad providers are almost never chosen.",
+    "assumptions": [
+      "Each delegate candidate carries a Beta(alpha, beta) belief about its success probability in the current context (a Beta-Bernoulli trust store); fixed scores without a posterior are rejected.",
+      "Payoffs [S F O] for the current context are declared and known to the agent.",
+      "Randomness comes only from the agent's own stream: for each delegate candidate in increasing label order, one Gamma(alpha) and then one Gamma(beta) draw.",
+      "Exact ties between sampled utilities go to the lowest label.",
+      "The rule reports no choice probabilities: the probability of each action is an integral with no closed form, so no likelihood is invented."
+    ],
+    "data_model": "For each legal delegate action j the mind supplies the posterior parameters (alpha_j, beta_j). The rule draws p_j ~ Beta(alpha_j, beta_j) as x/(x+y) with x ~ Gamma(alpha_j), y ~ Gamma(beta_j), scores U_j = p_j S + (1 - p_j) F, scores the outside option O, and picks the maximum.",
+    "what_is_missing": "The true success probabilities are unknown; the posterior expresses what the evidence says about them. Sampling from it rather than using its mean is what makes the agent try uncertain providers in proportion to how likely they are to be the best.",
+    "how_it_solves": "1. For each delegate candidate, in label order, draw x ~ Gamma(alpha) and y ~ Gamma(beta) with the Marsaglia-Tsang method (using the shape boost G(a) = G(a+1) W^(1/a), W ~ U(0,1), when a < 1) and set p = x/(x+y). 2. Score U = pS + (1-p)F; the outside option scores O. 3. Choose the largest score, lowest label on exact ties. 4. As evidence arrives the posteriors narrow, the draws concentrate, and the choice becomes greedy with respect to the evidence."
+  },
+
+  "equations": {
+    "thompson": {
+      "label": "Thompson draw and sampled utility",
+      "latex": "p \\sim \\mathrm{Beta}(\\alpha,\\beta),\\ U = pS + (1-p)F",
+      "description": "One posterior draw per provider (Thompson 1933); the provider with the largest sampled utility is chosen, or the outside option if O is larger."
+    },
+    "beta_from_gamma": {
+      "label": "Beta from two gammas",
+      "latex": "p = \\frac{X}{X+Y},\\quad X \\sim \\mathrm{Gamma}(\\alpha,1),\\ Y \\sim \\mathrm{Gamma}(\\beta,1)",
+      "description": "Implementation: the standard Beta construction from independent gamma variates."
+    },
+    "marsaglia_tsang": {
+      "label": "Marsaglia-Tsang gamma sampler (implementation note)",
+      "latex": "d = a - \\tfrac13,\\ c = 1/\\sqrt{9d},\\ v = (1 + cZ)^3,\\ \\text{accept } dv \\text{ if } \\ln W < \\tfrac12 Z^2 + d(1 - v + \\ln v)",
+      "description": "Marsaglia & Tsang (2000) rejection method with Z ~ N(0,1), W ~ U(0,1) drawn from the agent's stream (MATLAB randg cannot take a stream); for a < 1, G(a) = G(a+1) W^{1/a}."
+    }
+  },
+
+  "Symbols": [
+    {"Symbol": "p", "Description": "a success probability drawn from the provider's posterior"},
+    {"Symbol": "\\alpha", "Description": "posterior Beta parameter: prior pseudo-successes plus observed successes"},
+    {"Symbol": "\\beta", "Description": "posterior Beta parameter: prior pseudo-failures plus observed failures"},
+    {"Symbol": "\\mathrm{Beta}(\\alpha,\\beta)", "Description": "the Beta distribution of the provider's success probability"},
+    {"Symbol": "S", "Description": "utility if the delegated task succeeds"},
+    {"Symbol": "F", "Description": "utility if the delegated task fails"},
+    {"Symbol": "U", "Description": "sampled utility of delegating to the provider"},
+    {"Symbol": "X", "Description": "Gamma(alpha, 1) variate"},
+    {"Symbol": "Y", "Description": "Gamma(beta, 1) variate"},
+    {"Symbol": "a", "Description": "shape parameter of a gamma draw"},
+    {"Symbol": "d", "Description": "Marsaglia-Tsang constant a - 1/3"},
+    {"Symbol": "c", "Description": "Marsaglia-Tsang constant 1/sqrt(9d)"},
+    {"Symbol": "Z", "Description": "standard normal proposal variate"},
+    {"Symbol": "v", "Description": "proposal (1 + cZ)^3"},
+    {"Symbol": "W", "Description": "uniform acceptance variate of the gamma sampler"}
+  ],
+
+  "parameters": [],
+
+  "complexity": {
+    "training": "O(1) (no fitting; the Beta posteriors are maintained by the belief store)",
+    "prediction": "O(C) per decision; about 2 gamma draws per delegate candidate, each accepted after 1.0-1.05 proposals on average",
+    "memory": "O(C)"
+  },
+
+  "strengths": [
+    "Explores in proportion to uncertainty: new or rarely tried providers are tried, well-known bad ones almost never.",
+    "No tuning parameter.",
+    "Near-optimal regret for Bernoulli bandits (Agrawal & Goyal 2012; Kaufmann et al. 2012)."
+  ],
+  "weaknesses": [
+    "Random: the same beliefs can lead to different choices (reproducible only through the agent's seeded stream).",
+    "Reports no choice probability, so off-policy corrections that need a likelihood cannot use it directly.",
+    "Needs Beta posteriors; it cannot act on fixed imported scores."
+  ],
+  "when_to_use": "Use for an evidence-adaptive agent that must keep learning which provider is reliable while still earning payoffs, especially when reliabilities are unknown at the start or change over time. Use the expected-utility rule instead for purely exploiting agents or frozen-belief evaluation.",
+
+  "references": [
+    "Thompson, W. R. (1933). On the likelihood that one unknown probability exceeds another in view of the evidence of two samples. Biometrika 25(3/4), 285-294.",
+    "Russo, D., Van Roy, B., Kazerouni, A., Osband, I. & Wen, Z. (2018). A Tutorial on Thompson Sampling. Foundations and Trends in Machine Learning 11(1), 1-96.",
+    "Agrawal, S. & Goyal, N. (2012). Analysis of Thompson sampling for the multi-armed bandit problem. COLT.",
+    "Marsaglia, G. & Tsang, W. W. (2000). A simple method for generating gamma variables. ACM Transactions on Mathematical Software 26(3), 363-372 (implementation of the gamma draws)."
+  ]
+}

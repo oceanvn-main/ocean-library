@@ -1,0 +1,8 @@
+{
+  "formatStatus": "legacy-versioned-prototype",
+  "schemaVersion": "1.0",
+  "description": "Sanitized structural fingerprint of the Phase-0 browser-to-MATLAB symbolic handoff. Source text and extracted values are deliberately omitted.",
+  "requiredTopLevelKeys": ["kind", "schemaVersion", "source", "candidates", "manifest"],
+  "sourceKeys": ["filename", "text", "language"],
+  "candidateKeys": ["expression", "sourceLines", "literal", "kind"]
+}

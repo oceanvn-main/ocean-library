@@ -1,0 +1,13 @@
+[package]
+name = "ocean-storage"
+version = "0.1.0"
+edition = "2021"
+rust-version = "1.89"
+
+[lib]
+name = "ocean_storage"
+path = "src/lib.rs"
+
+[[bin]]
+name = "ocean-storage"
+path = "src/main.rs"

@@ -1,0 +1,5507 @@
+{
+ "generator": "make_jiwer_fixture.py",
+ "jiwer_version": "4.0.0",
+ "seed": 20261006,
+ "cases": [
+  {
+   "ref": "zero six two nine",
+   "hyp": "zero eight six two eight",
+   "tag": "fsdd-jackson",
+   "word": {
+    "S": 1,
+    "D": 0,
+    "I": 1,
+    "H": 3
+   },
+   "char": {
+    "S": 3,
+    "D": 0,
+    "I": 7,
+    "H": 14
+   }
+  },
+  {
+   "ref": "five eight seven seven zero one",
+   "hyp": "five eight seven seven zero one",
+   "tag": "fsdd-jackson",
+   "word": {
+    "S": 0,
+    "D": 0,
+    "I": 0,
+    "H": 6
+   },
+   "char": {
+    "S": 0,
+    "D": 0,
+    "I": 0,
+    "H": 31
+   }
+  },
+  {
+   "ref": "one zero",
+   "hyp": "",
+   "tag": "fsdd-jackson",
+   "word": {
+    "S": 0,
+    "D": 2,
+    "I": 0,
+    "H": 0
+   },
+   "char": {
+    "S": 0,
+    "D": 8,
+    "I": 0,
+    "H": 0
+   }
+  },
+  {
+   "ref": "zero",
+   "hyp": "",
+   "tag": "fsdd-jackson",
+   "word": {
+    "S": 0,
+    "D": 1,
+    "I": 0,
+    "H": 0
+   },
+   "char": {
+    "S": 0,
+    "D": 4,
+    "I": 0,
+    "H": 0
+   }
+  },
+  {
+   "ref": "one one",
+   "hyp": "four one one",
+   "tag": "fsdd-jackson",
+   "word": {
+    "S": 0,
+    "D": 0,
+    "I": 1,
+    "H": 2
+   },
+   "char": {
+    "S": 0,
+    "D": 0,
+    "I": 5,
+    "H": 7
+   }
+  },
+  {
+   "ref": "four two one nine",
+   "hyp": "four three one zero",
+   "tag": "fsdd-jackson",
+   "word": {
+    "S": 2,
+    "D": 0,
+    "I": 0,
+    "H": 2
+   },
+   "char": {
+    "S": 6,
+    "D": 0,
+    "I": 2,
+    "H": 11
+   }
+  },
+  {
+   "ref": "one",
+   "hyp": "one",
+   "tag": "fsdd-jackson",
+   "word": {
+    "S": 0,
+    "D": 0,
+    "I": 0,
+    "H": 1
+   },
+   "char": {
+    "S": 0,
+    "D": 0,
+    "I": 0,
+    "H": 3
+   }
+  },
+  {
+   "ref": "five eight seven nine",
+   "hyp": "five eight six nine",
+   "tag": "fsdd-jackson",
+   "word": {
+    "S": 1,
+    "D": 0,
+    "I": 0,
+    "H": 3
+   },
+   "char": {
+    "S": 2,
+    "D": 2,
+    "I": 0,
+    "H": 17
+   }
+  },
+  {
+   "ref": "one five seven eight three five",
+   "hyp": "one five seven eight three five",
+   "tag": "fsdd-jackson",
+   "word": {
+    "S": 0,
+    "D": 0,
+    "I": 0,
+    "H": 6
+   },
+   "char": {
+    "S": 0,
+    "D": 0,
+    "I": 0,
+    "H": 31
+   }
+  },
+  {
+   "ref": "three four one",
+   "hyp": "eight one one",
+   "tag": "fsdd-jackson",
+   "word": {
+    "S": 2,
+    "D": 0,
+    "I": 0,
+    "H": 1
+   },
+   "char": {
+    "S": 7,
+    "D": 1,
+    "I": 0,
+    "H": 6
+   }
+  },
+  {
+   "ref": "six two four three",
+   "hyp": "one six two four three",
+   "tag": "fsdd-jackson",
+   "word": {
+    "S": 0,
+    "D": 0,
+    "I": 1,
+    "H": 4
+   },
+   "char": {
+    "S": 0,
+    "D": 0,
+    "I": 4,
+    "H": 18
+   }
+  },
+  {
+   "ref": "seven",
+   "hyp": "nine three",
+   "tag": "fsdd-jackson",
+   "word": {
+    "S": 1,
+    "D": 0,
+    "I": 1,
+    "H": 0
+   },
+   "char": {
+    "S": 3,
+    "D": 0,
+    "I": 5,
+    "H": 2
+   }
+  },
+  {
+   "ref": "seven one zero eight",
+   "hyp": "one zero",
+   "tag": "fsdd-jackson",
+   "word": {
+    "S": 0,
+    "D": 2,
+    "I": 0,
+    "H": 2
+   },
+   "char": {
+    "S": 0,
+    "D": 12,
+    "I": 0,
+    "H": 8
+   }
+  },
+  {
+   "ref": "nine",
+   "hyp": "",
+   "tag": "fsdd-jackson",
+   "word": {
+    "S": 0,
+    "D": 1,
+    "I": 0,
+    "H": 0
+   },
+   "char": {
+    "S": 0,
+    "D": 4,
+    "I": 0,
+    "H": 0
+   }
+  },
+  {
+   "ref": "five five four six six",
+   "hyp": "five five four three six",
+   "tag": "fsdd-jackson",
+   "word": {
+    "S": 1,
+    "D": 0,
+    "I": 0,
+    "H": 4
+   },
+   "char": {
+    "S": 3,
+    "D": 0,
+    "I": 2,
+    "H": 19
+   }
+  },
+  {
+   "ref": "six",
+   "hyp": "six",
+   "tag": "fsdd-jackson",
+   "word": {
+    "S": 0,
+    "D": 0,
+    "I": 0,
+    "H": 1
+   },
+   "char": {
+    "S": 0,
+    "D": 0,
+    "I": 0,
+    "H": 3
+   }
+  },
+  {
+   "ref": "four eight nine two six eight",
+   "hyp": "two six eight",
+   "tag": "fsdd-jackson",
+   "word": {
+    "S": 0,
+    "D": 3,
+    "I": 0,
+    "H": 3
+   },
+   "char": {
+    "S": 0,
+    "D": 16,
+    "I": 0,
+    "H": 13
+   }
+  },
+  {
+   "ref": "zero four one five",
+   "hyp": "zero four five",
+   "tag": "fsdd-jackson",
+   "word": {
+    "S": 0,
+    "D": 1,
+    "I": 0,
+    "H": 3
+   },
+   "char": {
+    "S": 0,
+    "D": 4,
+    "I": 0,
+    "H": 14
+   }
+  },
+  {
+   "ref": "nine zero five four",
+   "hyp": "nine zero five four",
+   "tag": "fsdd-jackson",
+   "word": {
+    "S": 0,
+    "D": 0,
+    "I": 0,
+    "H": 4
+   },
+   "char": {
+    "S": 0,
+    "D": 0,
+    "I": 0,
+    "H": 19
+   }
+  },
+  {
+   "ref": "two five seven",
+   "hyp": "eight five seven",
+   "tag": "fsdd-jackson",
+   "word": {
+    "S": 1,
+    "D": 0,
+    "I": 0,
+    "H": 2
+   },
+   "char": {
+    "S": 3,
+    "D": 0,
+    "I": 2,
+    "H": 11
+   }
+  },
+  {
+   "ref": "seven nine",
+   "hyp": "six seven",
+   "tag": "fsdd-jackson",
+   "word": {
+    "S": 0,
+    "D": 1,
+    "I": 1,
+    "H": 1
+   },
+   "char": {
+    "S": 7,
+    "D": 1,
+    "I": 0,
+    "H": 2
+   }
+  },
+  {
+   "ref": "nine nine three one four",
+   "hyp": "nine nine three one six four",
+   "tag": "fsdd-jackson",
+   "word": {
+    "S": 0,
+    "D": 0,
+    "I": 1,
+    "H": 5
+   },
+   "char": {
+    "S": 0,
+    "D": 0,
+    "I": 4,
+    "H": 24
+   }
+  },
+  {
+   "ref": "seven four nine one two",
+   "hyp": "four nine one",
+   "tag": "fsdd-jackson",
+   "word": {
+    "S": 0,
+    "D": 2,
+    "I": 0,
+    "H": 3
+   },
+   "char": {
+    "S": 0,
+    "D": 10,
+    "I": 0,
+    "H": 13
+   }
+  },
+  {
+   "ref": "eight zero four",
+   "hyp": "zero four two",
+   "tag": "fsdd-jackson",
+   "word": {
+    "S": 0,
+    "D": 1,
+    "I": 1,
+    "H": 2
+   },
+   "char": {
+    "S": 0,
+    "D": 6,
+    "I": 4,
+    "H": 9
+   }
+  },
+  {
+   "ref": "nine five one",
+   "hyp": "nine five one",
+   "tag": "fsdd-jackson",
+   "word": {
+    "S": 0,
+    "D": 0,
+    "I": 0,
+    "H": 3
+   },
+   "char": {
+    "S": 0,
+    "D": 0,
+    "I": 0,
+    "H": 13
+   }
+  },
+  {
+   "ref": "two nine two four",
+   "hyp": "two six nine two four",
+   "tag": "fsdd-jackson",
+   "word": {
+    "S": 0,
+    "D": 0,
+    "I": 1,
+    "H": 4
+   },
+   "char": {
+    "S": 0,
+    "D": 0,
+    "I": 4,
+    "H": 17
+   }
+  },
+  {
+   "ref": "one zero four one",
+   "hyp": "one zero one eight one",
+   "tag": "fsdd-jackson",
+   "word": {
+    "S": 1,
+    "D": 0,
+    "I": 1,
+    "H": 3
+   },
+   "char": {
+    "S": 4,
+    "D": 0,
+    "I": 5,
+    "H": 13
+   }
+  },
+  {
+   "ref": "two five zero two five one",
+   "hyp": "two five zero two five",
+   "tag": "fsdd-jackson",
+   "word": {
+    "S": 0,
+    "D": 1,
+    "I": 0,
+    "H": 5
+   },
+   "char": {
+    "S": 0,
+    "D": 4,
+    "I": 0,
+    "H": 22
+   }
+  },
+  {
+   "ref": "zero",
+   "hyp": "zero",
+   "tag": "fsdd-jackson",
+   "word": {
+    "S": 0,
+    "D": 0,
+    "I": 0,
+    "H": 1
+   },
+   "char": {
+    "S": 0,
+    "D": 0,
+    "I": 0,
+    "H": 4
+   }
+  },
+  {
+   "ref": "zero six four two",
+   "hyp": "seven zero six four two",
+   "tag": "fsdd-jackson",
+   "word": {
+    "S": 0,
+    "D": 0,
+    "I": 1,
+    "H": 4
+   },
+   "char": {
+    "S": 0,
+    "D": 0,
+    "I": 6,
+    "H": 17
+   }
+  },
+  {
+   "ref": "two five",
+   "hyp": "five six",
+   "tag": "fsdd-jackson",
+   "word": {
+    "S": 2,
+    "D": 0,
+    "I": 0,
+    "H": 0
+   },
+   "char": {
+    "S": 5,
+    "D": 1,
+    "I": 1,
+    "H": 2
+   }
+  },
+  {
+   "ref": "two eight two zero",
+   "hyp": "three three eight two zero",
+   "tag": "fsdd-jackson",
+   "word": {
+    "S": 1,
+    "D": 0,
+    "I": 1,
+    "H": 3
+   },
+   "char": {
+    "S": 2,
+    "D": 0,
+    "I": 8,
+    "H": 16
+   }
+  },
+  {
+   "ref": "four seven two two two seven",
+   "hyp": "four seven two two two seven",
+   "tag": "fsdd-jackson",
+   "word": {
+    "S": 0,
+    "D": 0,
+    "I": 0,
+    "H": 6
+   },
+   "char": {
+    "S": 0,
+    "D": 0,
+    "I": 0,
+    "H": 28
+   }
+  },
+  {
+   "ref": "nine",
+   "hyp": "five",
+   "tag": "fsdd-jackson",
+   "word": {
+    "S": 1,
+    "D": 0,
+    "I": 0,
+    "H": 0
+   },
+   "char": {
+    "S": 2,
+    "D": 0,
+    "I": 0,
+    "H": 2
+   }
+  },
+  {
+   "ref": "four six three eight four zero",
+   "hyp": "four six three eight four",
+   "tag": "fsdd-jackson",
+   "word": {
+    "S": 0,
+    "D": 1,
+    "I": 0,
+    "H": 5
+   },
+   "char": {
+    "S": 0,
+    "D": 5,
+    "I": 0,
+    "H": 25
+   }
+  },
+  {
+   "ref": "five two",
+   "hyp": "five two",
+   "tag": "fsdd-jackson",
+   "word": {
+    "S": 0,
+    "D": 0,
+    "I": 0,
+    "H": 2
+   },
+   "char": {
+    "S": 0,
+    "D": 0,
+    "I": 0,
+    "H": 8
+   }
+  },
+  {
+   "ref": "five zero one",
+   "hyp": "five zero one",
+   "tag": "fsdd-jackson",
+   "word": {
+    "S": 0,
+    "D": 0,
+    "I": 0,
+    "H": 3
+   },
+   "char": {
+    "S": 0,
+    "D": 0,
+    "I": 0,
+    "H": 13
+   }
+  },
+  {
+   "ref": "eight zero eight one",
+   "hyp": "four eight eight zero eight seven",
+   "tag": "fsdd-jackson",
+   "word": {
+    "S": 1,
+    "D": 0,
+    "I": 2,
+    "H": 3
+   },
+   "char": {
+    "S": 2,
+    "D": 0,
+    "I": 13,
+    "H": 18
+   }
+  },
+  {
+   "ref": "nine zero nine eight two",
+   "hyp": "zero nine eight two",
+   "tag": "fsdd-jackson",
+   "word": {
+    "S": 0,
+    "D": 1,
+    "I": 0,
+    "H": 4
+   },
+   "char": {
+    "S": 0,
+    "D": 5,
+    "I": 0,
+    "H": 19
+   }
+  },
+  {
+   "ref": "seven five six",
+   "hyp": "seven five six",
+   "tag": "fsdd-jackson",
+   "word": {
+    "S": 0,
+    "D": 0,
+    "I": 0,
+    "H": 3
+   },
+   "char": {
+    "S": 0,
+    "D": 0,
+    "I": 0,
+    "H": 14
+   }
+  },
+  {
+   "ref": "five four",
+   "hyp": "five one",
+   "tag": "fsdd-jackson",
+   "word": {
+    "S": 1,
+    "D": 0,
+    "I": 0,
+    "H": 1
+   },
+   "char": {
+    "S": 2,
+    "D": 1,
+    "I": 0,
+    "H": 6
+   }
+  },
+  {
+   "ref": "seven five six one eight seven",
+   "hyp": "three one five six one eight seven",
+   "tag": "fsdd-jackson",
+   "word": {
+    "S": 1,
+    "D": 0,
+    "I": 1,
+    "H": 5
+   },
+   "char": {
+    "S": 3,
+    "D": 0,
+    "I": 4,
+    "H": 27
+   }
+  },
+  {
+   "ref": "one four zero three three nine",
+   "hyp": "one four zero three three nine",
+   "tag": "fsdd-jackson",
+   "word": {
+    "S": 0,
+    "D": 0,
+    "I": 0,
+    "H": 6
+   },
+   "char": {
+    "S": 0,
+    "D": 0,
+    "I": 0,
+    "H": 30
+   }
+  },
+  {
+   "ref": "four three",
+   "hyp": "five four three nine",
+   "tag": "fsdd-jackson",
+   "word": {
+    "S": 0,
+    "D": 0,
+    "I": 2,
+    "H": 2
+   },
+   "char": {
+    "S": 0,
+    "D": 0,
+    "I": 10,
+    "H": 10
+   }
+  },
+  {
+   "ref": "three one seven eight eight eight",
+   "hyp": "three one seven eight eight eight",
+   "tag": "fsdd-jackson",
+   "word": {
+    "S": 0,
+    "D": 0,
+    "I": 0,
+    "H": 6
+   },
+   "char": {
+    "S": 0,
+    "D": 0,
+    "I": 0,
+    "H": 33
+   }
+  },
+  {
+   "ref": "three five five six three",
+   "hyp": "zero three five five six three",
+   "tag": "fsdd-jackson",
+   "word": {
+    "S": 0,
+    "D": 0,
+    "I": 1,
+    "H": 5
+   },
+   "char": {
+    "S": 0,
+    "D": 0,
+    "I": 5,
+    "H": 25
+   }
+  },
+  {
+   "ref": "four four one six",
+   "hyp": "four four six",
+   "tag": "fsdd-jackson",
+   "word": {
+    "S": 0,
+    "D": 1,
+    "I": 0,
+    "H": 3
+   },
+   "char": {
+    "S": 0,
+    "D": 4,
+    "I": 0,
+    "H": 13
+   }
+  },
+  {
+   "ref": "five seven three six",
+   "hyp": "five seven three six",
+   "tag": "fsdd-jackson",
+   "word": {
+    "S": 0,
+    "D": 0,
+    "I": 0,
+    "H": 4
+   },
+   "char": {
+    "S": 0,
+    "D": 0,
+    "I": 0,
+    "H": 20
+   }
+  },
+  {
+   "ref": "one",
+   "hyp": "",
+   "tag": "fsdd-jackson",
+   "word": {
+    "S": 0,
+    "D": 1,
+    "I": 0,
+    "H": 0
+   },
+   "char": {
+    "S": 0,
+    "D": 3,
+    "I": 0,
+    "H": 0
+   }
+  },
+  {
+   "ref": "zero three three",
+   "hyp": "zero three three",
+   "tag": "fsdd-jackson",
+   "word": {
+    "S": 0,
+    "D": 0,
+    "I": 0,
+    "H": 3
+   },
+   "char": {
+    "S": 0,
+    "D": 0,
+    "I": 0,
+    "H": 16
+   }
+  },
+  {
+   "ref": "one zero eight",
+   "hyp": "one zero eight",
+   "tag": "fsdd-jackson",
+   "word": {
+    "S": 0,
+    "D": 0,
+    "I": 0,
+    "H": 3
+   },
+   "char": {
+    "S": 0,
+    "D": 0,
+    "I": 0,
+    "H": 14
+   }
+  },
+  {
+   "ref": "zero six eight two two",
+   "hyp": "six eight two two",
+   "tag": "fsdd-jackson",
+   "word": {
+    "S": 0,
+    "D": 1,
+    "I": 0,
+    "H": 4
+   },
+   "char": {
+    "S": 0,
+    "D": 5,
+    "I": 0,
+    "H": 17
+   }
+  },
+  {
+   "ref": "nine",
+   "hyp": "nine",
+   "tag": "fsdd-jackson",
+   "word": {
+    "S": 0,
+    "D": 0,
+    "I": 0,
+    "H": 1
+   },
+   "char": {
+    "S": 0,
+    "D": 0,
+    "I": 0,
+    "H": 4
+   }
+  },
+  {
+   "ref": "one three one one one",
+   "hyp": "one three one one one",
+   "tag": "fsdd-jackson",
+   "word": {
+    "S": 0,
+    "D": 0,
+    "I": 0,
+    "H": 5
+   },
+   "char": {
+    "S": 0,
+    "D": 0,
+    "I": 0,
+    "H": 21
+   }
+  },
+  {
+   "ref": "four nine eight two six two",
+   "hyp": "six nine eight two six two",
+   "tag": "fsdd-jackson",
+   "word": {
+    "S": 1,
+    "D": 0,
+    "I": 0,
+    "H": 5
+   },
+   "char": {
+    "S": 3,
+    "D": 1,
+    "I": 0,
+    "H": 23
+   }
+  },
+  {
+   "ref": "one nine six six nine six",
+   "hyp": "one nine six six nine six",
+   "tag": "fsdd-jackson",
+   "word": {
+    "S": 0,
+    "D": 0,
+    "I": 0,
+    "H": 6
+   },
+   "char": {
+    "S": 0,
+    "D": 0,
+    "I": 0,
+    "H": 25
+   }
+  },
+  {
+   "ref": "two",
+   "hyp": "",
+   "tag": "fsdd-jackson",
+   "word": {
+    "S": 0,
+    "D": 1,
+    "I": 0,
+    "H": 0
+   },
+   "char": {
+    "S": 0,
+    "D": 3,
+    "I": 0,
+    "H": 0
+   }
+  },
+  {
+   "ref": "six nine three four zero two",
+   "hyp": "six nine three four zero",
+   "tag": "fsdd-jackson",
+   "word": {
+    "S": 0,
+    "D": 1,
+    "I": 0,
+    "H": 5
+   },
+   "char": {
+    "S": 0,
+    "D": 4,
+    "I": 0,
+    "H": 24
+   }
+  },
+  {
+   "ref": "two two",
+   "hyp": "two one",
+   "tag": "fsdd-jackson",
+   "word": {
+    "S": 1,
+    "D": 0,
+    "I": 0,
+    "H": 1
+   },
+   "char": {
+    "S": 3,
+    "D": 0,
+    "I": 0,
+    "H": 4
+   }
+  },
+  {
+   "ref": "eight four five six",
+   "hyp": "eight five zero six",
+   "tag": "fsdd-jackson",
+   "word": {
+    "S": 2,
+    "D": 0,
+    "I": 0,
+    "H": 2
+   },
+   "char": {
+    "S": 7,
+    "D": 0,
+    "I": 0,
+    "H": 12
+   }
+  },
+  {
+   "ref": "one seven two zero",
+   "hyp": "two seven two zero",
+   "tag": "fsdd-nicolas",
+   "word": {
+    "S": 1,
+    "D": 0,
+    "I": 0,
+    "H": 3
+   },
+   "char": {
+    "S": 3,
+    "D": 0,
+    "I": 0,
+    "H": 15
+   }
+  },
+  {
+   "ref": "five seven five one six",
+   "hyp": "seven five seven five one six",
+   "tag": "fsdd-nicolas",
+   "word": {
+    "S": 0,
+    "D": 0,
+    "I": 1,
+    "H": 5
+   },
+   "char": {
+    "S": 0,
+    "D": 0,
+    "I": 6,
+    "H": 23
+   }
+  },
+  {
+   "ref": "eight one four eight two",
+   "hyp": "eight one four two",
+   "tag": "fsdd-nicolas",
+   "word": {
+    "S": 0,
+    "D": 1,
+    "I": 0,
+    "H": 4
+   },
+   "char": {
+    "S": 0,
+    "D": 6,
+    "I": 0,
+    "H": 18
+   }
+  },
+  {
+   "ref": "four eight eight zero three",
+   "hyp": "four five six nine eight zero three",
+   "tag": "fsdd-nicolas",
+   "word": {
+    "S": 1,
+    "D": 0,
+    "I": 2,
+    "H": 4
+   },
+   "char": {
+    "S": 3,
+    "D": 0,
+    "I": 8,
+    "H": 24
+   }
+  },
+  {
+   "ref": "five six four",
+   "hyp": "two two six",
+   "tag": "fsdd-nicolas",
+   "word": {
+    "S": 1,
+    "D": 1,
+    "I": 1,
+    "H": 1
+   },
+   "char": {
+    "S": 9,
+    "D": 2,
+    "I": 0,
+    "H": 2
+   }
+  },
+  {
+   "ref": "zero",
+   "hyp": "",
+   "tag": "fsdd-nicolas",
+   "word": {
+    "S": 0,
+    "D": 1,
+    "I": 0,
+    "H": 0
+   },
+   "char": {
+    "S": 0,
+    "D": 4,
+    "I": 0,
+    "H": 0
+   }
+  },
+  {
+   "ref": "seven six one",
+   "hyp": "",
+   "tag": "fsdd-nicolas",
+   "word": {
+    "S": 0,
+    "D": 3,
+    "I": 0,
+    "H": 0
+   },
+   "char": {
+    "S": 0,
+    "D": 13,
+    "I": 0,
+    "H": 0
+   }
+  },
+  {
+   "ref": "six eight one one zero",
+   "hyp": "six eight eight one five",
+   "tag": "fsdd-nicolas",
+   "word": {
+    "S": 2,
+    "D": 0,
+    "I": 0,
+    "H": 3
+   },
+   "char": {
+    "S": 7,
+    "D": 0,
+    "I": 2,
+    "H": 15
+   }
+  },
+  {
+   "ref": "six seven three zero one one",
+   "hyp": "six seven three zero one one",
+   "tag": "fsdd-nicolas",
+   "word": {
+    "S": 0,
+    "D": 0,
+    "I": 0,
+    "H": 6
+   },
+   "char": {
+    "S": 0,
+    "D": 0,
+    "I": 0,
+    "H": 28
+   }
+  },
+  {
+   "ref": "three eight nine zero eight",
+   "hyp": "three five nine zero eight",
+   "tag": "fsdd-nicolas",
+   "word": {
+    "S": 1,
+    "D": 0,
+    "I": 0,
+    "H": 4
+   },
+   "char": {
+    "S": 3,
+    "D": 1,
+    "I": 0,
+    "H": 23
+   }
+  },
+  {
+   "ref": "zero two",
+   "hyp": "two six eight two",
+   "tag": "fsdd-nicolas",
+   "word": {
+    "S": 1,
+    "D": 0,
+    "I": 2,
+    "H": 1
+   },
+   "char": {
+    "S": 3,
+    "D": 0,
+    "I": 9,
+    "H": 5
+   }
+  },
+  {
+   "ref": "zero three one four",
+   "hyp": "zero three one",
+   "tag": "fsdd-nicolas",
+   "word": {
+    "S": 0,
+    "D": 1,
+    "I": 0,
+    "H": 3
+   },
+   "char": {
+    "S": 0,
+    "D": 5,
+    "I": 0,
+    "H": 14
+   }
+  },
+  {
+   "ref": "four",
+   "hyp": "",
+   "tag": "fsdd-nicolas",
+   "word": {
+    "S": 0,
+    "D": 1,
+    "I": 0,
+    "H": 0
+   },
+   "char": {
+    "S": 0,
+    "D": 4,
+    "I": 0,
+    "H": 0
+   }
+  },
+  {
+   "ref": "six zero four eight",
+   "hyp": "six zero four eight",
+   "tag": "fsdd-nicolas",
+   "word": {
+    "S": 0,
+    "D": 0,
+    "I": 0,
+    "H": 4
+   },
+   "char": {
+    "S": 0,
+    "D": 0,
+    "I": 0,
+    "H": 19
+   }
+  },
+  {
+   "ref": "two two eight seven two",
+   "hyp": "two two eight seven five",
+   "tag": "fsdd-nicolas",
+   "word": {
+    "S": 1,
+    "D": 0,
+    "I": 0,
+    "H": 4
+   },
+   "char": {
+    "S": 3,
+    "D": 0,
+    "I": 1,
+    "H": 20
+   }
+  },
+  {
+   "ref": "three zero seven",
+   "hyp": "zero eight five",
+   "tag": "fsdd-nicolas",
+   "word": {
+    "S": 3,
+    "D": 0,
+    "I": 0,
+    "H": 0
+   },
+   "char": {
+    "S": 9,
+    "D": 2,
+    "I": 1,
+    "H": 5
+   }
+  },
+  {
+   "ref": "zero",
+   "hyp": "one",
+   "tag": "fsdd-nicolas",
+   "word": {
+    "S": 1,
+    "D": 0,
+    "I": 0,
+    "H": 0
+   },
+   "char": {
+    "S": 1,
+    "D": 2,
+    "I": 1,
+    "H": 1
+   }
+  },
+  {
+   "ref": "six nine",
+   "hyp": "six nine",
+   "tag": "fsdd-nicolas",
+   "word": {
+    "S": 0,
+    "D": 0,
+    "I": 0,
+    "H": 2
+   },
+   "char": {
+    "S": 0,
+    "D": 0,
+    "I": 0,
+    "H": 8
+   }
+  },
+  {
+   "ref": "eight five one nine",
+   "hyp": "eight eight five five",
+   "tag": "fsdd-nicolas",
+   "word": {
+    "S": 1,
+    "D": 1,
+    "I": 1,
+    "H": 2
+   },
+   "char": {
+    "S": 7,
+    "D": 0,
+    "I": 2,
+    "H": 12
+   }
+  },
+  {
+   "ref": "eight",
+   "hyp": "eight",
+   "tag": "fsdd-nicolas",
+   "word": {
+    "S": 0,
+    "D": 0,
+    "I": 0,
+    "H": 1
+   },
+   "char": {
+    "S": 0,
+    "D": 0,
+    "I": 0,
+    "H": 5
+   }
+  },
+  {
+   "ref": "eight",
+   "hyp": "eight",
+   "tag": "fsdd-nicolas",
+   "word": {
+    "S": 0,
+    "D": 0,
+    "I": 0,
+    "H": 1
+   },
+   "char": {
+    "S": 0,
+    "D": 0,
+    "I": 0,
+    "H": 5
+   }
+  },
+  {
+   "ref": "five eight",
+   "hyp": "five nine",
+   "tag": "fsdd-nicolas",
+   "word": {
+    "S": 1,
+    "D": 0,
+    "I": 0,
+    "H": 1
+   },
+   "char": {
+    "S": 3,
+    "D": 1,
+    "I": 0,
+    "H": 6
+   }
+  },
+  {
+   "ref": "five",
+   "hyp": "zero zero",
+   "tag": "fsdd-nicolas",
+   "word": {
+    "S": 1,
+    "D": 0,
+    "I": 1,
+    "H": 0
+   },
+   "char": {
+    "S": 3,
+    "D": 0,
+    "I": 5,
+    "H": 1
+   }
+  },
+  {
+   "ref": "five four two three",
+   "hyp": "five four two three four",
+   "tag": "fsdd-nicolas",
+   "word": {
+    "S": 0,
+    "D": 0,
+    "I": 1,
+    "H": 4
+   },
+   "char": {
+    "S": 0,
+    "D": 0,
+    "I": 5,
+    "H": 19
+   }
+  },
+  {
+   "ref": "five",
+   "hyp": "one",
+   "tag": "fsdd-nicolas",
+   "word": {
+    "S": 1,
+    "D": 0,
+    "I": 0,
+    "H": 0
+   },
+   "char": {
+    "S": 2,
+    "D": 1,
+    "I": 0,
+    "H": 1
+   }
+  },
+  {
+   "ref": "six",
+   "hyp": "six",
+   "tag": "fsdd-nicolas",
+   "word": {
+    "S": 0,
+    "D": 0,
+    "I": 0,
+    "H": 1
+   },
+   "char": {
+    "S": 0,
+    "D": 0,
+    "I": 0,
+    "H": 3
+   }
+  },
+  {
+   "ref": "eight nine four one three zero",
+   "hyp": "eight nine one three",
+   "tag": "fsdd-nicolas",
+   "word": {
+    "S": 0,
+    "D": 2,
+    "I": 0,
+    "H": 4
+   },
+   "char": {
+    "S": 0,
+    "D": 10,
+    "I": 0,
+    "H": 20
+   }
+  },
+  {
+   "ref": "zero four five three nine",
+   "hyp": "zero four five eight three nine",
+   "tag": "fsdd-nicolas",
+   "word": {
+    "S": 0,
+    "D": 0,
+    "I": 1,
+    "H": 5
+   },
+   "char": {
+    "S": 0,
+    "D": 0,
+    "I": 6,
+    "H": 25
+   }
+  },
+  {
+   "ref": "five nine four five seven",
+   "hyp": "nine nine four five seven",
+   "tag": "fsdd-nicolas",
+   "word": {
+    "S": 1,
+    "D": 0,
+    "I": 0,
+    "H": 4
+   },
+   "char": {
+    "S": 2,
+    "D": 0,
+    "I": 0,
+    "H": 23
+   }
+  },
+  {
+   "ref": "six six zero three eight",
+   "hyp": "six six zero three nine eight",
+   "tag": "fsdd-nicolas",
+   "word": {
+    "S": 0,
+    "D": 0,
+    "I": 1,
+    "H": 5
+   },
+   "char": {
+    "S": 0,
+    "D": 0,
+    "I": 5,
+    "H": 24
+   }
+  },
+  {
+   "ref": "five three five",
+   "hyp": "three three five",
+   "tag": "fsdd-nicolas",
+   "word": {
+    "S": 1,
+    "D": 0,
+    "I": 0,
+    "H": 2
+   },
+   "char": {
+    "S": 3,
+    "D": 0,
+    "I": 1,
+    "H": 12
+   }
+  },
+  {
+   "ref": "six six zero",
+   "hyp": "six six nine zero",
+   "tag": "fsdd-nicolas",
+   "word": {
+    "S": 0,
+    "D": 0,
+    "I": 1,
+    "H": 3
+   },
+   "char": {
+    "S": 0,
+    "D": 0,
+    "I": 5,
+    "H": 12
+   }
+  },
+  {
+   "ref": "five three one two",
+   "hyp": "five three one one",
+   "tag": "fsdd-nicolas",
+   "word": {
+    "S": 1,
+    "D": 0,
+    "I": 0,
+    "H": 3
+   },
+   "char": {
+    "S": 3,
+    "D": 0,
+    "I": 0,
+    "H": 15
+   }
+  },
+  {
+   "ref": "four",
+   "hyp": "five four two six",
+   "tag": "fsdd-nicolas",
+   "word": {
+    "S": 0,
+    "D": 0,
+    "I": 3,
+    "H": 1
+   },
+   "char": {
+    "S": 0,
+    "D": 0,
+    "I": 13,
+    "H": 4
+   }
+  },
+  {
+   "ref": "four zero",
+   "hyp": "four zero",
+   "tag": "fsdd-nicolas",
+   "word": {
+    "S": 0,
+    "D": 0,
+    "I": 0,
+    "H": 2
+   },
+   "char": {
+    "S": 0,
+    "D": 0,
+    "I": 0,
+    "H": 9
+   }
+  },
+  {
+   "ref": "two zero eight four",
+   "hyp": "two zero eight four",
+   "tag": "fsdd-nicolas",
+   "word": {
+    "S": 0,
+    "D": 0,
+    "I": 0,
+    "H": 4
+   },
+   "char": {
+    "S": 0,
+    "D": 0,
+    "I": 0,
+    "H": 19
+   }
+  },
+  {
+   "ref": "six",
+   "hyp": "two",
+   "tag": "fsdd-nicolas",
+   "word": {
+    "S": 1,
+    "D": 0,
+    "I": 0,
+    "H": 0
+   },
+   "char": {
+    "S": 3,
+    "D": 0,
+    "I": 0,
+    "H": 0
+   }
+  },
+  {
+   "ref": "six seven three two three",
+   "hyp": "six seven three two three",
+   "tag": "fsdd-nicolas",
+   "word": {
+    "S": 0,
+    "D": 0,
+    "I": 0,
+    "H": 5
+   },
+   "char": {
+    "S": 0,
+    "D": 0,
+    "I": 0,
+    "H": 25
+   }
+  },
+  {
+   "ref": "one two seven three two",
+   "hyp": "one seven three",
+   "tag": "fsdd-nicolas",
+   "word": {
+    "S": 0,
+    "D": 2,
+    "I": 0,
+    "H": 3
+   },
+   "char": {
+    "S": 0,
+    "D": 8,
+    "I": 0,
+    "H": 15
+   }
+  },
+  {
+   "ref": "two one three eight",
+   "hyp": "two one three",
+   "tag": "fsdd-nicolas",
+   "word": {
+    "S": 0,
+    "D": 1,
+    "I": 0,
+    "H": 3
+   },
+   "char": {
+    "S": 0,
+    "D": 6,
+    "I": 0,
+    "H": 13
+   }
+  },
+  {
+   "ref": "eight eight four four three nine",
+   "hyp": "one eight eight four three nine",
+   "tag": "fsdd-nicolas",
+   "word": {
+    "S": 0,
+    "D": 1,
+    "I": 1,
+    "H": 5
+   },
+   "char": {
+    "S": 0,
+    "D": 5,
+    "I": 4,
+    "H": 27
+   }
+  },
+  {
+   "ref": "eight zero seven",
+   "hyp": "eight zero",
+   "tag": "fsdd-nicolas",
+   "word": {
+    "S": 0,
+    "D": 1,
+    "I": 0,
+    "H": 2
+   },
+   "char": {
+    "S": 0,
+    "D": 6,
+    "I": 0,
+    "H": 10
+   }
+  },
+  {
+   "ref": "nine two",
+   "hyp": "six nine six",
+   "tag": "fsdd-nicolas",
+   "word": {
+    "S": 1,
+    "D": 0,
+    "I": 1,
+    "H": 1
+   },
+   "char": {
+    "S": 3,
+    "D": 0,
+    "I": 4,
+    "H": 5
+   }
+  },
+  {
+   "ref": "five one four one nine eight",
+   "hyp": "five five one four one two",
+   "tag": "fsdd-nicolas",
+   "word": {
+    "S": 1,
+    "D": 1,
+    "I": 1,
+    "H": 4
+   },
+   "char": {
+    "S": 3,
+    "D": 7,
+    "I": 5,
+    "H": 18
+   }
+  },
+  {
+   "ref": "zero two zero",
+   "hyp": "zero two nine",
+   "tag": "fsdd-nicolas",
+   "word": {
+    "S": 1,
+    "D": 0,
+    "I": 0,
+    "H": 2
+   },
+   "char": {
+    "S": 4,
+    "D": 0,
+    "I": 0,
+    "H": 9
+   }
+  },
+  {
+   "ref": "seven",
+   "hyp": "six seven five",
+   "tag": "fsdd-nicolas",
+   "word": {
+    "S": 0,
+    "D": 0,
+    "I": 2,
+    "H": 1
+   },
+   "char": {
+    "S": 0,
+    "D": 0,
+    "I": 9,
+    "H": 5
+   }
+  },
+  {
+   "ref": "nine one seven nine four",
+   "hyp": "nine one seven nine four",
+   "tag": "fsdd-nicolas",
+   "word": {
+    "S": 0,
+    "D": 0,
+    "I": 0,
+    "H": 5
+   },
+   "char": {
+    "S": 0,
+    "D": 0,
+    "I": 0,
+    "H": 24
+   }
+  },
+  {
+   "ref": "three four nine four zero",
+   "hyp": "three four nine four zero",
+   "tag": "fsdd-nicolas",
+   "word": {
+    "S": 0,
+    "D": 0,
+    "I": 0,
+    "H": 5
+   },
+   "char": {
+    "S": 0,
+    "D": 0,
+    "I": 0,
+    "H": 25
+   }
+  },
+  {
+   "ref": "seven zero five five six",
+   "hyp": "seven zero five five six",
+   "tag": "fsdd-nicolas",
+   "word": {
+    "S": 0,
+    "D": 0,
+    "I": 0,
+    "H": 5
+   },
+   "char": {
+    "S": 0,
+    "D": 0,
+    "I": 0,
+    "H": 24
+   }
+  },
+  {
+   "ref": "two nine five seven two",
+   "hyp": "two nine five one seven two",
+   "tag": "fsdd-nicolas",
+   "word": {
+    "S": 0,
+    "D": 0,
+    "I": 1,
+    "H": 5
+   },
+   "char": {
+    "S": 0,
+    "D": 0,
+    "I": 4,
+    "H": 23
+   }
+  },
+  {
+   "ref": "zero",
+   "hyp": "",
+   "tag": "fsdd-nicolas",
+   "word": {
+    "S": 0,
+    "D": 1,
+    "I": 0,
+    "H": 0
+   },
+   "char": {
+    "S": 0,
+    "D": 4,
+    "I": 0,
+    "H": 0
+   }
+  },
+  {
+   "ref": "five two nine two six",
+   "hyp": "five two nine two six",
+   "tag": "fsdd-nicolas",
+   "word": {
+    "S": 0,
+    "D": 0,
+    "I": 0,
+    "H": 5
+   },
+   "char": {
+    "S": 0,
+    "D": 0,
+    "I": 0,
+    "H": 21
+   }
+  },
+  {
+   "ref": "one six",
+   "hyp": "one four",
+   "tag": "fsdd-nicolas",
+   "word": {
+    "S": 1,
+    "D": 0,
+    "I": 0,
+    "H": 1
+   },
+   "char": {
+    "S": 3,
+    "D": 0,
+    "I": 1,
+    "H": 4
+   }
+  },
+  {
+   "ref": "one three three nine",
+   "hyp": "one three nine",
+   "tag": "fsdd-nicolas",
+   "word": {
+    "S": 0,
+    "D": 1,
+    "I": 0,
+    "H": 3
+   },
+   "char": {
+    "S": 0,
+    "D": 6,
+    "I": 0,
+    "H": 14
+   }
+  },
+  {
+   "ref": "seven two",
+   "hyp": "seven two",
+   "tag": "fsdd-nicolas",
+   "word": {
+    "S": 0,
+    "D": 0,
+    "I": 0,
+    "H": 2
+   },
+   "char": {
+    "S": 0,
+    "D": 0,
+    "I": 0,
+    "H": 9
+   }
+  },
+  {
+   "ref": "six four four three eight",
+   "hyp": "six four four three nine nine two",
+   "tag": "fsdd-nicolas",
+   "word": {
+    "S": 1,
+    "D": 0,
+    "I": 2,
+    "H": 4
+   },
+   "char": {
+    "S": 2,
+    "D": 0,
+    "I": 8,
+    "H": 23
+   }
+  },
+  {
+   "ref": "one zero two",
+   "hyp": "one zero two",
+   "tag": "fsdd-nicolas",
+   "word": {
+    "S": 0,
+    "D": 0,
+    "I": 0,
+    "H": 3
+   },
+   "char": {
+    "S": 0,
+    "D": 0,
+    "I": 0,
+    "H": 12
+   }
+  },
+  {
+   "ref": "nine one seven",
+   "hyp": "nine nine seven five",
+   "tag": "fsdd-nicolas",
+   "word": {
+    "S": 1,
+    "D": 0,
+    "I": 1,
+    "H": 2
+   },
+   "char": {
+    "S": 1,
+    "D": 0,
+    "I": 6,
+    "H": 13
+   }
+  },
+  {
+   "ref": "zero two zero zero three",
+   "hyp": "zero two zero four zero three",
+   "tag": "fsdd-nicolas",
+   "word": {
+    "S": 0,
+    "D": 0,
+    "I": 1,
+    "H": 5
+   },
+   "char": {
+    "S": 0,
+    "D": 0,
+    "I": 5,
+    "H": 24
+   }
+  },
+  {
+   "ref": "two zero two eight six",
+   "hyp": "two zero two eight six four",
+   "tag": "fsdd-nicolas",
+   "word": {
+    "S": 0,
+    "D": 0,
+    "I": 1,
+    "H": 5
+   },
+   "char": {
+    "S": 0,
+    "D": 0,
+    "I": 5,
+    "H": 22
+   }
+  },
+  {
+   "ref": "five two seven five",
+   "hyp": "five two seven five",
+   "tag": "fsdd-theo",
+   "word": {
+    "S": 0,
+    "D": 0,
+    "I": 0,
+    "H": 4
+   },
+   "char": {
+    "S": 0,
+    "D": 0,
+    "I": 0,
+    "H": 19
+   }
+  },
+  {
+   "ref": "three one",
+   "hyp": "one three one",
+   "tag": "fsdd-theo",
+   "word": {
+    "S": 0,
+    "D": 0,
+    "I": 1,
+    "H": 2
+   },
+   "char": {
+    "S": 0,
+    "D": 0,
+    "I": 4,
+    "H": 9
+   }
+  },
+  {
+   "ref": "five zero six one zero",
+   "hyp": "five zero zero one zero",
+   "tag": "fsdd-theo",
+   "word": {
+    "S": 1,
+    "D": 0,
+    "I": 0,
+    "H": 4
+   },
+   "char": {
+    "S": 3,
+    "D": 0,
+    "I": 1,
+    "H": 19
+   }
+  },
+  {
+   "ref": "five eight seven three two two",
+   "hyp": "five eight seven three two two",
+   "tag": "fsdd-theo",
+   "word": {
+    "S": 0,
+    "D": 0,
+    "I": 0,
+    "H": 6
+   },
+   "char": {
+    "S": 0,
+    "D": 0,
+    "I": 0,
+    "H": 30
+   }
+  },
+  {
+   "ref": "one one",
+   "hyp": "two one",
+   "tag": "fsdd-theo",
+   "word": {
+    "S": 1,
+    "D": 0,
+    "I": 0,
+    "H": 1
+   },
+   "char": {
+    "S": 3,
+    "D": 0,
+    "I": 0,
+    "H": 4
+   }
+  },
+  {
+   "ref": "six zero",
+   "hyp": "four",
+   "tag": "fsdd-theo",
+   "word": {
+    "S": 1,
+    "D": 1,
+    "I": 0,
+    "H": 0
+   },
+   "char": {
+    "S": 3,
+    "D": 4,
+    "I": 0,
+    "H": 1
+   }
+  },
+  {
+   "ref": "zero nine four",
+   "hyp": "zero seven four",
+   "tag": "fsdd-theo",
+   "word": {
+    "S": 1,
+    "D": 0,
+    "I": 0,
+    "H": 2
+   },
+   "char": {
+    "S": 3,
+    "D": 0,
+    "I": 1,
+    "H": 11
+   }
+  },
+  {
+   "ref": "five",
+   "hyp": "",
+   "tag": "fsdd-theo",
+   "word": {
+    "S": 0,
+    "D": 1,
+    "I": 0,
+    "H": 0
+   },
+   "char": {
+    "S": 0,
+    "D": 4,
+    "I": 0,
+    "H": 0
+   }
+  },
+  {
+   "ref": "two five",
+   "hyp": "six",
+   "tag": "fsdd-theo",
+   "word": {
+    "S": 1,
+    "D": 1,
+    "I": 0,
+    "H": 0
+   },
+   "char": {
+    "S": 2,
+    "D": 5,
+    "I": 0,
+    "H": 1
+   }
+  },
+  {
+   "ref": "three zero six seven",
+   "hyp": "zero six",
+   "tag": "fsdd-theo",
+   "word": {
+    "S": 0,
+    "D": 2,
+    "I": 0,
+    "H": 2
+   },
+   "char": {
+    "S": 0,
+    "D": 12,
+    "I": 0,
+    "H": 8
+   }
+  },
+  {
+   "ref": "six",
+   "hyp": "",
+   "tag": "fsdd-theo",
+   "word": {
+    "S": 0,
+    "D": 1,
+    "I": 0,
+    "H": 0
+   },
+   "char": {
+    "S": 0,
+    "D": 3,
+    "I": 0,
+    "H": 0
+   }
+  },
+  {
+   "ref": "two eight two",
+   "hyp": "four two eight two",
+   "tag": "fsdd-theo",
+   "word": {
+    "S": 0,
+    "D": 0,
+    "I": 1,
+    "H": 3
+   },
+   "char": {
+    "S": 0,
+    "D": 0,
+    "I": 5,
+    "H": 13
+   }
+  },
+  {
+   "ref": "seven four six nine four",
+   "hyp": "seven four six nine four",
+   "tag": "fsdd-theo",
+   "word": {
+    "S": 0,
+    "D": 0,
+    "I": 0,
+    "H": 5
+   },
+   "char": {
+    "S": 0,
+    "D": 0,
+    "I": 0,
+    "H": 24
+   }
+  },
+  {
+   "ref": "four five",
+   "hyp": "four",
+   "tag": "fsdd-theo",
+   "word": {
+    "S": 0,
+    "D": 1,
+    "I": 0,
+    "H": 1
+   },
+   "char": {
+    "S": 0,
+    "D": 5,
+    "I": 0,
+    "H": 4
+   }
+  },
+  {
+   "ref": "six five zero four one nine",
+   "hyp": "six zero seven four one nine",
+   "tag": "fsdd-theo",
+   "word": {
+    "S": 2,
+    "D": 0,
+    "I": 0,
+    "H": 4
+   },
+   "char": {
+    "S": 7,
+    "D": 0,
+    "I": 1,
+    "H": 20
+   }
+  },
+  {
+   "ref": "seven seven nine five zero",
+   "hyp": "seven five zero zero",
+   "tag": "fsdd-theo",
+   "word": {
+    "S": 2,
+    "D": 1,
+    "I": 0,
+    "H": 2
+   },
+   "char": {
+    "S": 5,
+    "D": 6,
+    "I": 0,
+    "H": 15
+   }
+  },
+  {
+   "ref": "zero six",
+   "hyp": "eight six",
+   "tag": "fsdd-theo",
+   "word": {
+    "S": 1,
+    "D": 0,
+    "I": 0,
+    "H": 1
+   },
+   "char": {
+    "S": 4,
+    "D": 0,
+    "I": 1,
+    "H": 4
+   }
+  },
+  {
+   "ref": "nine one",
+   "hyp": "nine one",
+   "tag": "fsdd-theo",
+   "word": {
+    "S": 0,
+    "D": 0,
+    "I": 0,
+    "H": 2
+   },
+   "char": {
+    "S": 0,
+    "D": 0,
+    "I": 0,
+    "H": 8
+   }
+  },
+  {
+   "ref": "three four nine",
+   "hyp": "five five four",
+   "tag": "fsdd-theo",
+   "word": {
+    "S": 1,
+    "D": 1,
+    "I": 1,
+    "H": 1
+   },
+   "char": {
+    "S": 10,
+    "D": 1,
+    "I": 0,
+    "H": 4
+   }
+  },
+  {
+   "ref": "nine one nine",
+   "hyp": "nine one five",
+   "tag": "fsdd-theo",
+   "word": {
+    "S": 1,
+    "D": 0,
+    "I": 0,
+    "H": 2
+   },
+   "char": {
+    "S": 2,
+    "D": 0,
+    "I": 0,
+    "H": 11
+   }
+  },
+  {
+   "ref": "three six three one",
+   "hyp": "three three one",
+   "tag": "fsdd-theo",
+   "word": {
+    "S": 0,
+    "D": 1,
+    "I": 0,
+    "H": 3
+   },
+   "char": {
+    "S": 0,
+    "D": 4,
+    "I": 0,
+    "H": 15
+   }
+  },
+  {
+   "ref": "one one zero one five",
+   "hyp": "one one zero nine five",
+   "tag": "fsdd-theo",
+   "word": {
+    "S": 1,
+    "D": 0,
+    "I": 0,
+    "H": 4
+   },
+   "char": {
+    "S": 1,
+    "D": 0,
+    "I": 1,
+    "H": 20
+   }
+  },
+  {
+   "ref": "zero nine eight one",
+   "hyp": "zero nine eight one",
+   "tag": "fsdd-theo",
+   "word": {
+    "S": 0,
+    "D": 0,
+    "I": 0,
+    "H": 4
+   },
+   "char": {
+    "S": 0,
+    "D": 0,
+    "I": 0,
+    "H": 19
+   }
+  },
+  {
+   "ref": "nine",
+   "hyp": "nine three four",
+   "tag": "fsdd-theo",
+   "word": {
+    "S": 0,
+    "D": 0,
+    "I": 2,
+    "H": 1
+   },
+   "char": {
+    "S": 0,
+    "D": 0,
+    "I": 11,
+    "H": 4
+   }
+  },
+  {
+   "ref": "six five one three three",
+   "hyp": "five one one three three four",
+   "tag": "fsdd-theo",
+   "word": {
+    "S": 0,
+    "D": 1,
+    "I": 2,
+    "H": 4
+   },
+   "char": {
+    "S": 4,
+    "D": 1,
+    "I": 6,
+    "H": 19
+   }
+  },
+  {
+   "ref": "zero one eight seven",
+   "hyp": "zero one eight seven",
+   "tag": "fsdd-theo",
+   "word": {
+    "S": 0,
+    "D": 0,
+    "I": 0,
+    "H": 4
+   },
+   "char": {
+    "S": 0,
+    "D": 0,
+    "I": 0,
+    "H": 20
+   }
+  },
+  {
+   "ref": "nine two six one two",
+   "hyp": "nine two six one two",
+   "tag": "fsdd-theo",
+   "word": {
+    "S": 0,
+    "D": 0,
+    "I": 0,
+    "H": 5
+   },
+   "char": {
+    "S": 0,
+    "D": 0,
+    "I": 0,
+    "H": 20
+   }
+  },
+  {
+   "ref": "three nine zero",
+   "hyp": "three nine zero",
+   "tag": "fsdd-theo",
+   "word": {
+    "S": 0,
+    "D": 0,
+    "I": 0,
+    "H": 3
+   },
+   "char": {
+    "S": 0,
+    "D": 0,
+    "I": 0,
+    "H": 15
+   }
+  },
+  {
+   "ref": "eight one six seven",
+   "hyp": "eight one six seven",
+   "tag": "fsdd-theo",
+   "word": {
+    "S": 0,
+    "D": 0,
+    "I": 0,
+    "H": 4
+   },
+   "char": {
+    "S": 0,
+    "D": 0,
+    "I": 0,
+    "H": 19
+   }
+  },
+  {
+   "ref": "two six nine",
+   "hyp": "four two six nine",
+   "tag": "fsdd-theo",
+   "word": {
+    "S": 0,
+    "D": 0,
+    "I": 1,
+    "H": 3
+   },
+   "char": {
+    "S": 0,
+    "D": 0,
+    "I": 5,
+    "H": 12
+   }
+  },
+  {
+   "ref": "six",
+   "hyp": "seven",
+   "tag": "fsdd-theo",
+   "word": {
+    "S": 1,
+    "D": 0,
+    "I": 0,
+    "H": 0
+   },
+   "char": {
+    "S": 2,
+    "D": 0,
+    "I": 2,
+    "H": 1
+   }
+  },
+  {
+   "ref": "one five",
+   "hyp": "one eight",
+   "tag": "fsdd-theo",
+   "word": {
+    "S": 1,
+    "D": 0,
+    "I": 0,
+    "H": 1
+   },
+   "char": {
+    "S": 3,
+    "D": 0,
+    "I": 1,
+    "H": 5
+   }
+  },
+  {
+   "ref": "two",
+   "hyp": "eight",
+   "tag": "fsdd-theo",
+   "word": {
+    "S": 1,
+    "D": 0,
+    "I": 0,
+    "H": 0
+   },
+   "char": {
+    "S": 3,
+    "D": 0,
+    "I": 2,
+    "H": 0
+   }
+  },
+  {
+   "ref": "two one",
+   "hyp": "seven",
+   "tag": "fsdd-theo",
+   "word": {
+    "S": 1,
+    "D": 1,
+    "I": 0,
+    "H": 0
+   },
+   "char": {
+    "S": 4,
+    "D": 2,
+    "I": 0,
+    "H": 1
+   }
+  },
+  {
+   "ref": "two four eight zero",
+   "hyp": "two four three",
+   "tag": "fsdd-theo",
+   "word": {
+    "S": 1,
+    "D": 1,
+    "I": 0,
+    "H": 2
+   },
+   "char": {
+    "S": 3,
+    "D": 5,
+    "I": 0,
+    "H": 11
+   }
+  },
+  {
+   "ref": "four nine nine seven one six",
+   "hyp": "four nine zero three zero six",
+   "tag": "fsdd-theo",
+   "word": {
+    "S": 3,
+    "D": 0,
+    "I": 0,
+    "H": 3
+   },
+   "char": {
+    "S": 11,
+    "D": 0,
+    "I": 1,
+    "H": 17
+   }
+  },
+  {
+   "ref": "five three three five nine five",
+   "hyp": "five three three five nine five seven six",
+   "tag": "fsdd-theo",
+   "word": {
+    "S": 0,
+    "D": 0,
+    "I": 2,
+    "H": 6
+   },
+   "char": {
+    "S": 0,
+    "D": 0,
+    "I": 10,
+    "H": 31
+   }
+  },
+  {
+   "ref": "one three nine six four eight",
+   "hyp": "one four nine six one four eight",
+   "tag": "fsdd-theo",
+   "word": {
+    "S": 1,
+    "D": 0,
+    "I": 1,
+    "H": 5
+   },
+   "char": {
+    "S": 2,
+    "D": 2,
+    "I": 5,
+    "H": 25
+   }
+  },
+  {
+   "ref": "one three",
+   "hyp": "one",
+   "tag": "fsdd-theo",
+   "word": {
+    "S": 0,
+    "D": 1,
+    "I": 0,
+    "H": 1
+   },
+   "char": {
+    "S": 0,
+    "D": 6,
+    "I": 0,
+    "H": 3
+   }
+  },
+  {
+   "ref": "two zero",
+   "hyp": "two one",
+   "tag": "fsdd-theo",
+   "word": {
+    "S": 1,
+    "D": 0,
+    "I": 0,
+    "H": 1
+   },
+   "char": {
+    "S": 1,
+    "D": 2,
+    "I": 1,
+    "H": 5
+   }
+  },
+  {
+   "ref": "zero five nine two",
+   "hyp": "five nine eight nine",
+   "tag": "fsdd-theo",
+   "word": {
+    "S": 1,
+    "D": 1,
+    "I": 1,
+    "H": 2
+   },
+   "char": {
+    "S": 12,
+    "D": 0,
+    "I": 2,
+    "H": 6
+   }
+  },
+  {
+   "ref": "three",
+   "hyp": "",
+   "tag": "fsdd-theo",
+   "word": {
+    "S": 0,
+    "D": 1,
+    "I": 0,
+    "H": 0
+   },
+   "char": {
+    "S": 0,
+    "D": 5,
+    "I": 0,
+    "H": 0
+   }
+  },
+  {
+   "ref": "one zero four",
+   "hyp": "one zero four four",
+   "tag": "fsdd-theo",
+   "word": {
+    "S": 0,
+    "D": 0,
+    "I": 1,
+    "H": 3
+   },
+   "char": {
+    "S": 0,
+    "D": 0,
+    "I": 5,
+    "H": 13
+   }
+  },
+  {
+   "ref": "nine four five",
+   "hyp": "nine four nine five",
+   "tag": "fsdd-theo",
+   "word": {
+    "S": 0,
+    "D": 0,
+    "I": 1,
+    "H": 3
+   },
+   "char": {
+    "S": 0,
+    "D": 0,
+    "I": 5,
+    "H": 14
+   }
+  },
+  {
+   "ref": "five three",
+   "hyp": "five three",
+   "tag": "fsdd-theo",
+   "word": {
+    "S": 0,
+    "D": 0,
+    "I": 0,
+    "H": 2
+   },
+   "char": {
+    "S": 0,
+    "D": 0,
+    "I": 0,
+    "H": 10
+   }
+  },
+  {
+   "ref": "four nine six",
+   "hyp": "six",
+   "tag": "fsdd-theo",
+   "word": {
+    "S": 0,
+    "D": 2,
+    "I": 0,
+    "H": 1
+   },
+   "char": {
+    "S": 0,
+    "D": 10,
+    "I": 0,
+    "H": 3
+   }
+  },
+  {
+   "ref": "five one eight nine five one",
+   "hyp": "five eight nine one",
+   "tag": "fsdd-theo",
+   "word": {
+    "S": 0,
+    "D": 2,
+    "I": 0,
+    "H": 4
+   },
+   "char": {
+    "S": 0,
+    "D": 9,
+    "I": 0,
+    "H": 19
+   }
+  },
+  {
+   "ref": "seven",
+   "hyp": "",
+   "tag": "fsdd-theo",
+   "word": {
+    "S": 0,
+    "D": 1,
+    "I": 0,
+    "H": 0
+   },
+   "char": {
+    "S": 0,
+    "D": 5,
+    "I": 0,
+    "H": 0
+   }
+  },
+  {
+   "ref": "one six nine seven five",
+   "hyp": "one six nine seven five three",
+   "tag": "fsdd-theo",
+   "word": {
+    "S": 0,
+    "D": 0,
+    "I": 1,
+    "H": 5
+   },
+   "char": {
+    "S": 0,
+    "D": 0,
+    "I": 6,
+    "H": 23
+   }
+  },
+  {
+   "ref": "eight two one four",
+   "hyp": "eight two two one four",
+   "tag": "fsdd-theo",
+   "word": {
+    "S": 0,
+    "D": 0,
+    "I": 1,
+    "H": 4
+   },
+   "char": {
+    "S": 0,
+    "D": 0,
+    "I": 4,
+    "H": 18
+   }
+  },
+  {
+   "ref": "six zero six",
+   "hyp": "six nine nine six",
+   "tag": "fsdd-theo",
+   "word": {
+    "S": 1,
+    "D": 0,
+    "I": 1,
+    "H": 2
+   },
+   "char": {
+    "S": 3,
+    "D": 0,
+    "I": 5,
+    "H": 9
+   }
+  },
+  {
+   "ref": "one zero",
+   "hyp": "one zero",
+   "tag": "fsdd-theo",
+   "word": {
+    "S": 0,
+    "D": 0,
+    "I": 0,
+    "H": 2
+   },
+   "char": {
+    "S": 0,
+    "D": 0,
+    "I": 0,
+    "H": 8
+   }
+  },
+  {
+   "ref": "nine",
+   "hyp": "",
+   "tag": "fsdd-theo",
+   "word": {
+    "S": 0,
+    "D": 1,
+    "I": 0,
+    "H": 0
+   },
+   "char": {
+    "S": 0,
+    "D": 4,
+    "I": 0,
+    "H": 0
+   }
+  },
+  {
+   "ref": "one zero eight",
+   "hyp": "seven nine",
+   "tag": "fsdd-theo",
+   "word": {
+    "S": 2,
+    "D": 1,
+    "I": 0,
+    "H": 0
+   },
+   "char": {
+    "S": 6,
+    "D": 4,
+    "I": 0,
+    "H": 4
+   }
+  },
+  {
+   "ref": "four two zero nine",
+   "hyp": "four two zero nine",
+   "tag": "fsdd-theo",
+   "word": {
+    "S": 0,
+    "D": 0,
+    "I": 0,
+    "H": 4
+   },
+   "char": {
+    "S": 0,
+    "D": 0,
+    "I": 0,
+    "H": 18
+   }
+  },
+  {
+   "ref": "six one eight",
+   "hyp": "three nine one eight",
+   "tag": "fsdd-theo",
+   "word": {
+    "S": 1,
+    "D": 0,
+    "I": 1,
+    "H": 2
+   },
+   "char": {
+    "S": 2,
+    "D": 0,
+    "I": 7,
+    "H": 11
+   }
+  },
+  {
+   "ref": "eight two six six two four",
+   "hyp": "eight two six six two four",
+   "tag": "fsdd-theo",
+   "word": {
+    "S": 0,
+    "D": 0,
+    "I": 0,
+    "H": 6
+   },
+   "char": {
+    "S": 0,
+    "D": 0,
+    "I": 0,
+    "H": 26
+   }
+  },
+  {
+   "ref": "five zero",
+   "hyp": "three zero",
+   "tag": "fsdd-theo",
+   "word": {
+    "S": 1,
+    "D": 0,
+    "I": 0,
+    "H": 1
+   },
+   "char": {
+    "S": 3,
+    "D": 0,
+    "I": 1,
+    "H": 6
+   }
+  },
+  {
+   "ref": "eight three six nine nine",
+   "hyp": "eight three six nine nine",
+   "tag": "fsdd-theo",
+   "word": {
+    "S": 0,
+    "D": 0,
+    "I": 0,
+    "H": 5
+   },
+   "char": {
+    "S": 0,
+    "D": 0,
+    "I": 0,
+    "H": 25
+   }
+  },
+  {
+   "ref": "six four four",
+   "hyp": "six four two nine",
+   "tag": "fsdd-theo",
+   "word": {
+    "S": 1,
+    "D": 0,
+    "I": 1,
+    "H": 2
+   },
+   "char": {
+    "S": 3,
+    "D": 0,
+    "I": 4,
+    "H": 10
+   }
+  },
+  {
+   "ref": "eight",
+   "hyp": "eight",
+   "tag": "fsdd-yweweler",
+   "word": {
+    "S": 0,
+    "D": 0,
+    "I": 0,
+    "H": 1
+   },
+   "char": {
+    "S": 0,
+    "D": 0,
+    "I": 0,
+    "H": 5
+   }
+  },
+  {
+   "ref": "three one four three zero four",
+   "hyp": "one four three zero four",
+   "tag": "fsdd-yweweler",
+   "word": {
+    "S": 0,
+    "D": 1,
+    "I": 0,
+    "H": 5
+   },
+   "char": {
+    "S": 0,
+    "D": 6,
+    "I": 0,
+    "H": 24
+   }
+  },
+  {
+   "ref": "five zero",
+   "hyp": "five zero",
+   "tag": "fsdd-yweweler",
+   "word": {
+    "S": 0,
+    "D": 0,
+    "I": 0,
+    "H": 2
+   },
+   "char": {
+    "S": 0,
+    "D": 0,
+    "I": 0,
+    "H": 9
+   }
+  },
+  {
+   "ref": "eight six nine",
+   "hyp": "three eight six nine",
+   "tag": "fsdd-yweweler",
+   "word": {
+    "S": 0,
+    "D": 0,
+    "I": 1,
+    "H": 3
+   },
+   "char": {
+    "S": 0,
+    "D": 0,
+    "I": 6,
+    "H": 14
+   }
+  },
+  {
+   "ref": "zero one seven six nine zero",
+   "hyp": "zero one nine six nine zero",
+   "tag": "fsdd-yweweler",
+   "word": {
+    "S": 1,
+    "D": 0,
+    "I": 0,
+    "H": 5
+   },
+   "char": {
+    "S": 3,
+    "D": 1,
+    "I": 0,
+    "H": 24
+   }
+  },
+  {
+   "ref": "seven nine",
+   "hyp": "seven nine two nine",
+   "tag": "fsdd-yweweler",
+   "word": {
+    "S": 0,
+    "D": 0,
+    "I": 2,
+    "H": 2
+   },
+   "char": {
+    "S": 0,
+    "D": 0,
+    "I": 9,
+    "H": 10
+   }
+  },
+  {
+   "ref": "four seven one seven",
+   "hyp": "four seven one seven",
+   "tag": "fsdd-yweweler",
+   "word": {
+    "S": 0,
+    "D": 0,
+    "I": 0,
+    "H": 4
+   },
+   "char": {
+    "S": 0,
+    "D": 0,
+    "I": 0,
+    "H": 20
+   }
+  },
+  {
+   "ref": "zero nine four four nine two",
+   "hyp": "zero nine four four nine zero two",
+   "tag": "fsdd-yweweler",
+   "word": {
+    "S": 0,
+    "D": 0,
+    "I": 1,
+    "H": 6
+   },
+   "char": {
+    "S": 0,
+    "D": 0,
+    "I": 5,
+    "H": 28
+   }
+  },
+  {
+   "ref": "six eight seven",
+   "hyp": "six eight seven",
+   "tag": "fsdd-yweweler",
+   "word": {
+    "S": 0,
+    "D": 0,
+    "I": 0,
+    "H": 3
+   },
+   "char": {
+    "S": 0,
+    "D": 0,
+    "I": 0,
+    "H": 15
+   }
+  },
+  {
+   "ref": "four seven five one eight two",
+   "hyp": "four seven five one eight two",
+   "tag": "fsdd-yweweler",
+   "word": {
+    "S": 0,
+    "D": 0,
+    "I": 0,
+    "H": 6
+   },
+   "char": {
+    "S": 0,
+    "D": 0,
+    "I": 0,
+    "H": 29
+   }
+  },
+  {
+   "ref": "nine four five",
+   "hyp": "eight four",
+   "tag": "fsdd-yweweler",
+   "word": {
+    "S": 1,
+    "D": 1,
+    "I": 0,
+    "H": 1
+   },
+   "char": {
+    "S": 3,
+    "D": 5,
+    "I": 1,
+    "H": 6
+   }
+  },
+  {
+   "ref": "five",
+   "hyp": "five",
+   "tag": "fsdd-yweweler",
+   "word": {
+    "S": 0,
+    "D": 0,
+    "I": 0,
+    "H": 1
+   },
+   "char": {
+    "S": 0,
+    "D": 0,
+    "I": 0,
+    "H": 4
+   }
+  },
+  {
+   "ref": "six one seven three four nine",
+   "hyp": "six one seven three four nine",
+   "tag": "fsdd-yweweler",
+   "word": {
+    "S": 0,
+    "D": 0,
+    "I": 0,
+    "H": 6
+   },
+   "char": {
+    "S": 0,
+    "D": 0,
+    "I": 0,
+    "H": 29
+   }
+  },
+  {
+   "ref": "three six eight zero eight",
+   "hyp": "three six eight zero eight",
+   "tag": "fsdd-yweweler",
+   "word": {
+    "S": 0,
+    "D": 0,
+    "I": 0,
+    "H": 5
+   },
+   "char": {
+    "S": 0,
+    "D": 0,
+    "I": 0,
+    "H": 26
+   }
+  },
+  {
+   "ref": "eight eight six nine five four",
+   "hyp": "eight six eight three four nine five four",
+   "tag": "fsdd-yweweler",
+   "word": {
+    "S": 1,
+    "D": 0,
+    "I": 2,
+    "H": 5
+   },
+   "char": {
+    "S": 3,
+    "D": 0,
+    "I": 11,
+    "H": 27
+   }
+  },
+  {
+   "ref": "three three zero three",
+   "hyp": "three three zero three",
+   "tag": "fsdd-yweweler",
+   "word": {
+    "S": 0,
+    "D": 0,
+    "I": 0,
+    "H": 4
+   },
+   "char": {
+    "S": 0,
+    "D": 0,
+    "I": 0,
+    "H": 22
+   }
+  },
+  {
+   "ref": "two three eight two zero three",
+   "hyp": "two three eight two zero three",
+   "tag": "fsdd-yweweler",
+   "word": {
+    "S": 0,
+    "D": 0,
+    "I": 0,
+    "H": 6
+   },
+   "char": {
+    "S": 0,
+    "D": 0,
+    "I": 0,
+    "H": 30
+   }
+  },
+  {
+   "ref": "eight seven two seven eight seven",
+   "hyp": "eight seven two eight seven",
+   "tag": "fsdd-yweweler",
+   "word": {
+    "S": 0,
+    "D": 1,
+    "I": 0,
+    "H": 5
+   },
+   "char": {
+    "S": 0,
+    "D": 6,
+    "I": 0,
+    "H": 27
+   }
+  },
+  {
+   "ref": "eight zero nine",
+   "hyp": "zero nine",
+   "tag": "fsdd-yweweler",
+   "word": {
+    "S": 0,
+    "D": 1,
+    "I": 0,
+    "H": 2
+   },
+   "char": {
+    "S": 0,
+    "D": 6,
+    "I": 0,
+    "H": 9
+   }
+  },
+  {
+   "ref": "three three nine seven",
+   "hyp": "nine",
+   "tag": "fsdd-yweweler",
+   "word": {
+    "S": 0,
+    "D": 3,
+    "I": 0,
+    "H": 1
+   },
+   "char": {
+    "S": 0,
+    "D": 18,
+    "I": 0,
+    "H": 4
+   }
+  },
+  {
+   "ref": "one two five two",
+   "hyp": "one five two",
+   "tag": "fsdd-yweweler",
+   "word": {
+    "S": 0,
+    "D": 1,
+    "I": 0,
+    "H": 3
+   },
+   "char": {
+    "S": 0,
+    "D": 4,
+    "I": 0,
+    "H": 12
+   }
+  },
+  {
+   "ref": "seven nine",
+   "hyp": "seven nine",
+   "tag": "fsdd-yweweler",
+   "word": {
+    "S": 0,
+    "D": 0,
+    "I": 0,
+    "H": 2
+   },
+   "char": {
+    "S": 0,
+    "D": 0,
+    "I": 0,
+    "H": 10
+   }
+  },
+  {
+   "ref": "one nine six three seven six",
+   "hyp": "one nine seven three seven five",
+   "tag": "fsdd-yweweler",
+   "word": {
+    "S": 2,
+    "D": 0,
+    "I": 0,
+    "H": 4
+   },
+   "char": {
+    "S": 4,
+    "D": 0,
+    "I": 3,
+    "H": 24
+   }
+  },
+  {
+   "ref": "eight four five one two",
+   "hyp": "eight four five two two",
+   "tag": "fsdd-yweweler",
+   "word": {
+    "S": 1,
+    "D": 0,
+    "I": 0,
+    "H": 4
+   },
+   "char": {
+    "S": 3,
+    "D": 0,
+    "I": 0,
+    "H": 20
+   }
+  },
+  {
+   "ref": "two three",
+   "hyp": "eight two nine three",
+   "tag": "fsdd-yweweler",
+   "word": {
+    "S": 0,
+    "D": 0,
+    "I": 2,
+    "H": 2
+   },
+   "char": {
+    "S": 0,
+    "D": 0,
+    "I": 11,
+    "H": 9
+   }
+  },
+  {
+   "ref": "eight nine one one",
+   "hyp": "eight nine one one",
+   "tag": "fsdd-yweweler",
+   "word": {
+    "S": 0,
+    "D": 0,
+    "I": 0,
+    "H": 4
+   },
+   "char": {
+    "S": 0,
+    "D": 0,
+    "I": 0,
+    "H": 18
+   }
+  },
+  {
+   "ref": "one six",
+   "hyp": "one eight",
+   "tag": "fsdd-yweweler",
+   "word": {
+    "S": 1,
+    "D": 0,
+    "I": 0,
+    "H": 1
+   },
+   "char": {
+    "S": 2,
+    "D": 0,
+    "I": 2,
+    "H": 5
+   }
+  },
+  {
+   "ref": "zero six three two",
+   "hyp": "three zero",
+   "tag": "fsdd-yweweler",
+   "word": {
+    "S": 1,
+    "D": 2,
+    "I": 0,
+    "H": 1
+   },
+   "char": {
+    "S": 2,
+    "D": 9,
+    "I": 1,
+    "H": 7
+   }
+  },
+  {
+   "ref": "five six three",
+   "hyp": "five six three",
+   "tag": "fsdd-yweweler",
+   "word": {
+    "S": 0,
+    "D": 0,
+    "I": 0,
+    "H": 3
+   },
+   "char": {
+    "S": 0,
+    "D": 0,
+    "I": 0,
+    "H": 14
+   }
+  },
+  {
+   "ref": "six zero one seven nine",
+   "hyp": "six zero one seven nine",
+   "tag": "fsdd-yweweler",
+   "word": {
+    "S": 0,
+    "D": 0,
+    "I": 0,
+    "H": 5
+   },
+   "char": {
+    "S": 0,
+    "D": 0,
+    "I": 0,
+    "H": 23
+   }
+  },
+  {
+   "ref": "seven",
+   "hyp": "two zero four",
+   "tag": "fsdd-yweweler",
+   "word": {
+    "S": 1,
+    "D": 0,
+    "I": 2,
+    "H": 0
+   },
+   "char": {
+    "S": 4,
+    "D": 0,
+    "I": 8,
+    "H": 1
+   }
+  },
+  {
+   "ref": "four two",
+   "hyp": "four",
+   "tag": "fsdd-yweweler",
+   "word": {
+    "S": 0,
+    "D": 1,
+    "I": 0,
+    "H": 1
+   },
+   "char": {
+    "S": 0,
+    "D": 4,
+    "I": 0,
+    "H": 4
+   }
+  },
+  {
+   "ref": "seven five seven eight four",
+   "hyp": "nine five seven",
+   "tag": "fsdd-yweweler",
+   "word": {
+    "S": 1,
+    "D": 2,
+    "I": 0,
+    "H": 2
+   },
+   "char": {
+    "S": 3,
+    "D": 12,
+    "I": 0,
+    "H": 12
+   }
+  },
+  {
+   "ref": "five zero zero two",
+   "hyp": "five eight zero two",
+   "tag": "fsdd-yweweler",
+   "word": {
+    "S": 1,
+    "D": 0,
+    "I": 0,
+    "H": 3
+   },
+   "char": {
+    "S": 4,
+    "D": 0,
+    "I": 1,
+    "H": 14
+   }
+  },
+  {
+   "ref": "six one nine zero nine one",
+   "hyp": "six one nine zero nine one",
+   "tag": "fsdd-yweweler",
+   "word": {
+    "S": 0,
+    "D": 0,
+    "I": 0,
+    "H": 6
+   },
+   "char": {
+    "S": 0,
+    "D": 0,
+    "I": 0,
+    "H": 26
+   }
+  },
+  {
+   "ref": "six four zero",
+   "hyp": "six six four three zero zero",
+   "tag": "fsdd-yweweler",
+   "word": {
+    "S": 0,
+    "D": 0,
+    "I": 3,
+    "H": 3
+   },
+   "char": {
+    "S": 0,
+    "D": 0,
+    "I": 15,
+    "H": 13
+   }
+  },
+  {
+   "ref": "zero eight zero seven zero zero",
+   "hyp": "zero eight zero seven zero zero",
+   "tag": "fsdd-yweweler",
+   "word": {
+    "S": 0,
+    "D": 0,
+    "I": 0,
+    "H": 6
+   },
+   "char": {
+    "S": 0,
+    "D": 0,
+    "I": 0,
+    "H": 31
+   }
+  },
+  {
+   "ref": "six one nine seven nine",
+   "hyp": "six one seven",
+   "tag": "fsdd-yweweler",
+   "word": {
+    "S": 0,
+    "D": 2,
+    "I": 0,
+    "H": 3
+   },
+   "char": {
+    "S": 0,
+    "D": 10,
+    "I": 0,
+    "H": 13
+   }
+  },
+  {
+   "ref": "five",
+   "hyp": "nine four",
+   "tag": "fsdd-yweweler",
+   "word": {
+    "S": 1,
+    "D": 0,
+    "I": 1,
+    "H": 0
+   },
+   "char": {
+    "S": 2,
+    "D": 0,
+    "I": 5,
+    "H": 2
+   }
+  },
+  {
+   "ref": "seven",
+   "hyp": "",
+   "tag": "fsdd-yweweler",
+   "word": {
+    "S": 0,
+    "D": 1,
+    "I": 0,
+    "H": 0
+   },
+   "char": {
+    "S": 0,
+    "D": 5,
+    "I": 0,
+    "H": 0
+   }
+  },
+  {
+   "ref": "six",
+   "hyp": "six",
+   "tag": "fsdd-yweweler",
+   "word": {
+    "S": 0,
+    "D": 0,
+    "I": 0,
+    "H": 1
+   },
+   "char": {
+    "S": 0,
+    "D": 0,
+    "I": 0,
+    "H": 3
+   }
+  },
+  {
+   "ref": "five six eight",
+   "hyp": "",
+   "tag": "fsdd-yweweler",
+   "word": {
+    "S": 0,
+    "D": 3,
+    "I": 0,
+    "H": 0
+   },
+   "char": {
+    "S": 0,
+    "D": 14,
+    "I": 0,
+    "H": 0
+   }
+  },
+  {
+   "ref": "six four one nine three",
+   "hyp": "six four one three",
+   "tag": "fsdd-yweweler",
+   "word": {
+    "S": 0,
+    "D": 1,
+    "I": 0,
+    "H": 4
+   },
+   "char": {
+    "S": 0,
+    "D": 5,
+    "I": 0,
+    "H": 18
+   }
+  },
+  {
+   "ref": "one four one six",
+   "hyp": "one four six",
+   "tag": "fsdd-yweweler",
+   "word": {
+    "S": 0,
+    "D": 1,
+    "I": 0,
+    "H": 3
+   },
+   "char": {
+    "S": 0,
+    "D": 4,
+    "I": 0,
+    "H": 12
+   }
+  },
+  {
+   "ref": "seven three",
+   "hyp": "seven three",
+   "tag": "fsdd-yweweler",
+   "word": {
+    "S": 0,
+    "D": 0,
+    "I": 0,
+    "H": 2
+   },
+   "char": {
+    "S": 0,
+    "D": 0,
+    "I": 0,
+    "H": 11
+   }
+  },
+  {
+   "ref": "six one zero five four zero",
+   "hyp": "one zero seven four zero",
+   "tag": "fsdd-yweweler",
+   "word": {
+    "S": 1,
+    "D": 1,
+    "I": 0,
+    "H": 4
+   },
+   "char": {
+    "S": 2,
+    "D": 4,
+    "I": 1,
+    "H": 21
+   }
+  },
+  {
+   "ref": "seven zero seven nine three",
+   "hyp": "seven seven five seven three",
+   "tag": "fsdd-yweweler",
+   "word": {
+    "S": 1,
+    "D": 1,
+    "I": 1,
+    "H": 3
+   },
+   "char": {
+    "S": 8,
+    "D": 1,
+    "I": 2,
+    "H": 18
+   }
+  },
+  {
+   "ref": "eight three four",
+   "hyp": "three four",
+   "tag": "fsdd-yweweler",
+   "word": {
+    "S": 0,
+    "D": 1,
+    "I": 0,
+    "H": 2
+   },
+   "char": {
+    "S": 0,
+    "D": 6,
+    "I": 0,
+    "H": 10
+   }
+  },
+  {
+   "ref": "three",
+   "hyp": "",
+   "tag": "fsdd-yweweler",
+   "word": {
+    "S": 0,
+    "D": 1,
+    "I": 0,
+    "H": 0
+   },
+   "char": {
+    "S": 0,
+    "D": 5,
+    "I": 0,
+    "H": 0
+   }
+  },
+  {
+   "ref": "nine",
+   "hyp": "six nine",
+   "tag": "fsdd-yweweler",
+   "word": {
+    "S": 0,
+    "D": 0,
+    "I": 1,
+    "H": 1
+   },
+   "char": {
+    "S": 0,
+    "D": 0,
+    "I": 4,
+    "H": 4
+   }
+  },
+  {
+   "ref": "nine four",
+   "hyp": "nine four two",
+   "tag": "fsdd-yweweler",
+   "word": {
+    "S": 0,
+    "D": 0,
+    "I": 1,
+    "H": 2
+   },
+   "char": {
+    "S": 0,
+    "D": 0,
+    "I": 4,
+    "H": 9
+   }
+  },
+  {
+   "ref": "three six one seven",
+   "hyp": "three six one seven",
+   "tag": "fsdd-yweweler",
+   "word": {
+    "S": 0,
+    "D": 0,
+    "I": 0,
+    "H": 4
+   },
+   "char": {
+    "S": 0,
+    "D": 0,
+    "I": 0,
+    "H": 19
+   }
+  },
+  {
+   "ref": "seven seven eight",
+   "hyp": "seven four",
+   "tag": "fsdd-yweweler",
+   "word": {
+    "S": 1,
+    "D": 1,
+    "I": 0,
+    "H": 1
+   },
+   "char": {
+    "S": 4,
+    "D": 7,
+    "I": 0,
+    "H": 6
+   }
+  },
+  {
+   "ref": "two seven seven",
+   "hyp": "three seven",
+   "tag": "fsdd-yweweler",
+   "word": {
+    "S": 1,
+    "D": 1,
+    "I": 0,
+    "H": 1
+   },
+   "char": {
+    "S": 2,
+    "D": 4,
+    "I": 0,
+    "H": 9
+   }
+  },
+  {
+   "ref": "one two one",
+   "hyp": "one two five one",
+   "tag": "fsdd-yweweler",
+   "word": {
+    "S": 0,
+    "D": 0,
+    "I": 1,
+    "H": 3
+   },
+   "char": {
+    "S": 0,
+    "D": 0,
+    "I": 5,
+    "H": 11
+   }
+  },
+  {
+   "ref": "eight",
+   "hyp": "eight nine",
+   "tag": "fsdd-yweweler",
+   "word": {
+    "S": 0,
+    "D": 0,
+    "I": 1,
+    "H": 1
+   },
+   "char": {
+    "S": 0,
+    "D": 0,
+    "I": 5,
+    "H": 5
+   }
+  },
+  {
+   "ref": "eight six",
+   "hyp": "six eight three",
+   "tag": "fsdd-yweweler",
+   "word": {
+    "S": 1,
+    "D": 0,
+    "I": 1,
+    "H": 1
+   },
+   "char": {
+    "S": 3,
+    "D": 0,
+    "I": 6,
+    "H": 6
+   }
+  },
+  {
+   "ref": "six zero three seven",
+   "hyp": "six zero seven",
+   "tag": "fsdd-yweweler",
+   "word": {
+    "S": 0,
+    "D": 1,
+    "I": 0,
+    "H": 3
+   },
+   "char": {
+    "S": 0,
+    "D": 6,
+    "I": 0,
+    "H": 14
+   }
+  },
+  {
+   "ref": "six one two",
+   "hyp": "six one two",
+   "tag": "fsdd-yweweler",
+   "word": {
+    "S": 0,
+    "D": 0,
+    "I": 0,
+    "H": 3
+   },
+   "char": {
+    "S": 0,
+    "D": 0,
+    "I": 0,
+    "H": 11
+   }
+  },
+  {
+   "ref": "seven seven three seven",
+   "hyp": "two seven six six seven",
+   "tag": "fsdd-yweweler",
+   "word": {
+    "S": 2,
+    "D": 0,
+    "I": 1,
+    "H": 2
+   },
+   "char": {
+    "S": 8,
+    "D": 2,
+    "I": 2,
+    "H": 13
+   }
+  },
+  {
+   "ref": "Seven, eight -- NINE!",
+   "hyp": "seven eight nine",
+   "tag": "punct",
+   "word": {
+    "S": 2,
+    "D": 1,
+    "I": 0,
+    "H": 1
+   },
+   "char": {
+    "S": 5,
+    "D": 5,
+    "I": 0,
+    "H": 11
+   }
+  },
+  {
+   "ref": "one two three",
+   "hyp": "One two, three.",
+   "tag": "punct",
+   "word": {
+    "S": 3,
+    "D": 0,
+    "I": 0,
+    "H": 0
+   },
+   "char": {
+    "S": 1,
+    "D": 0,
+    "I": 2,
+    "H": 12
+   }
+  },
+  {
+   "ref": "  four   five  ",
+   "hyp": "four five",
+   "tag": "spaces",
+   "word": {
+    "S": 0,
+    "D": 0,
+    "I": 0,
+    "H": 2
+   },
+   "char": {
+    "S": 0,
+    "D": 2,
+    "I": 0,
+    "H": 9
+   }
+  },
+  {
+   "ref": "four five",
+   "hyp": "four  five",
+   "tag": "spaces",
+   "word": {
+    "S": 0,
+    "D": 0,
+    "I": 0,
+    "H": 2
+   },
+   "char": {
+    "S": 0,
+    "D": 0,
+    "I": 1,
+    "H": 9
+   }
+  },
+  {
+   "ref": "six\tseven",
+   "hyp": "six seven",
+   "tag": "tab",
+   "word": {
+    "S": 1,
+    "D": 0,
+    "I": 1,
+    "H": 0
+   },
+   "char": {
+    "S": 1,
+    "D": 0,
+    "I": 0,
+    "H": 8
+   }
+  },
+  {
+   "ref": "zero one",
+   "hyp": "",
+   "tag": "empty-hyp",
+   "word": {
+    "S": 0,
+    "D": 2,
+    "I": 0,
+    "H": 0
+   },
+   "char": {
+    "S": 0,
+    "D": 8,
+    "I": 0,
+    "H": 0
+   }
+  },
+  {
+   "ref": "",
+   "hyp": "two",
+   "tag": "empty-ref",
+   "word": {
+    "S": 0,
+    "D": 0,
+    "I": 1,
+    "H": 0
+   },
+   "char": {
+    "S": 0,
+    "D": 0,
+    "I": 3,
+    "H": 0
+   }
+  },
+  {
+   "ref": "",
+   "hyp": "",
+   "tag": "empty-both",
+   "word": {
+    "S": 0,
+    "D": 0,
+    "I": 0,
+    "H": 0
+   },
+   "char": {
+    "S": 0,
+    "D": 0,
+    "I": 0,
+    "H": 0
+   }
+  },
+  {
+   "ref": "café naïve",
+   "hyp": "cafe naive",
+   "tag": "latin1",
+   "word": {
+    "S": 2,
+    "D": 0,
+    "I": 0,
+    "H": 0
+   },
+   "char": {
+    "S": 2,
+    "D": 0,
+    "I": 0,
+    "H": 8
+   }
+  },
+  {
+   "ref": "naïve café",
+   "hyp": "naïve café",
+   "tag": "latin1",
+   "word": {
+    "S": 0,
+    "D": 0,
+    "I": 0,
+    "H": 2
+   },
+   "char": {
+    "S": 0,
+    "D": 0,
+    "I": 0,
+    "H": 10
+   }
+  },
+  {
+   "ref": "eight 😀 nine",
+   "hyp": "eight nine",
+   "tag": "astral",
+   "word": {
+    "S": 0,
+    "D": 1,
+    "I": 0,
+    "H": 2
+   },
+   "char": {
+    "S": 0,
+    "D": 2,
+    "I": 0,
+    "H": 10
+   }
+  },
+  {
+   "ref": "aaaa bbbb",
+   "hyp": "bbbb aaaa",
+   "tag": "swap",
+   "word": {
+    "S": 0,
+    "D": 1,
+    "I": 1,
+    "H": 1
+   },
+   "char": {
+    "S": 8,
+    "D": 0,
+    "I": 0,
+    "H": 1
+   }
+  },
+  {
+   "ref": "one one one one",
+   "hyp": "one one",
+   "tag": "repeat",
+   "word": {
+    "S": 0,
+    "D": 2,
+    "I": 0,
+    "H": 2
+   },
+   "char": {
+    "S": 0,
+    "D": 8,
+    "I": 0,
+    "H": 7
+   }
+  },
+  {
+   "ref": "two",
+   "hyp": "two two two two",
+   "tag": "repeat",
+   "word": {
+    "S": 0,
+    "D": 0,
+    "I": 3,
+    "H": 1
+   },
+   "char": {
+    "S": 0,
+    "D": 0,
+    "I": 12,
+    "H": 3
+   }
+  },
+  {
+   "ref": "three four five six",
+   "hyp": "five six three four",
+   "tag": "rotate",
+   "word": {
+    "S": 0,
+    "D": 2,
+    "I": 2,
+    "H": 2
+   },
+   "char": {
+    "S": 12,
+    "D": 2,
+    "I": 2,
+    "H": 5
+   }
+  }
+ ],
+ "corpora": [
+  {
+   "name": "all",
+   "refs": [
+    "zero six two nine",
+    "five eight seven seven zero one",
+    "one zero",
+    "zero",
+    "one one",
+    "four two one nine",
+    "one",
+    "five eight seven nine",
+    "one five seven eight three five",
+    "three four one",
+    "six two four three",
+    "seven",
+    "seven one zero eight",
+    "nine",
+    "five five four six six",
+    "six",
+    "four eight nine two six eight",
+    "zero four one five",
+    "nine zero five four",
+    "two five seven",
+    "seven nine",
+    "nine nine three one four",
+    "seven four nine one two",
+    "eight zero four",
+    "nine five one",
+    "two nine two four",
+    "one zero four one",
+    "two five zero two five one",
+    "zero",
+    "zero six four two",
+    "two five",
+    "two eight two zero",
+    "four seven two two two seven",
+    "nine",
+    "four six three eight four zero",
+    "five two",
+    "five zero one",
+    "eight zero eight one",
+    "nine zero nine eight two",
+    "seven five six",
+    "five four",
+    "seven five six one eight seven",
+    "one four zero three three nine",
+    "four three",
+    "three one seven eight eight eight",
+    "three five five six three",
+    "four four one six",
+    "five seven three six",
+    "one",
+    "zero three three",
+    "one zero eight",
+    "zero six eight two two",
+    "nine",
+    "one three one one one",
+    "four nine eight two six two",
+    "one nine six six nine six",
+    "two",
+    "six nine three four zero two",
+    "two two",
+    "eight four five six",
+    "one seven two zero",
+    "five seven five one six",
+    "eight one four eight two",
+    "four eight eight zero three",
+    "five six four",
+    "zero",
+    "seven six one",
+    "six eight one one zero",
+    "six seven three zero one one",
+    "three eight nine zero eight",
+    "zero two",
+    "zero three one four",
+    "four",
+    "six zero four eight",
+    "two two eight seven two",
+    "three zero seven",
+    "zero",
+    "six nine",
+    "eight five one nine",
+    "eight",
+    "eight",
+    "five eight",
+    "five",
+    "five four two three",
+    "five",
+    "six",
+    "eight nine four one three zero",
+    "zero four five three nine",
+    "five nine four five seven",
+    "six six zero three eight",
+    "five three five",
+    "six six zero",
+    "five three one two",
+    "four",
+    "four zero",
+    "two zero eight four",
+    "six",
+    "six seven three two three",
+    "one two seven three two",
+    "two one three eight",
+    "eight eight four four three nine",
+    "eight zero seven",
+    "nine two",
+    "five one four one nine eight",
+    "zero two zero",
+    "seven",
+    "nine one seven nine four",
+    "three four nine four zero",
+    "seven zero five five six",
+    "two nine five seven two",
+    "zero",
+    "five two nine two six",
+    "one six",
+    "one three three nine",
+    "seven two",
+    "six four four three eight",
+    "one zero two",
+    "nine one seven",
+    "zero two zero zero three",
+    "two zero two eight six",
+    "five two seven five",
+    "three one",
+    "five zero six one zero",
+    "five eight seven three two two",
+    "one one",
+    "six zero",
+    "zero nine four",
+    "five",
+    "two five",
+    "three zero six seven",
+    "six",
+    "two eight two",
+    "seven four six nine four",
+    "four five",
+    "six five zero four one nine",
+    "seven seven nine five zero",
+    "zero six",
+    "nine one",
+    "three four nine",
+    "nine one nine",
+    "three six three one",
+    "one one zero one five",
+    "zero nine eight one",
+    "nine",
+    "six five one three three",
+    "zero one eight seven",
+    "nine two six one two",
+    "three nine zero",
+    "eight one six seven",
+    "two six nine",
+    "six",
+    "one five",
+    "two",
+    "two one",
+    "two four eight zero",
+    "four nine nine seven one six",
+    "five three three five nine five",
+    "one three nine six four eight",
+    "one three",
+    "two zero",
+    "zero five nine two",
+    "three",
+    "one zero four",
+    "nine four five",
+    "five three",
+    "four nine six",
+    "five one eight nine five one",
+    "seven",
+    "one six nine seven five",
+    "eight two one four",
+    "six zero six",
+    "one zero",
+    "nine",
+    "one zero eight",
+    "four two zero nine",
+    "six one eight",
+    "eight two six six two four",
+    "five zero",
+    "eight three six nine nine",
+    "six four four",
+    "eight",
+    "three one four three zero four",
+    "five zero",
+    "eight six nine",
+    "zero one seven six nine zero",
+    "seven nine",
+    "four seven one seven",
+    "zero nine four four nine two",
+    "six eight seven",
+    "four seven five one eight two",
+    "nine four five",
+    "five",
+    "six one seven three four nine",
+    "three six eight zero eight",
+    "eight eight six nine five four",
+    "three three zero three",
+    "two three eight two zero three",
+    "eight seven two seven eight seven",
+    "eight zero nine",
+    "three three nine seven",
+    "one two five two",
+    "seven nine",
+    "one nine six three seven six",
+    "eight four five one two",
+    "two three",
+    "eight nine one one",
+    "one six",
+    "zero six three two",
+    "five six three",
+    "six zero one seven nine",
+    "seven",
+    "four two",
+    "seven five seven eight four",
+    "five zero zero two",
+    "six one nine zero nine one",
+    "six four zero",
+    "zero eight zero seven zero zero",
+    "six one nine seven nine",
+    "five",
+    "seven",
+    "six",
+    "five six eight",
+    "six four one nine three",
+    "one four one six",
+    "seven three",
+    "six one zero five four zero",
+    "seven zero seven nine three",
+    "eight three four",
+    "three",
+    "nine",
+    "nine four",
+    "three six one seven",
+    "seven seven eight",
+    "two seven seven",
+    "one two one",
+    "eight",
+    "eight six",
+    "six zero three seven",
+    "six one two",
+    "seven seven three seven",
+    "Seven, eight -- NINE!",
+    "one two three",
+    "  four   five  ",
+    "four five",
+    "six\tseven",
+    "zero one",
+    "",
+    "",
+    "café naïve",
+    "naïve café",
+    "eight 😀 nine",
+    "aaaa bbbb",
+    "one one one one",
+    "two",
+    "three four five six"
+   ],
+   "hyps": [
+    "zero eight six two eight",
+    "five eight seven seven zero one",
+    "",
+    "",
+    "four one one",
+    "four three one zero",
+    "one",
+    "five eight six nine",
+    "one five seven eight three five",
+    "eight one one",
+    "one six two four three",
+    "nine three",
+    "one zero",
+    "",
+    "five five four three six",
+    "six",
+    "two six eight",
+    "zero four five",
+    "nine zero five four",
+    "eight five seven",
+    "six seven",
+    "nine nine three one six four",
+    "four nine one",
+    "zero four two",
+    "nine five one",
+    "two six nine two four",
+    "one zero one eight one",
+    "two five zero two five",
+    "zero",
+    "seven zero six four two",
+    "five six",
+    "three three eight two zero",
+    "four seven two two two seven",
+    "five",
+    "four six three eight four",
+    "five two",
+    "five zero one",
+    "four eight eight zero eight seven",
+    "zero nine eight two",
+    "seven five six",
+    "five one",
+    "three one five six one eight seven",
+    "one four zero three three nine",
+    "five four three nine",
+    "three one seven eight eight eight",
+    "zero three five five six three",
+    "four four six",
+    "five seven three six",
+    "",
+    "zero three three",
+    "one zero eight",
+    "six eight two two",
+    "nine",
+    "one three one one one",
+    "six nine eight two six two",
+    "one nine six six nine six",
+    "",
+    "six nine three four zero",
+    "two one",
+    "eight five zero six",
+    "two seven two zero",
+    "seven five seven five one six",
+    "eight one four two",
+    "four five six nine eight zero three",
+    "two two six",
+    "",
+    "",
+    "six eight eight one five",
+    "six seven three zero one one",
+    "three five nine zero eight",
+    "two six eight two",
+    "zero three one",
+    "",
+    "six zero four eight",
+    "two two eight seven five",
+    "zero eight five",
+    "one",
+    "six nine",
+    "eight eight five five",
+    "eight",
+    "eight",
+    "five nine",
+    "zero zero",
+    "five four two three four",
+    "one",
+    "six",
+    "eight nine one three",
+    "zero four five eight three nine",
+    "nine nine four five seven",
+    "six six zero three nine eight",
+    "three three five",
+    "six six nine zero",
+    "five three one one",
+    "five four two six",
+    "four zero",
+    "two zero eight four",
+    "two",
+    "six seven three two three",
+    "one seven three",
+    "two one three",
+    "one eight eight four three nine",
+    "eight zero",
+    "six nine six",
+    "five five one four one two",
+    "zero two nine",
+    "six seven five",
+    "nine one seven nine four",
+    "three four nine four zero",
+    "seven zero five five six",
+    "two nine five one seven two",
+    "",
+    "five two nine two six",
+    "one four",
+    "one three nine",
+    "seven two",
+    "six four four three nine nine two",
+    "one zero two",
+    "nine nine seven five",
+    "zero two zero four zero three",
+    "two zero two eight six four",
+    "five two seven five",
+    "one three one",
+    "five zero zero one zero",
+    "five eight seven three two two",
+    "two one",
+    "four",
+    "zero seven four",
+    "",
+    "six",
+    "zero six",
+    "",
+    "four two eight two",
+    "seven four six nine four",
+    "four",
+    "six zero seven four one nine",
+    "seven five zero zero",
+    "eight six",
+    "nine one",
+    "five five four",
+    "nine one five",
+    "three three one",
+    "one one zero nine five",
+    "zero nine eight one",
+    "nine three four",
+    "five one one three three four",
+    "zero one eight seven",
+    "nine two six one two",
+    "three nine zero",
+    "eight one six seven",
+    "four two six nine",
+    "seven",
+    "one eight",
+    "eight",
+    "seven",
+    "two four three",
+    "four nine zero three zero six",
+    "five three three five nine five seven six",
+    "one four nine six one four eight",
+    "one",
+    "two one",
+    "five nine eight nine",
+    "",
+    "one zero four four",
+    "nine four nine five",
+    "five three",
+    "six",
+    "five eight nine one",
+    "",
+    "one six nine seven five three",
+    "eight two two one four",
+    "six nine nine six",
+    "one zero",
+    "",
+    "seven nine",
+    "four two zero nine",
+    "three nine one eight",
+    "eight two six six two four",
+    "three zero",
+    "eight three six nine nine",
+    "six four two nine",
+    "eight",
+    "one four three zero four",
+    "five zero",
+    "three eight six nine",
+    "zero one nine six nine zero",
+    "seven nine two nine",
+    "four seven one seven",
+    "zero nine four four nine zero two",
+    "six eight seven",
+    "four seven five one eight two",
+    "eight four",
+    "five",
+    "six one seven three four nine",
+    "three six eight zero eight",
+    "eight six eight three four nine five four",
+    "three three zero three",
+    "two three eight two zero three",
+    "eight seven two eight seven",
+    "zero nine",
+    "nine",
+    "one five two",
+    "seven nine",
+    "one nine seven three seven five",
+    "eight four five two two",
+    "eight two nine three",
+    "eight nine one one",
+    "one eight",
+    "three zero",
+    "five six three",
+    "six zero one seven nine",
+    "two zero four",
+    "four",
+    "nine five seven",
+    "five eight zero two",
+    "six one nine zero nine one",
+    "six six four three zero zero",
+    "zero eight zero seven zero zero",
+    "six one seven",
+    "nine four",
+    "",
+    "six",
+    "",
+    "six four one three",
+    "one four six",
+    "seven three",
+    "one zero seven four zero",
+    "seven seven five seven three",
+    "three four",
+    "",
+    "six nine",
+    "nine four two",
+    "three six one seven",
+    "seven four",
+    "three seven",
+    "one two five one",
+    "eight nine",
+    "six eight three",
+    "six zero seven",
+    "six one two",
+    "two seven six six seven",
+    "seven eight nine",
+    "One two, three.",
+    "four five",
+    "four  five",
+    "six seven",
+    "",
+    "two",
+    "",
+    "cafe naive",
+    "naïve café",
+    "eight nine",
+    "bbbb aaaa",
+    "one one",
+    "two two two two",
+    "five six three four"
+   ],
+   "wer": 0.34101382488479265,
+   "cer": 0.3083580613254204,
+   "word": {
+    "S": 104,
+    "D": 101,
+    "I": 91,
+    "H": 663
+   },
+   "char": {
+    "S": 344,
+    "D": 467,
+    "I": 436,
+    "H": 3233
+   }
+  },
+  {
+   "name": "fsdd-jackson",
+   "refs": [
+    "zero six two nine",
+    "five eight seven seven zero one",
+    "one zero",
+    "zero",
+    "one one",
+    "four two one nine",
+    "one",
+    "five eight seven nine",
+    "one five seven eight three five",
+    "three four one",
+    "six two four three",
+    "seven",
+    "seven one zero eight",
+    "nine",
+    "five five four six six",
+    "six",
+    "four eight nine two six eight",
+    "zero four one five",
+    "nine zero five four",
+    "two five seven",
+    "seven nine",
+    "nine nine three one four",
+    "seven four nine one two",
+    "eight zero four",
+    "nine five one",
+    "two nine two four",
+    "one zero four one",
+    "two five zero two five one",
+    "zero",
+    "zero six four two",
+    "two five",
+    "two eight two zero",
+    "four seven two two two seven",
+    "nine",
+    "four six three eight four zero",
+    "five two",
+    "five zero one",
+    "eight zero eight one",
+    "nine zero nine eight two",
+    "seven five six",
+    "five four",
+    "seven five six one eight seven",
+    "one four zero three three nine",
+    "four three",
+    "three one seven eight eight eight",
+    "three five five six three",
+    "four four one six",
+    "five seven three six",
+    "one",
+    "zero three three",
+    "one zero eight",
+    "zero six eight two two",
+    "nine",
+    "one three one one one",
+    "four nine eight two six two",
+    "one nine six six nine six",
+    "two",
+    "six nine three four zero two",
+    "two two",
+    "eight four five six"
+   ],
+   "hyps": [
+    "zero eight six two eight",
+    "five eight seven seven zero one",
+    "",
+    "",
+    "four one one",
+    "four three one zero",
+    "one",
+    "five eight six nine",
+    "one five seven eight three five",
+    "eight one one",
+    "one six two four three",
+    "nine three",
+    "one zero",
+    "",
+    "five five four three six",
+    "six",
+    "two six eight",
+    "zero four five",
+    "nine zero five four",
+    "eight five seven",
+    "six seven",
+    "nine nine three one six four",
+    "four nine one",
+    "zero four two",
+    "nine five one",
+    "two six nine two four",
+    "one zero one eight one",
+    "two five zero two five",
+    "zero",
+    "seven zero six four two",
+    "five six",
+    "three three eight two zero",
+    "four seven two two two seven",
+    "five",
+    "four six three eight four",
+    "five two",
+    "five zero one",
+    "four eight eight zero eight seven",
+    "zero nine eight two",
+    "seven five six",
+    "five one",
+    "three one five six one eight seven",
+    "one four zero three three nine",
+    "five four three nine",
+    "three one seven eight eight eight",
+    "zero three five five six three",
+    "four four six",
+    "five seven three six",
+    "",
+    "zero three three",
+    "one zero eight",
+    "six eight two two",
+    "nine",
+    "one three one one one",
+    "six nine eight two six two",
+    "one nine six six nine six",
+    "",
+    "six nine three four zero",
+    "two one",
+    "eight five zero six"
+   ],
+   "wer": 0.2764976958525346,
+   "cer": 0.26173826173826176,
+   "word": {
+    "S": 21,
+    "D": 22,
+    "I": 17,
+    "H": 174
+   },
+   "char": {
+    "S": 67,
+    "D": 104,
+    "I": 91,
+    "H": 830
+   }
+  },
+  {
+   "name": "fsdd-nicolas",
+   "refs": [
+    "one seven two zero",
+    "five seven five one six",
+    "eight one four eight two",
+    "four eight eight zero three",
+    "five six four",
+    "zero",
+    "seven six one",
+    "six eight one one zero",
+    "six seven three zero one one",
+    "three eight nine zero eight",
+    "zero two",
+    "zero three one four",
+    "four",
+    "six zero four eight",
+    "two two eight seven two",
+    "three zero seven",
+    "zero",
+    "six nine",
+    "eight five one nine",
+    "eight",
+    "eight",
+    "five eight",
+    "five",
+    "five four two three",
+    "five",
+    "six",
+    "eight nine four one three zero",
+    "zero four five three nine",
+    "five nine four five seven",
+    "six six zero three eight",
+    "five three five",
+    "six six zero",
+    "five three one two",
+    "four",
+    "four zero",
+    "two zero eight four",
+    "six",
+    "six seven three two three",
+    "one two seven three two",
+    "two one three eight",
+    "eight eight four four three nine",
+    "eight zero seven",
+    "nine two",
+    "five one four one nine eight",
+    "zero two zero",
+    "seven",
+    "nine one seven nine four",
+    "three four nine four zero",
+    "seven zero five five six",
+    "two nine five seven two",
+    "zero",
+    "five two nine two six",
+    "one six",
+    "one three three nine",
+    "seven two",
+    "six four four three eight",
+    "one zero two",
+    "nine one seven",
+    "zero two zero zero three",
+    "two zero two eight six"
+   ],
+   "hyps": [
+    "two seven two zero",
+    "seven five seven five one six",
+    "eight one four two",
+    "four five six nine eight zero three",
+    "two two six",
+    "",
+    "",
+    "six eight eight one five",
+    "six seven three zero one one",
+    "three five nine zero eight",
+    "two six eight two",
+    "zero three one",
+    "",
+    "six zero four eight",
+    "two two eight seven five",
+    "zero eight five",
+    "one",
+    "six nine",
+    "eight eight five five",
+    "eight",
+    "eight",
+    "five nine",
+    "zero zero",
+    "five four two three four",
+    "one",
+    "six",
+    "eight nine one three",
+    "zero four five eight three nine",
+    "nine nine four five seven",
+    "six six zero three nine eight",
+    "three three five",
+    "six six nine zero",
+    "five three one one",
+    "five four two six",
+    "four zero",
+    "two zero eight four",
+    "two",
+    "six seven three two three",
+    "one seven three",
+    "two one three",
+    "one eight eight four three nine",
+    "eight zero",
+    "six nine six",
+    "five five one four one two",
+    "zero two nine",
+    "six seven five",
+    "nine one seven nine four",
+    "three four nine four zero",
+    "seven zero five five six",
+    "two nine five one seven two",
+    "",
+    "five two nine two six",
+    "one four",
+    "one three nine",
+    "seven two",
+    "six four four three nine nine two",
+    "one zero two",
+    "nine nine seven five",
+    "zero two zero four zero three",
+    "two zero two eight six four"
+   ],
+   "wer": 0.34134615384615385,
+   "cer": 0.3043032786885246,
+   "word": {
+    "S": 26,
+    "D": 19,
+    "I": 26,
+    "H": 163
+   },
+   "char": {
+    "S": 83,
+    "D": 93,
+    "I": 121,
+    "H": 800
+   }
+  },
+  {
+   "name": "fsdd-theo",
+   "refs": [
+    "five two seven five",
+    "three one",
+    "five zero six one zero",
+    "five eight seven three two two",
+    "one one",
+    "six zero",
+    "zero nine four",
+    "five",
+    "two five",
+    "three zero six seven",
+    "six",
+    "two eight two",
+    "seven four six nine four",
+    "four five",
+    "six five zero four one nine",
+    "seven seven nine five zero",
+    "zero six",
+    "nine one",
+    "three four nine",
+    "nine one nine",
+    "three six three one",
+    "one one zero one five",
+    "zero nine eight one",
+    "nine",
+    "six five one three three",
+    "zero one eight seven",
+    "nine two six one two",
+    "three nine zero",
+    "eight one six seven",
+    "two six nine",
+    "six",
+    "one five",
+    "two",
+    "two one",
+    "two four eight zero",
+    "four nine nine seven one six",
+    "five three three five nine five",
+    "one three nine six four eight",
+    "one three",
+    "two zero",
+    "zero five nine two",
+    "three",
+    "one zero four",
+    "nine four five",
+    "five three",
+    "four nine six",
+    "five one eight nine five one",
+    "seven",
+    "one six nine seven five",
+    "eight two one four",
+    "six zero six",
+    "one zero",
+    "nine",
+    "one zero eight",
+    "four two zero nine",
+    "six one eight",
+    "eight two six six two four",
+    "five zero",
+    "eight three six nine nine",
+    "six four four"
+   ],
+   "hyps": [
+    "five two seven five",
+    "one three one",
+    "five zero zero one zero",
+    "five eight seven three two two",
+    "two one",
+    "four",
+    "zero seven four",
+    "",
+    "six",
+    "zero six",
+    "",
+    "four two eight two",
+    "seven four six nine four",
+    "four",
+    "six zero seven four one nine",
+    "seven five zero zero",
+    "eight six",
+    "nine one",
+    "five five four",
+    "nine one five",
+    "three three one",
+    "one one zero nine five",
+    "zero nine eight one",
+    "nine three four",
+    "five one one three three four",
+    "zero one eight seven",
+    "nine two six one two",
+    "three nine zero",
+    "eight one six seven",
+    "four two six nine",
+    "seven",
+    "one eight",
+    "eight",
+    "seven",
+    "two four three",
+    "four nine zero three zero six",
+    "five three three five nine five seven six",
+    "one four nine six one four eight",
+    "one",
+    "two one",
+    "five nine eight nine",
+    "",
+    "one zero four four",
+    "nine four nine five",
+    "five three",
+    "six",
+    "five eight nine one",
+    "",
+    "one six nine seven five three",
+    "eight two two one four",
+    "six nine nine six",
+    "one zero",
+    "",
+    "seven nine",
+    "four two zero nine",
+    "three nine one eight",
+    "eight two six six two four",
+    "three zero",
+    "eight three six nine nine",
+    "six four two nine"
+   ],
+   "wer": 0.36548223350253806,
+   "cer": 0.3366890380313199,
+   "word": {
+    "S": 30,
+    "D": 23,
+    "I": 19,
+    "H": 144
+   },
+   "char": {
+    "S": 105,
+    "D": 99,
+    "I": 97,
+    "H": 690
+   }
+  },
+  {
+   "name": "fsdd-yweweler",
+   "refs": [
+    "eight",
+    "three one four three zero four",
+    "five zero",
+    "eight six nine",
+    "zero one seven six nine zero",
+    "seven nine",
+    "four seven one seven",
+    "zero nine four four nine two",
+    "six eight seven",
+    "four seven five one eight two",
+    "nine four five",
+    "five",
+    "six one seven three four nine",
+    "three six eight zero eight",
+    "eight eight six nine five four",
+    "three three zero three",
+    "two three eight two zero three",
+    "eight seven two seven eight seven",
+    "eight zero nine",
+    "three three nine seven",
+    "one two five two",
+    "seven nine",
+    "one nine six three seven six",
+    "eight four five one two",
+    "two three",
+    "eight nine one one",
+    "one six",
+    "zero six three two",
+    "five six three",
+    "six zero one seven nine",
+    "seven",
+    "four two",
+    "seven five seven eight four",
+    "five zero zero two",
+    "six one nine zero nine one",
+    "six four zero",
+    "zero eight zero seven zero zero",
+    "six one nine seven nine",
+    "five",
+    "seven",
+    "six",
+    "five six eight",
+    "six four one nine three",
+    "one four one six",
+    "seven three",
+    "six one zero five four zero",
+    "seven zero seven nine three",
+    "eight three four",
+    "three",
+    "nine",
+    "nine four",
+    "three six one seven",
+    "seven seven eight",
+    "two seven seven",
+    "one two one",
+    "eight",
+    "eight six",
+    "six zero three seven",
+    "six one two",
+    "seven seven three seven"
+   ],
+   "hyps": [
+    "eight",
+    "one four three zero four",
+    "five zero",
+    "three eight six nine",
+    "zero one nine six nine zero",
+    "seven nine two nine",
+    "four seven one seven",
+    "zero nine four four nine zero two",
+    "six eight seven",
+    "four seven five one eight two",
+    "eight four",
+    "five",
+    "six one seven three four nine",
+    "three six eight zero eight",
+    "eight six eight three four nine five four",
+    "three three zero three",
+    "two three eight two zero three",
+    "eight seven two eight seven",
+    "zero nine",
+    "nine",
+    "one five two",
+    "seven nine",
+    "one nine seven three seven five",
+    "eight four five two two",
+    "eight two nine three",
+    "eight nine one one",
+    "one eight",
+    "three zero",
+    "five six three",
+    "six zero one seven nine",
+    "two zero four",
+    "four",
+    "nine five seven",
+    "five eight zero two",
+    "six one nine zero nine one",
+    "six six four three zero zero",
+    "zero eight zero seven zero zero",
+    "six one seven",
+    "nine four",
+    "",
+    "six",
+    "",
+    "six four one three",
+    "one four six",
+    "seven three",
+    "one zero seven four zero",
+    "seven seven five seven three",
+    "three four",
+    "",
+    "six nine",
+    "nine four two",
+    "three six one seven",
+    "seven four",
+    "three seven",
+    "one two five one",
+    "eight nine",
+    "six eight three",
+    "six zero seven",
+    "six one two",
+    "two seven six six seven"
+   ],
+   "wer": 0.3177570093457944,
+   "cer": 0.3037109375,
+   "word": {
+    "S": 19,
+    "D": 28,
+    "I": 21,
+    "H": 167
+   },
+   "char": {
+    "S": 60,
+    "D": 144,
+    "I": 107,
+    "H": 820
+   }
+  },
+  {
+   "name": "variants",
+   "refs": [
+    "Seven, eight -- NINE!",
+    "one two three",
+    "  four   five  ",
+    "four five",
+    "six\tseven",
+    "zero one",
+    "",
+    "",
+    "café naïve",
+    "naïve café",
+    "eight 😀 nine",
+    "aaaa bbbb",
+    "one one one one",
+    "two",
+    "three four five six"
+   ],
+   "hyps": [
+    "seven eight nine",
+    "One two, three.",
+    "four five",
+    "four  five",
+    "six seven",
+    "",
+    "two",
+    "",
+    "cafe naive",
+    "naïve café",
+    "eight nine",
+    "bbbb aaaa",
+    "one one",
+    "two two two two",
+    "five six three four"
+   ],
+   "wer": 0.78125,
+   "cer": 0.5100671140939598,
+   "word": {
+    "S": 8,
+    "D": 9,
+    "I": 8,
+    "H": 15
+   },
+   "char": {
+    "S": 29,
+    "D": 27,
+    "I": 20,
+    "H": 93
+   }
+  }
+ ],
+ "empty_total_reference": {
+  "refs": [
+   "",
+   " "
+  ],
+  "hyps": [
+   "one",
+   ""
+  ],
+  "wer": 1,
+  "word": {
+   "S": 0,
+   "D": 0,
+   "I": 1,
+   "H": 0
+  }
+ }
+}

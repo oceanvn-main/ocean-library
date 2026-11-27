@@ -1,0 +1,124 @@
+{
+  "id": "BetaTrustStore",
+  "display_name": "Beta-Bernoulli trust store (per subject and context)",
+  "short_description": "Keeps one Beta posterior per (provider, task context) over the probability that the provider completes a delegated task, and updates it by counting directly observed successes and failures.",
+  "category": "Bayesian / Conjugate Updating (Trust and Reputation)",
+
+  "textbook": {
+    "reference": "Gelman, A., Carlin, J. B., Stern, H. S., Dunson, D. B., Vehtari, A. & Rubin, D. B. (2013). Bayesian Data Analysis (3rd ed.), sec. 2.4 (binomial model with a conjugate beta prior); Josang, A. & Ismail, R. (2002). The Beta Reputation System",
+    "section": "BDA3 §2.4",
+    "equations": ["2.4 (beta posterior)", "posterior mean and variance of Beta(alpha, beta)"]
+  },
+
+  "pedagogy": {
+    "motivation": "An agent that delegates tasks must judge how likely each provider is to deliver, starting with little information and learning from what it sees. Counting successes and failures and treating them as updates of a Beta distribution gives an estimate AND an honest statement of how uncertain it is: few observations mean a wide posterior, contradictory evidence can widen it again.",
+    "assumptions": [
+      "Each delegation to a given provider in a given context is a Bernoulli trial with a fixed but unknown success probability p.",
+      "Different contexts (e.g. cheap vs expensive tasks) have independent success probabilities.",
+      "Only DIRECT observations with a known outcome update the belief; reports, unknown (obstructed) outcomes, other quantities and duplicates never do.",
+      "Each evidence event is counted exactly once, however many times it is delivered.",
+      "The prior Beta(alpha0, beta0) encodes what is believed before any evidence (Beta(1,1) is uniform)."
+    ],
+    "data_model": "For each (subject, context) the success probability p has a Beta(alpha, beta) belief. Starting from the prior Beta(alpha0, beta0), after s observed successes and f observed failures the posterior is Beta(alpha0 + s, beta0 + f). The store reports the posterior mean as the estimate, the posterior variance as the uncertainty, and s + f as the evidence mass.",
+    "what_is_missing": "The true reliability p of each provider in each context is never observed; only the outcomes of the delegations the agent is entitled to see. The posterior summarises what those outcomes imply about p.",
+    "how_it_solves": "1. Classify each incoming evidence record: duplicate, ineligible quantity, report, unknown outcome, frozen, or applicable. 2. For an applicable success add 1 to alpha; for a failure add 1 to beta. 3. Report mean alpha/(alpha+beta) and variance alpha beta/((alpha+beta)^2 (alpha+beta+1)). 4. Keep beliefs keyed by the subject's ID, so a new provider starts from the prior."
+  },
+
+  "equations": {
+    "update": {
+      "label": "Conjugate update, mean and variance",
+      "latex": "\\alpha' = \\alpha + \\mathbb{1}[\\text{success}],\\ \\beta' = \\beta + \\mathbb{1}[\\text{failure}],\\ \\hat p = \\alpha/(\\alpha+\\beta),\\ \\mathrm{Var} = \\alpha\\beta/((\\alpha+\\beta)^2(\\alpha+\\beta+1))",
+      "description": "One applied direct outcome increments one of the two Beta parameters; the estimate is the posterior mean and the uncertainty the posterior variance."
+    },
+    "posterior": {
+      "label": "Posterior after s successes and f failures",
+      "latex": "p \\mid \\text{data} \\sim \\mathrm{Beta}(\\alpha_0 + s,\\ \\beta_0 + f)",
+      "description": "Beta is conjugate to the Bernoulli likelihood, so the posterior stays Beta and only counts are needed."
+    },
+    "variance_can_rise": {
+      "label": "Variance is not monotone",
+      "latex": "\\mathrm{Var}[\\mathrm{Beta}(9,1)] = \\tfrac{9}{1100} < \\mathrm{Var}[\\mathrm{Beta}(9,2)] = \\tfrac{3}{242}",
+      "description": "A failure after many successes moves the mean toward 1/2, which can widen the posterior: more evidence does not always mean less uncertainty."
+    }
+  },
+
+  "Symbols": [
+    {"Symbol": "\\alpha", "Description": "prior pseudo-successes plus observed successes"},
+    {"Symbol": "\\beta", "Description": "prior pseudo-failures plus observed failures"},
+    {"Symbol": "\\alpha_0, \\beta_0", "Description": "prior parameters (option Prior, or a per-subject Priors override)"},
+    {"Symbol": "\\hat p", "Description": "posterior mean: the reported Estimate"},
+    {"Symbol": "\\mathrm{Var}", "Description": "posterior variance: the reported Variance"},
+    {"Symbol": "\\mathbb{1}[\\cdot]", "Description": "indicator of the observed outcome"},
+    {"Symbol": "s, f", "Description": "numbers of applied successes and failures (their sum is EvidenceMass)"}
+  ],
+
+  "parameters": [
+    {
+      "name": "Prior",
+      "latex_symbol": "(\\alpha_0, \\beta_0)",
+      "default": "[1 1]",
+      "description": "Default Beta prior for every (subject, context) without an override.",
+      "effect": "Larger values make the belief move more slowly with evidence; alpha0 > beta0 starts optimistic."
+    },
+    {
+      "name": "Priors",
+      "latex_symbol": "(\\alpha_0, \\beta_0)_{j,c}",
+      "default": "[]",
+      "description": "Per-(subject, context) prior overrides with a SourceID naming where they came from.",
+      "effect": "Encodes prior knowledge about specific providers without changing the default.",
+      "optional": true
+    },
+    {
+      "name": "Persist",
+      "latex_symbol": "-",
+      "default": "\"run\"",
+      "description": "\"run\": beliefs persist across episodes; \"episode\": posteriors and counts return to the priors at each episode end.",
+      "effect": "\"episode\" models an agent without long-term memory; seen evidence IDs are kept either way."
+    },
+    {
+      "name": "MaxEvidence",
+      "latex_symbol": "-",
+      "default": "1e5",
+      "description": "Maximum number of distinct evidence IDs remembered (for exactly-once consumption).",
+      "effect": "Exceeding it is an error (Beliefs:CapacityExceeded); nothing is silently evicted."
+    },
+    {
+      "name": "MaxSubjects",
+      "latex_symbol": "-",
+      "default": "1e4",
+      "description": "Maximum number of distinct subjects with a stored belief or prior override.",
+      "effect": "Exceeding it is an error (Beliefs:CapacityExceeded); nothing is silently evicted."
+    },
+    {
+      "name": "MaxTrace",
+      "latex_symbol": "-",
+      "default": "20",
+      "description": "Number of most recent applied EvidenceIDs kept per belief for explanation.",
+      "effect": "Affects only the trace in BeliefRecord.EvidenceIDs, never the estimate."
+    }
+  ],
+
+  "complexity": {
+    "training": "O(1) per evidence record (amortised dictionary lookups)",
+    "prediction": "O(1) per belief query",
+    "memory": "O(E + K) for E seen evidence IDs and K (subject, context) beliefs"
+  },
+
+  "strengths": [
+    "Exact Bayesian update with a closed-form mean and variance.",
+    "Carries uncertainty explicitly, so a decision rule can be risk-averse or sample (Thompson).",
+    "Transparent: every estimate is a prior plus countable evidence with a trace of IDs."
+  ],
+  "weaknesses": [
+    "Assumes a stationary success probability; it adapts slowly after a provider changes (no forgetting in A2).",
+    "Treats contexts as unrelated: no sharing of evidence between similar tasks.",
+    "Ignores reports and indirect reputation in A2."
+  ],
+  "when_to_use": "Use when an agent must learn the reliability of a modest number of providers from its own binary outcomes and needs a calibrated uncertainty. Add forgetting or change detection if reliabilities drift, and a reputation model if reports should count.",
+
+  "references": [
+    "Gelman, A. et al. (2013). Bayesian Data Analysis (3rd ed.), sec. 2.4.",
+    "Josang, A. & Ismail, R. (2002). The Beta Reputation System. Proc. 15th Bled Electronic Commerce Conference.",
+    "Teacy, W. T. L., Patel, J., Jennings, N. R. & Luck, M. (2006). TRAVOS: Trust and Reputation in the Context of Inaccurate Information Sources. Autonomous Agents and Multi-Agent Systems 12, 183-198."
+  ]
+}

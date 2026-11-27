@@ -1,0 +1,134 @@
+[
+  {
+    "id": "ContinuousSignalGenerator",
+    "class": "OceanMath.Signal.ContinuousSignalGenerator",
+    "file": "+OceanMath/+Signal/ContinuousSignalGenerator.m",
+    "concept_node_id": "ch4-continuous-signal-model",
+    "domain": "signal_processing",
+    "chapter": "Oppenheim & Schafer Ch.4 §4.1",
+    "description": "Simulates continuous-time analog signals as dense discrete arrays. Ground-truth source for all Ch.4 experiments. Signals generated from explicit trigonometric formulas.",
+    "problem_motivation": "Computers cannot store continuous-time signals x_c(t). To analyze sampling without physical hardware, we construct an ultra-dense discrete grid at F_ANALOG >> 2*f_max to act as continuous ground truth.",
+    "knowns": "Continuous signal formulas x_c(t) = A*cos(2*pi*f0*t + phi); Target band limit f_max; Sampling grid step Ts = 1/fs.",
+    "unknowns": "Values at non-grid timestamps; Reconstruction error under downsampling.",
+    "assumptions": "Dense reference rate F_ANALOG (100 kHz) approximates continuous time with numerical error < 1e-8, serving as valid ground truth.",
+    "mathematical_model": "t = [0 : 1/F_ANALOG : T]; x_dense = x_c(t); x_sampled[n] = x_dense[n * M] where M = F_ANALOG / fs.",
+    "methods": ["sinusoid", "dualTone", "multiTone", "chirp", "noise", "getMetadata"],
+    "used_by_experiments": ["exp_ch4_01", "exp_ch4_02", "exp_ch4_03", "exp_ch4_06", "exp_ch4_07"],
+    "cross_domain_bridges": [
+      {"domain": "computer_vision", "concept": "Image as 2D continuous signal, sampled on pixel grid"},
+      {"domain": "time_series", "concept": "Continuous process observed at discrete time points"}
+    ],
+    "math_atoms": ["fourier_analysis", "trigonometry"],
+    "prerequisites": [],
+    "textbook_ref": "Oppenheim & Schafer 3rd Ed., Ch.4 §4.1 Eq. 4.1"
+  },
+  {
+    "id": "SpectralAnalyzer",
+    "class": "OceanMath.Signal.SpectralAnalyzer",
+    "file": "+OceanMath/+Signal/SpectralAnalyzer.m",
+    "concept_node_id": "ch4-spectral-analysis",
+    "domain": "signal_processing",
+    "chapter": "Oppenheim & Schafer Ch.4 §4.2",
+    "description": "Static spectral analysis utilities. Centralizes FFT axis construction, STFT spectrogram, peak detection, alias frequency prediction, and SQNR measurement.",
+    "methods": ["spectrumTwoSided", "spectrumOneSided", "spectrumNormalized", "stft", "findPeaks", "aliasFormula", "sqnr", "powerSpectralDensity"],
+    "used_by_experiments": ["exp_ch4_01", "exp_ch4_02", "exp_ch4_06", "exp_ch4_07", "exp_ch4_09", "exp_ch4_10"],
+    "cross_domain_bridges": [
+      {"domain": "computer_vision", "concept": "2D Fourier spectrum of an image, spatial aliasing in MipMap"},
+      {"domain": "time_series", "concept": "Spectral density estimation, periodogram"},
+      {"domain": "nlp", "concept": "Frequency-domain analysis of character/token distributions"}
+    ],
+    "math_atoms": ["fourier_analysis", "information_theory"],
+    "prerequisites": [],
+    "textbook_ref": "Oppenheim & Schafer 3rd Ed., §4.2 Eq. 4.23–4.28"
+  },
+  {
+    "id": "SamplingEngine",
+    "class": "OceanMath.Signal.SamplingEngine",
+    "file": "+OceanMath/+Signal/SamplingEngine.m",
+    "concept_node_id": "ch4-periodic-sampling",
+    "domain": "signal_processing",
+    "chapter": "Oppenheim & Schafer Ch.4 §4.1, §4.6.1",
+    "description": "1D periodic downsampling of dense analog signal arrays. Models A/D conversion. Two modes: direct (aliasing visible) and prefiltered (anti-aliased).",
+    "methods": ["sample", "sampleWithFilter", "getDecimationFactor", "predictAlias", "getNyquist"],
+    "used_by_experiments": ["exp_ch4_01", "exp_ch4_02", "exp_ch4_03", "exp_ch4_05", "exp_ch4_06"],
+    "cross_domain_bridges": [
+      {"domain": "computer_vision", "concept": "Gaussian pyramid reduce() — spatial downsampling with anti-alias Gaussian prefilter"},
+      {"domain": "machine_learning", "concept": "Feature subsampling, time series downsampling for training"}
+    ],
+    "math_atoms": ["fourier_analysis", "linear_algebra"],
+    "prerequisites": ["ContinuousSignalGenerator"],
+    "textbook_ref": "Oppenheim & Schafer 3rd Ed., §4.1 Eq. 4.2, §4.6.1 Eq. 4.71"
+  },
+  {
+    "id": "ImpulseInvarianceDesigner",
+    "class": "OceanMath.Signal.ImpulseInvarianceDesigner",
+    "file": "+OceanMath/+Signal/ImpulseInvarianceDesigner.m",
+    "concept_node_id": "ch4-impulse-invariance",
+    "domain": "signal_processing",
+    "chapter": "Oppenheim & Schafer Ch.4 §4.4",
+    "description": "Designs Butterworth analog prototype filters and converts to digital IIR via impulse invariance (h[n]=Ts*h_c(n*Ts)). Reveals stopband aliasing distortion.",
+    "methods": ["getAnalogCoeffs", "toDigital", "evalAnalog", "evalDigital"],
+    "used_by_experiments": ["exp_ch4_04", "exp_ch4_05"],
+    "cross_domain_bridges": [
+      {"domain": "machine_learning", "concept": "Discretization of continuous-time dynamical systems (ODEs -> RNNs)"}
+    ],
+    "math_atoms": ["laplace_transform", "z_transform", "linear_algebra"],
+    "prerequisites": ["SamplingEngine"],
+    "dependencies": ["MATLAB Signal Processing Toolbox: butter(), impinvar()"],
+    "textbook_ref": "Oppenheim & Schafer 3rd Ed., §4.4.2 Eq. 4.47–4.54"
+  },
+  {
+    "id": "QuantizationEngine",
+    "class": "OceanMath.Signal.QuantizationEngine",
+    "file": "+OceanMath/+Signal/QuantizationEngine.m",
+    "concept_node_id": "ch4-quantization-noise",
+    "domain": "signal_processing",
+    "chapter": "Oppenheim & Schafer Ch.4 §4.8",
+    "description": "Uniform B-bit midrise scalar quantizer. Provides quantization error analysis, theoretical noise power (Delta^2/12), and SQNR (6.02*B + 1.76 dB).",
+    "methods": ["quantize", "error", "stepSize", "theoreticalNoisePower", "theoreticalSQNR", "empiricalSQNR", "sqnrFormula"],
+    "used_by_experiments": ["exp_ch4_09", "exp_ch4_10"],
+    "cross_domain_bridges": [
+      {"domain": "machine_learning", "concept": "Neural network weight quantization (INT8, INT4) — same 6.02dB/bit rule applies"},
+      {"domain": "computer_vision", "concept": "Image color depth quantization (8-bit vs 16-bit per channel)"}
+    ],
+    "math_atoms": ["probability", "information_theory"],
+    "prerequisites": [],
+    "textbook_ref": "Oppenheim & Schafer 3rd Ed., §4.8.3 Eq. 4.88–4.95"
+  },
+  {
+    "id": "PolyphaseEngine",
+    "class": "OceanMath.Signal.PolyphaseEngine",
+    "file": "+OceanMath/+Signal/PolyphaseEngine.m",
+    "concept_node_id": "ch4-polyphase-decomposition",
+    "domain": "signal_processing",
+    "chapter": "Oppenheim & Schafer Ch.4 §4.7",
+    "description": "Polyphase FIR decomposition for integer-M decimation. Implements Noble Identity: filter-then-downsample = downsample-then-subfilter. M-times computational gain, bit-identical output.",
+    "methods": ["filterDirect", "filterPolyphase", "verifyEquivalence", "getSubfilters", "estimateFLOPs"],
+    "used_by_experiments": ["exp_ch4_08"],
+    "cross_domain_bridges": [
+      {"domain": "computer_vision", "concept": "Separable 2D convolution (same algebraic decomposition, 2D version)"},
+      {"domain": "machine_learning", "concept": "Depthwise separable convolutions (MobileNet) — same efficiency principle"}
+    ],
+    "math_atoms": ["linear_algebra", "z_transform"],
+    "prerequisites": ["SamplingEngine"],
+    "textbook_ref": "Oppenheim & Schafer 3rd Ed., §4.7.2 Eq. 4.104–4.112"
+  },
+  {
+    "id": "SigmaDeltaModulator",
+    "class": "OceanMath.Signal.SigmaDeltaModulator",
+    "file": "+OceanMath/+Signal/SigmaDeltaModulator.m",
+    "concept_node_id": "ch4-sigma-delta-noise-shaping",
+    "domain": "signal_processing",
+    "chapter": "Oppenheim & Schafer Ch.4 §4.9",
+    "description": "First/second-order sigma-delta ADC modulator. Combines oversampling with noise shaping (NTF = 1-z^{-1}) to achieve high SQNR from 1-bit quantizer. Payoff experiment of Ch.4.",
+    "methods": ["modulate", "reconstruct", "measureSQNR", "theoreticalSQNR"],
+    "used_by_experiments": ["exp_ch4_10"],
+    "cross_domain_bridges": [
+      {"domain": "machine_learning", "concept": "Stochastic rounding and 1-bit neural networks (BinaryConnect, XNOR-Net)"},
+      {"domain": "computer_vision", "concept": "Halftoning / dithering in digital printing — same noise shaping principle"}
+    ],
+    "math_atoms": ["z_transform", "feedback_control", "information_theory"],
+    "prerequisites": ["QuantizationEngine", "SpectralAnalyzer"],
+    "textbook_ref": "Oppenheim & Schafer 3rd Ed., §4.9.2 Eq. 4.105–4.115"
+  }
+]

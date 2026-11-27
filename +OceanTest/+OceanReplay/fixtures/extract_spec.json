@@ -1,0 +1,63 @@
+{
+  "schemaVersion": "1.0",
+  "precision": "float32",
+  "groups": [
+    {
+      "name": "small",
+      "level": 1,
+      "channels": [
+        "img",
+        "energy"
+      ],
+      "at": {
+        "t": {
+          "rule": "union",
+          "rules": [
+            {
+              "rule": "list",
+              "values": [
+                4,
+                6
+              ]
+            },
+            {
+              "rule": "every",
+              "k": 8,
+              "from": 0
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "tok",
+      "level": 1,
+      "channels": [
+        "tok"
+      ],
+      "at": {
+        "k": {
+          "rule": "list",
+          "values": [
+            2
+          ]
+        }
+      }
+    }
+  ],
+  "views": [
+    {
+      "name": "noisy",
+      "method": "",
+      "params": {},
+      "at": {
+        "t": {
+          "rule": "list",
+          "values": [
+            2
+          ]
+        }
+      }
+    }
+  ]
+}

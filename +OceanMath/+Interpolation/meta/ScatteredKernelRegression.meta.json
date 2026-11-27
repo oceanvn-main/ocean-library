@@ -1,0 +1,95 @@
+{
+  "id": "ScatteredKernelRegression",
+  "display_name": "Kernel Regression (Nadaraya-Watson Estimator)",
+  "short_description": "Estimates a function at any query point as a distance-weighted average of nearby training values — no linear system required.",
+  "category": "Kernel / Non-parametric Estimation",
+
+  "textbook": {
+    "reference": "Szeliski, R. Computer Vision: Algorithms and Applications (2e), §4.1.1",
+    "section": "§4.1.1",
+    "equations": ["4.12", "4.13", "4.14"]
+  },
+
+  "pedagogy": {
+    "motivation": "RBF interpolation requires solving an N x N linear system, which becomes expensive for large datasets. An alternative idea is to estimate the function value at a new query point directly as a weighted average of all training values, where closer training points receive more weight. This is analogous to how your intuition works: 'what temperature is it at this unmeasured location? Probably similar to the nearest measured locations, with closer ones counting more.' The Nadaraya-Watson estimator formalizes this intuition using kernel functions.",
+
+    "assumptions": [
+      "The unknown function is locally smooth: nearby inputs have similar output values.",
+      "The kernel phi(r) decays with distance (Gaussian, Inverse Multiquadric) — training points far from the query contribute little to the estimate.",
+      "A representative density of training points exists throughout the domain — sparse regions will produce poor estimates since there are no nearby points to average.",
+      "No linear system is required — the method makes no global structural assumption about the function shape."
+    ],
+
+    "data_model": "The estimated function value at any query point x is a normalized weighted average of all N training values d_k, where the weight for each training point is the kernel value phi(||x - x_k||). Points closer to x receive larger weights (for decaying kernels). The normalization ensures the weights sum to 1, making the estimator a weighted mean: f(x) = [sum_k d_k * phi(||x - x_k||)] / [sum_l phi(||x - x_l||)]. This can equivalently be written as f(x) = sum_k d_k * phi'_k(x) where phi'_k is the normalized (partition-of-unity) basis.",
+
+    "what_is_missing": "Unlike RBF interpolation, there are no explicit weights to learn. The unknown quantity is the function value f(x) at an unmeasured query location x. The method assumes the answer can be inferred by looking at all training points and weighting their values by proximity.",
+
+    "how_it_solves": "1. No training phase: simply store the N training point locations x_k and values d_k. 2. At prediction time, for each query point x: (a) compute distances r_k = ||x - x_k|| to all N training points, (b) evaluate the kernel at each distance: weight_k = phi(r_k), (c) normalize the weights: weight_k_normalized = weight_k / sum_l weight_l, (d) compute the weighted average: f(x) = sum_k d_k * weight_k_normalized. 3. This is repeated independently for every query point (fully vectorizable across M query points simultaneously)."
+  },
+
+  "equations": {
+    "estimator": {
+      "label": "Nadaraya-Watson estimator (eq. 4.12)",
+      "latex": "f(\\mathbf{x}) = \\frac{\\displaystyle\\sum_k d_k \\, \\phi\\!\\left(\\|\\mathbf{x} - \\mathbf{x}_k\\|\\right)}{\\displaystyle\\sum_l \\phi\\!\\left(\\|\\mathbf{x} - \\mathbf{x}_l\\|\\right)}",
+      "description": "The estimate at x is the kernel-weighted mean of all training values d_k. The denominator normalizes the weights so they sum to 1."
+    },
+    "normalized_basis": {
+      "label": "Normalized (partition-of-unity) basis (eq. 4.13)",
+      "latex": "\\phi'_k(\\mathbf{x}) = \\frac{\\phi\\!\\left(\\|\\mathbf{x} - \\mathbf{x}_k\\|\\right)}{\\displaystyle\\sum_l \\phi\\!\\left(\\|\\mathbf{x} - \\mathbf{x}_l\\|\\right)}",
+      "description": "The normalized basis functions phi'_k form a partition of unity: they sum to 1 at every location x. This means the estimator is always a convex combination of the training values — it cannot extrapolate outside the range [min(d_k), max(d_k)]."
+    },
+    "estimator_normalized": {
+      "label": "Estimator in terms of normalized bases (eq. 4.14)",
+      "latex": "f(\\mathbf{x}) = \\sum_k d_k \\, \\phi'_k\\!\\left(\\|\\mathbf{x} - \\mathbf{x}_k\\|\\right)",
+      "description": "Equivalent re-writing of eq. 4.12 that highlights the structure: each training value d_k is weighted by its normalized basis function phi'_k(x)."
+    }
+  },
+
+  "parameters": [
+    {
+      "name": "Kernel",
+      "latex_symbol": "\\phi",
+      "default": "gaussian",
+      "description": "The radial kernel used to compute distances-to-weights. Must be a decaying kernel (Gaussian, InverseMultiquadric) for the estimator to be a local weighted average.",
+      "effect": "Gaussian: smooth, exponential decay — nearby points dominate strongly. InverseMultiquadric: slower decay — farther points retain more influence. Multiquadric (growing kernel) is NOT appropriate here as farther points would receive more weight."
+    },
+    {
+      "name": "Epsilon",
+      "latex_symbol": "c",
+      "default": "1.0",
+      "description": "Scale parameter c of the kernel. Controls the bandwidth — how large a neighbourhood around the query point contributes to the estimate.",
+      "effect": "Small c: narrow bandwidth, estimate dominated by nearest 1-2 points (noisy but locally accurate). Large c: wide bandwidth, estimate is a near-uniform average of many points (smooth but high bias). This is the key hyperparameter to tune — choose via cross-validation."
+    }
+  ],
+
+  "complexity": {
+    "training": "O(N) — just store training data, no solve",
+    "prediction": "O(MN) — for each of M query points, evaluate N kernel distances",
+    "memory": "O(N) — training data only"
+  },
+
+  "strengths": [
+    "No training phase — works immediately with any new training data.",
+    "Robust to noise by design: it never exactly fits individual noisy points.",
+    "The partition-of-unity property guarantees estimates are bounded within the range of training values — no wild extrapolation.",
+    "Simple to understand and implement: just a normalized weighted average.",
+    "Works in any dimensionality D."
+  ],
+
+  "weaknesses": [
+    "Does NOT exactly interpolate: f(x_k) ≠ d_k in general (it smooths through training points).",
+    "Bandwidth c is critical: too small causes noisy estimates, too large causes oversmoothing.",
+    "Prediction cost O(MN) is the same as RBF — no savings at query time.",
+    "Fails where training data is sparse: the estimate in empty regions is a near-uniform average, which is meaningless.",
+    "No notion of regularization — cannot separate signal from noise in a principled way."
+  ],
+
+  "when_to_use": "Use Kernel Regression when you want a quick, parameter-light estimator that does not require solving a linear system. It is ideal for large N or streaming settings where you cannot afford O(N^3) training. It is also a useful baseline — if your data is noisy and you want a smooth trend rather than exact interpolation. If exact interpolation is required (the function must pass through the training points exactly), use ScatteredRBF with Lambda=0 instead.",
+
+  "references": [
+    "Szeliski §4.1.1, eq. (4.12)-(4.14)",
+    "Nadaraya (1964) — On estimating regression",
+    "Watson (1964) — Smooth regression analysis",
+    "Bishop (2006), Chapter 6 — Kernel methods"
+  ]
+}

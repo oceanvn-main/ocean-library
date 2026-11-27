@@ -1,0 +1,34 @@
+# Local sync tooling (copies from the private working folder)
+.sync/
+
+# MATLAB
+*.asv
+*.autosave
+slprj/
+*.mex*
+buildtool-results/
+.buildtool/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+.ruff_cache/
+.pytest_cache/
+
+# Rust
+target/
+
+# Data, checkpoints and generated output never belong here
+Data/
+Results/
+*.mat
+*.mp4
+*.avi
+*.log
+*.jar
+
+# Editors
+.vscode/
+.idea/
+.claude/

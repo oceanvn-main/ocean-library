@@ -1,0 +1,62 @@
+{
+  "id": "qmle-sandwich-covariance",
+  "tier": 3,
+  "domain": "mathematical_atoms",
+  "chapter": "Hamilton Ch. 5 §5.8 / White (1982)",
+  "title": "Quasi-Maximum Likelihood & Sandwich Covariance Estimator",
+  "status": "active",
+  "pedagogy": {
+    "motivation": "When statistical models or likelihood densities are misspecified, standard ML variance estimates fail. White's sandwich estimator provides misspecification-robust covariance standard errors across Time Series, ML, Econometrics, and Signal Processing.",
+    "problem_setup": {
+      "knowns": ["Observed data sample Y", "Parameter estimate θ_hat", "Log-likelihood function ln f(y | θ)"],
+      "unknowns": ["True data generating process P0", "Robust covariance matrix Var(θ_hat)"],
+      "assumptions": ["Sample size T is sufficiently large", "True parameter θ0 lies in interior of parameter space"]
+    },
+    "math_model": [
+      {
+        "step": 1,
+        "label": "Score Vector",
+        "intuition": "The gradient of individual log-likelihoods measuring parameter sensitivity.",
+        "equation": "s_t(\\boldsymbol{\\theta}) = \\frac{\\partial \\ln f(y_t \\mid x_t; \\boldsymbol{\\theta})}{\\partial \\boldsymbol{\\theta}}"
+      },
+      {
+        "step": 2,
+        "label": "Hessian Matrix (I_2D)",
+        "intuition": "Second-derivative curvature estimate of the log-likelihood surface.",
+        "equation": "\\hat{\\mathcal{I}}_{2D} = -\\frac{1}{T} \\sum_{t=1}^T \\frac{\\partial^2 \\ln f(y_t \\mid x_t; \\hat{\\boldsymbol{\\theta}})}{\\partial \\boldsymbol{\\theta} \\partial \\boldsymbol{\\theta}'}"
+      },
+      {
+        "step": 3,
+        "label": "Outer-Product of Scores (I_OP)",
+        "intuition": "Empirical covariance matrix of individual gradient scores.",
+        "equation": "\\hat{\\mathcal{I}}_{OP} = \\frac{1}{T} \\sum_{t=1}^T s_t(\\hat{\\boldsymbol{\\theta}}) s_t(\\hat{\\boldsymbol{\\theta}})'"
+      },
+      {
+        "step": 4,
+        "label": "Sandwich Covariance Formula",
+        "intuition": "The robust variance-covariance matrix sandwiching the score outer-product between inverse Hessians.",
+        "equation": "\\mathbf{V}_{QMLE} = T^{-1} \\left\\{ \\hat{\\mathcal{I}}_{2D} \\hat{\\mathcal{I}}_{OP}^{-1} \\hat{\\mathcal{I}}_{2D} \\right\\}^{-1} = \\frac{1}{T} \\hat{\\mathcal{I}}_{2D}^{-1} \\hat{\\mathcal{I}}_{OP} \\hat{\\mathcal{I}}_{2D}^{-1}"
+      }
+    ],
+    "pipeline": [
+      { "id": "score_extractor", "label": "Score Extractor s_t", "bypassable": false },
+      { "id": "accumulator", "label": "Hessian & Score OP Accumulator", "bypassable": false },
+      { "id": "sandwich_inverter", "label": "Sandwich Inverter V_QMLE", "bypassable": false }
+    ]
+  },
+  "cross_bridges": [
+    { "target_id": "time-series-qml-ar", "domain": "time_series", "relationship": "direct_application", "description": "QMLE for non-Gaussian innovations in AR/MA/GARCH processes (Hamilton §5.8)." },
+    { "target_id": "ml-huber-white-hc", "domain": "traditional_ml", "relationship": "dual_form", "description": "Heteroskedasticity-Consistent (HC) robust standard errors in linear & logistic regression." },
+    { "target_id": "dl-empirical-fisher", "domain": "deep_learning", "relationship": "generalization", "description": "Empirical Fisher Information Matrix vs Hessian curvature for model uncertainty & natural gradients." },
+    { "target_id": "sp-robust-cramer-rao", "domain": "signal_processing", "relationship": "analogous_atom", "description": "Robust parameter bounds under non-Gaussian observation noise." }
+  ],
+  "atom_links": ["optimization_theory", "probability_bayes", "linear_algebra"],
+  "experiments": [
+    { "id": "exp-ar-fitting-forecast", "path": "Experiments/Scripts/Time Series/exp_ar_fitting_forecast.m" }
+  ],
+  "metadata": {
+    "prerequisites": ["maximum_likelihood", "fisher_information", "matrix_inversion"],
+    "difficulty": 3,
+    "tags": ["qmle", "sandwich_estimator", "robust_standard_errors", "misspecification", "white_1982"]
+  }
+}

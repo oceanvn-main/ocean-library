@@ -1,0 +1,94 @@
+{
+  "id": "EpsilonGreedyQPolicy",
+  "display_name": "Epsilon-greedy policy over a tabular Q (legal-action aware)",
+  "short_description": "Chooses a greedy action of the agent's own action-value table with probability 1 - epsilon (ties split evenly) and a uniformly random legal action with probability epsilon.",
+  "category": "Reinforcement Learning / Action Selection",
+
+  "textbook": {
+    "reference": "Sutton, R. S. & Barto, A. G. (2018). Reinforcement Learning: An Introduction (2nd ed.). MIT Press, sec. 2.2-2.3 (epsilon-greedy) and sec. 5.4 (epsilon-soft policies)",
+    "section": "§2.2, §5.4",
+    "equations": ["§5.4 epsilon-soft policy"]
+  },
+
+  "pedagogy": {
+    "motivation": "An agent that always takes the action it currently believes is best never discovers that another action might be better: its estimates of the untried actions are never corrected. Epsilon-greedy is the simplest fix. Most of the time the agent exploits what it knows, but with a small probability epsilon it explores by picking a legal action at random, so every legal action keeps being tried.",
+    "assumptions": [
+      "Actions are discrete and the observation maps to one row of the value table (DiscreteStateCodec).",
+      "The set of legal actions L comes from the current view's ActionMask; illegal actions get probability exactly 0.",
+      "Ties among the best legal actions are broken by splitting the greedy mass evenly, not by picking the first column.",
+      "Randomness comes only from the RandStream handed in by the agent's host: exactly one uniform draw per decision."
+    ],
+    "data_model": "The policy reads Q(s, a) for the current state s over the legal set L. The greedy set is G = argmax over a in L of Q(s, a). Every legal action receives epsilon / |L|; each greedy action additionally receives (1 - epsilon) / |G|. The distribution is reported with the decision (Probabilities) together with the probability of the action actually taken (Likelihood), which off-policy estimators need.",
+    "what_is_missing": "The true action values are unknown; Q is only the current estimate, updated by the agent's learner. Epsilon trades using the estimate (exploitation) against gathering the data that would improve it (exploration).",
+    "how_it_solves": "1. Encode the observation to a row of Q. 2. Take the legal set L from the view's mask. 3. Find the greedy set G among the legal actions (keeping ties). 4. Build p(a) = epsilon/|L| + (1 - epsilon)/|G| for a in G, epsilon/|L| for the other legal actions, 0 for illegal ones. 5. Draw one uniform u from the host's stream and return the first action whose cumulative probability exceeds u (inverse CDF)."
+  },
+
+  "equations": {
+    "policy": {
+      "label": "Epsilon-greedy over the legal set",
+      "latex": "\\pi(a\\mid s) = \\varepsilon/\\lvert\\mathcal{L}\\rvert + (1-\\varepsilon)\\,\\mathbb{1}[a\\in G]/\\lvert G\\rvert",
+      "description": "Probability of action a in state s for a legal action; illegal actions have probability 0."
+    },
+    "greedy_set": {
+      "label": "Greedy set",
+      "latex": "G = \\arg\\max_{a \\in \\mathcal{L}} Q(s, a)",
+      "description": "All legal actions whose value equals the best legal value; ties are kept and share the greedy mass."
+    },
+    "inverse_cdf": {
+      "label": "Inverse-CDF sampling",
+      "latex": "A = \\min\\{k : u < \\textstyle\\sum_{j \\le k} \\pi(a_j\\mid s)\\},\\quad u \\sim \\mathcal{U}(0,1)",
+      "description": "One uniform draw selects the action; columns with zero probability can never be selected."
+    }
+  },
+
+  "Symbols": [
+    {"Symbol": "\\pi(a\\mid s)", "Description": "probability that the policy chooses action a in state s"},
+    {"Symbol": "\\varepsilon", "Description": "exploration probability (Epsilon)"},
+    {"Symbol": "\\mathcal{L}", "Description": "set of actions legal in the current view (from its ActionMask)"},
+    {"Symbol": "G", "Description": "greedy set: legal actions with the largest Q(s, a)"},
+    {"Symbol": "Q(s, a)", "Description": "the agent's current action-value estimate (shared with its learner)"},
+    {"Symbol": "\\mathbb{1}[a\\in G]", "Description": "indicator: 1 if a is greedy, 0 otherwise"},
+    {"Symbol": "u", "Description": "the single uniform random number drawn from the host's stream per decision"}
+  ],
+
+  "parameters": [
+    {
+      "name": "Epsilon",
+      "latex_symbol": "\\varepsilon",
+      "default": "0.1",
+      "description": "Probability of choosing uniformly among the legal actions instead of greedily.",
+      "effect": "Larger epsilon explores more (slower to exploit, but less likely to lock onto a wrong greedy action); epsilon = 0 is purely greedy, epsilon = 1 is uniformly random over the legal set."
+    },
+    {
+      "name": "StateCodec",
+      "latex_symbol": "s \\mapsto \\text{row}",
+      "default": "DiscreteStateCodec(size(Q,1))",
+      "description": "Maps a discrete observation to a row of Q; out-of-range observations are an error.",
+      "effect": "Must match the environment's observation space (N and Start).",
+      "optional": true
+    }
+  ],
+
+  "complexity": {
+    "training": "O(1) (the policy does not train; the learner updates Q)",
+    "prediction": "O(A) per decision",
+    "memory": "O(1) beyond the shared S x A table"
+  },
+
+  "strengths": [
+    "Simple, with a single interpretable parameter.",
+    "Every legal action keeps a non-zero probability, which Q-learning's convergence argument needs.",
+    "Reports exact action probabilities, so importance-sampling corrections are possible."
+  ],
+  "weaknesses": [
+    "Explores uniformly: a known-terrible action is tried as often as a promising one.",
+    "A fixed epsilon never stops exploring, so the behaviour is never exactly greedy.",
+    "Only for discrete actions and tabular states."
+  ],
+  "when_to_use": "Use as the default behaviour policy for tabular control (Q-learning, Sarsa) when the action set is small and discrete. Prefer softmax or optimistic initialisation when uniform exploration is wasteful, and decay epsilon if a near-greedy final policy is needed.",
+
+  "references": [
+    "Sutton, R. S. & Barto, A. G. (2018). Reinforcement Learning: An Introduction (2nd ed.), sec. 2.2, 5.4, 6.5.",
+    "Watkins, C. J. C. H. (1989). Learning from Delayed Rewards. PhD thesis, University of Cambridge."
+  ]
+}

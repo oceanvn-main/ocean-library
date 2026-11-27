@@ -1,0 +1,99 @@
+{
+  "id": "OneStepQLearner",
+  "display_name": "One-step tabular Q-learning (agent learner)",
+  "short_description": "Moves the agent's action-value estimate Q(s,a) toward the reward plus the discounted best legal action value of the successor state, one transition at a time.",
+  "category": "Reinforcement Learning / Temporal-Difference Control",
+
+  "textbook": {
+    "reference": "Sutton, R. S. & Barto, A. G. (2018). Reinforcement Learning: An Introduction (2nd ed.). MIT Press, sec. 6.5, eq. 6.8 (Q-learning)",
+    "section": "§6.5",
+    "equations": ["6.8"]
+  },
+
+  "pedagogy": {
+    "motivation": "An agent wants to act optimally but only experiences one transition at a time and does not know the environment's dynamics. Q-learning learns the value of the optimal policy directly from those transitions, whatever policy produced them (it is off-policy): each update pulls Q(s,a) toward a one-step estimate of the return that assumes greedy behaviour from the next state on.",
+    "assumptions": [
+      "States and actions are discrete; each observation maps to one table row (DiscreteStateCodec), each action label to one column (ActionCodec).",
+      "The discount for a transition is gamma^k with k its duration (k = 1 in every A1 transition).",
+      "A terminated transition has no future: nothing is bootstrapped from the successor.",
+      "A truncated transition (e.g. a time limit) is not terminal: it still bootstraps, so the successor's legal actions must be known.",
+      "Only actions legal in the successor state compete in the max."
+    ],
+    "data_model": "The learner keeps a table Q(s,a) of estimated optimal action values and a visit count per entry. One experience record is (s, a, r, s', d, gamma^k, L(s')). The target is y = r + gamma^k (1 - d) max over a' in L(s') of Q(s',a'), and Q(s,a) moves a fraction alpha of the way toward y.",
+    "what_is_missing": "The optimal action values q*(s,a) are unknown, and so are the transition probabilities. The update replaces the expectation in the Bellman optimality equation with the single sampled successor and the current (biased) estimate of its value.",
+    "how_it_solves": "1. consume: translate the transition's observation and action label into a table row and column, check the discount is gamma^k, and check a non-terminal transition carries the successor's legal actions. 2. update at the \"step\" boundary: for each stored transition compute y = r + gamma^k (1 - d) max_{a' in L(s')} Q(s',a'). 3. Increment the visit count and set Q(s,a) <- Q(s,a) + alpha (y - Q(s,a)). The arithmetic is delegated to OceanStats.RL.TD.Values.TabularQ.oneStep with QLearningTarget and ConstantStepSize."
+  },
+
+  "equations": {
+    "update": {
+      "label": "Q-learning update",
+      "latex": "Q(s,a) \\leftarrow Q(s,a) + \\alpha\\,[r + \\gamma^{k}(1-d)\\max_{a'\\in\\mathcal{L}(s')}Q(s',a') - Q(s,a)]",
+      "description": "Sutton & Barto (2018) eq. 6.8, with the duration-aware discount gamma^k, the termination flag d and the legal successor set L(s')."
+    },
+    "target": {
+      "label": "One-step target",
+      "latex": "y = r + \\gamma^{k}(1-d)\\max_{a'\\in\\mathcal{L}(s')}Q(s',a')",
+      "description": "Reward plus the discounted value of acting greedily from the successor; no bootstrap when d = 1."
+    }
+  },
+
+  "Symbols": [
+    {"Symbol": "Q(s,a)", "Description": "estimated optimal action value of taking action a in state s"},
+    {"Symbol": "\\alpha", "Description": "step size (Alpha): fraction of the TD error applied per update"},
+    {"Symbol": "r", "Description": "reward received for the transition"},
+    {"Symbol": "\\gamma^{k}", "Description": "discount over the transition's duration k (Transition.Discount)"},
+    {"Symbol": "d", "Description": "1 if the transition terminated the episode (no bootstrap), else 0; truncation is d = 0"},
+    {"Symbol": "s'", "Description": "successor state (the next observation)"},
+    {"Symbol": "\\mathcal{L}(s')", "Description": "actions legal in the successor state (successor mask)"},
+    {"Symbol": "y", "Description": "the one-step Q-learning target"}
+  ],
+
+  "parameters": [
+    {
+      "name": "Alpha",
+      "latex_symbol": "\\alpha",
+      "default": "0.1",
+      "description": "Constant step size in (0, 1].",
+      "effect": "Larger alpha learns faster and tracks change but keeps more noise; smaller alpha averages more but learns slowly."
+    },
+    {
+      "name": "Gamma",
+      "latex_symbol": "\\gamma",
+      "default": "1",
+      "description": "Discount per unit of duration in [0, 1]; must equal the owning AgentHost's Gamma.",
+      "effect": "Smaller gamma values near-term reward more; gamma = 1 is appropriate only for episodic tasks that end."
+    },
+    {
+      "name": "StateCodec",
+      "latex_symbol": "s \\mapsto \\text{row}",
+      "default": "DiscreteStateCodec(size(Q,1))",
+      "description": "Maps a discrete observation to a row of Q; out-of-range observations are an error.",
+      "effect": "Must match the environment's observation space (N and Start).",
+      "optional": true
+    }
+  ],
+
+  "complexity": {
+    "training": "O(A) per transition (the max over successor actions)",
+    "prediction": "O(1) per table lookup",
+    "memory": "O(S A) for Q and the visit counts"
+  },
+
+  "strengths": [
+    "Off-policy: learns the greedy policy's values while behaving exploratorily.",
+    "Model-free, incremental, and cheap per step.",
+    "Converges to q* in the tabular case under standard step-size and exploration conditions."
+  ],
+  "weaknesses": [
+    "The max over noisy estimates is biased upward (maximisation bias; see Double Q-learning).",
+    "Tabular only: one entry per state-action pair.",
+    "Learns values of the greedy policy, which can make on-line behaviour riskier than Sarsa's (e.g. the cliff edge in Cliff Walking)."
+  ],
+  "when_to_use": "Use for small discrete control problems where you want the optimal greedy policy and can behave with an exploratory policy such as epsilon-greedy. Prefer Sarsa when on-line performance during learning matters, and Double Q-learning when maximisation bias is a concern.",
+
+  "references": [
+    "Sutton, R. S. & Barto, A. G. (2018). Reinforcement Learning: An Introduction (2nd ed.), sec. 6.5, eq. 6.8.",
+    "Watkins, C. J. C. H. (1989). Learning from Delayed Rewards. PhD thesis, University of Cambridge.",
+    "Watkins, C. J. C. H. & Dayan, P. (1992). Q-learning. Machine Learning 8, 279-292."
+  ]
+}

@@ -1,0 +1,100 @@
+{
+  "id": "ScatteredSpline",
+  "display_name": "Smoothing Spline (1D)",
+  "short_description": "Fits the smoothest possible curve to 1D scattered data by minimizing a regularized energy that trades off data fidelity against integrated squared curvature.",
+  "category": "Variational / Regularization Methods",
+
+  "textbook": {
+    "reference": "Szeliski, R. Computer Vision: Algorithms and Applications (2e), §4.1 (variational smoothing context); Hastie, Tibshirani, Friedman — ESL §5.4 for smoothing splines",
+    "section": "§4.1 / §5.4 ESL",
+    "equations": []
+  },
+
+  "pedagogy": {
+    "motivation": "Suppose you have 1D noisy observations and want a smooth curve that captures the underlying trend without chasing every noisy fluctuation. A polynomial is too rigid (fixed global shape). Piecewise polynomials are flexible but require choosing where to place knots. The smoothing spline solves this elegantly: it uses ALL data points as potential knot locations but introduces a penalty on curvature. The result is the mathematically optimal tradeoff between fitting the data and being smooth — no knot placement required.",
+
+    "assumptions": [
+      "Input dimension D = 1 only — this is a univariate method.",
+      "The unknown function f is twice-differentiable (has a well-defined second derivative that quantifies curvature).",
+      "Noisy observations: y_i = f(x_i) + epsilon_i, where epsilon_i is random noise. If data were noiseless, set Lambda=0 for exact interpolation.",
+      "The optimal function is a natural cubic spline with knots at every training location — this is proven by the Representer Theorem.",
+      "The training points x_i are distinct (no repeated inputs)."
+    ],
+
+    "data_model": "The unknown function f: R -> R is estimated by minimizing the regularized energy: E(f) = sum_i [y_i - f(x_i)]^2 + lambda * integral [f''(x)]^2 dx. The first term (data fidelity) penalizes deviation from the observations. The second term (curvature penalty) penalizes rapid changes in the function's slope. Lambda controls the balance: Lambda=0 means exact fit (passes through all points); Lambda -> infinity means a straight line (minimum curvature). By the Representer Theorem, the minimizer is always a natural cubic spline with knots at the training locations.",
+
+    "what_is_missing": "Two things are unknown: (1) the function values f(x) at all unobserved locations (the primary interpolation goal), and (2) the optimal regularization strength lambda, which determines how much to trust the data versus how smooth the function should be. Lambda can be estimated from the data itself using cross-validation.",
+
+    "how_it_solves": "1. Construct a piecewise cubic polynomial basis with knots at all N training locations. 2. Build the N x N smoothness penalty matrix Omega (the Gram matrix of second derivatives of cubic spline basis functions). 3. Solve the linear system (B + lambda * Omega) * c = y for the spline coefficients c, where B is the N x N basis evaluation matrix. 4. Prediction at a new point x: evaluate the cubic spline basis functions at x and multiply by c. 5. Effective degrees of freedom df = trace((B + lambda*Omega)^(-1) * B) — this decreases from N (exact fit) to 2 (linear) as lambda increases."
+  },
+
+  "equations": {
+    "regularized_energy": {
+      "label": "Regularized smoothing energy",
+      "latex": "E(f) = \\sum_{i=1}^{N} \\bigl[y_i - f(x_i)\\bigr]^2 + \\lambda \\int_{-\\infty}^{\\infty} \\bigl[f''(x)\\bigr]^2 \\, dx",
+      "description": "The objective to minimize. The first term penalizes misfit at training points. The second term penalizes curvature (integrated squared second derivative). Lambda controls the tradeoff: Lambda=0 gives exact interpolation; Lambda->infinity gives a straight line."
+    },
+    "representer_theorem": {
+      "label": "Representer Theorem: optimal form",
+      "latex": "f^*(x) = \\sum_{k=1}^{N} c_k \\, B_k(x)",
+      "description": "The minimizer of E(f) over all twice-differentiable functions is always a natural cubic spline with N basis functions B_k centered at the N training locations. This reduces the infinite-dimensional optimization problem to a finite N-dimensional linear system."
+    },
+    "linear_system": {
+      "label": "Coefficient linear system",
+      "latex": "\\left(\\mathbf{B} + \\lambda \\boldsymbol{\\Omega}\\right) \\mathbf{c} = \\mathbf{y}",
+      "description": "B is the N x N matrix of spline basis evaluations at training points. Omega is the N x N penalty matrix (Gram matrix of second derivatives). Solving this system for c gives the spline coefficients."
+    },
+    "effective_df": {
+      "label": "Effective degrees of freedom",
+      "latex": "\\text{df}(\\lambda) = \\operatorname{trace}\\!\\left(\\mathbf{B}\\left(\\mathbf{B} + \\lambda\\boldsymbol{\\Omega}\\right)^{-1}\\right)",
+      "description": "A scalar summary of how many 'free parameters' the model effectively uses, ranging from N (Lambda=0, exact fit) down to 2 (Lambda->inf, straight line). Specifying a target df instead of lambda is sometimes more interpretable."
+    }
+  },
+
+  "parameters": [
+    {
+      "name": "Lambda",
+      "latex_symbol": "\\lambda",
+      "default": "1e-4",
+      "description": "Regularization strength. Controls the tradeoff between data fidelity and smoothness.",
+      "effect": "Lambda=0: exact interpolation, passes through every training point. Small Lambda (e.g. 1e-6): nearly exact, sensitive to noise. Large Lambda (e.g. 1): very smooth, nearly linear. Choose via cross-validation or by specifying a target Df."
+    },
+    {
+      "name": "Df",
+      "latex_symbol": "\\text{df}",
+      "default": "NaN (unused when Lambda is set)",
+      "description": "Target effective degrees of freedom. An alternative to specifying Lambda directly — the system finds the Lambda that achieves this many effective parameters.",
+      "effect": "Df=N: equivalent to Lambda=0, exact interpolation. Df=2: equivalent to Lambda->infinity, straight line. Df=10: a model with roughly 10 effective knots. More interpretable than Lambda for users who think in terms of model complexity."
+    }
+  ],
+
+  "complexity": {
+    "training": "O(N^3) — dominated by solving the N x N linear system",
+    "prediction": "O(M * N) — evaluating N spline basis functions at each of M query points (or O(M log N) with segment-search)",
+    "memory": "O(N^2) — penalty matrix Omega"
+  },
+
+  "strengths": [
+    "Principled tradeoff: the regularization has a clear mathematical meaning (integrated curvature).",
+    "Adapts to local data density: more knots in dense regions automatically.",
+    "Effective degrees of freedom df gives an interpretable complexity measure.",
+    "Provably optimal: the Representer Theorem guarantees the natural cubic spline is the unique minimizer.",
+    "No knot placement decisions required."
+  ],
+
+  "weaknesses": [
+    "1D only: does not generalize to D > 1 (for 2D, use Thin Plate Spline RBF).",
+    "O(N^3) training: impractical for very large N.",
+    "Lambda must be tuned — poor choice causes over- or under-smoothing.",
+    "Assumes f is globally smooth — fails for functions with sharp jumps.",
+    "Less interpretable than explicit parametric models."
+  ],
+
+  "when_to_use": "Use the smoothing spline for 1D regression or interpolation problems where you want a principled, smooth curve with explicit control over the smoothness-fidelity tradeoff. It is the gold standard for 1D nonparametric regression and is ideal when you can set Df to a target complexity (e.g. 'I expect the underlying function to have about 8 degrees of freedom'). For noisy data, prefer Lambda > 0 over exact interpolation. For D > 1, switch to ScatteredRBF with a thin plate spline kernel.",
+
+  "references": [
+    "Hastie, Tibshirani, Friedman — The Elements of Statistical Learning (ESL), §5.4",
+    "Wahba (1990) — Spline Models for Observational Data",
+    "Szeliski §4.1 (variational smoothing principles)"
+  ]
+}

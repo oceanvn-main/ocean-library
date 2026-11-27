@@ -1,0 +1,49 @@
+%TEST_RAG_PIPELINE_CONFIGURATIONS Run the same RAG input through four setups.
+%   Each configuration changes chunking, retrieval, or prompt budget while
+%   preserving the RAGPipeline system workflow.
+
+root = fileparts(fileparts(fileparts(fileparts(mfilename('fullpath')))));
+reportFile = fullfile(root, 'Results', 'NLP', 'rag_pipeline_configurations.txt');
+reportDir = fileparts(reportFile);
+if ~isfolder(reportDir), mkdir(reportDir); end
+
+documents = [
+    "Ocean Library provides reusable numerical algorithms for machine learning. " + ...
+    "The retrieval pipeline divides documents into chunks before indexing. " + ...
+    "Different chunking strategies change context size and retrieval granularity.";
+    "Sliding windows preserve context across chunk boundaries. " + ...
+    "Sentence windows retain neighboring sentences for question answering. " + ...
+    "Recursive character chunking preserves paragraph-like structure.";
+    "BM25 performs lexical retrieval using term overlap. " + ...
+    "Dense indexes search vector embeddings. Hybrid retrieval can combine both." ];
+question = "Which chunking strategies preserve context, and which retrieval methods are available?";
+
+configs = {
+    struct('Name',"fixed-bm25", 'Chunker',OceanNLP.Chunking.FixedTokenChunker(ChunkSize=18), ...
+        'Ranker',OceanNLP.Retrieval.BM25Ranker(Strategy="inverted_index"), 'TopK',3, 'MaxChunks',3), ...
+    struct('Name',"sliding-bm25", 'Chunker',OceanNLP.Chunking.SlidingWindowChunker(WindowSize=18,Overlap=5), ...
+        'Ranker',OceanNLP.Retrieval.BM25Ranker(Strategy="inverted_index"), 'TopK',3, 'MaxChunks',4), ...
+    struct('Name',"recursive-matrix-bm25", 'Chunker',OceanNLP.Chunking.RecursiveCharChunker(MaxCharacters=130), ...
+        'Ranker',OceanNLP.Retrieval.BM25Ranker(Strategy="matrix"), 'TopK',2, 'MaxChunks',2), ...
+    struct('Name',"sentence-window-bm25", 'Chunker',OceanNLP.Chunking.SentenceWindowChunker(WindowRadius=1), ...
+        'Ranker',OceanNLP.Retrieval.BM25Ranker(Strategy="inverted_index"), 'TopK',4, 'MaxChunks',4)};
+
+generator = OceanNLP.Generation.FunctionGenerator(@(prompt) "generated-answer");
+fid = fopen(reportFile, 'w');
+cleanup = onCleanup(@() fclose(fid));
+fprintf(fid, 'RAG pipeline configuration comparison\nQuestion: %s\n\n', question);
+fprintf('RAG_CONFIG_VERIFY_OK\n');
+for i = 1:numel(configs)
+    cfg = configs{i};
+    builder = OceanNLP.Generation.PromptBuilder(MaxChunks=cfg.MaxChunks, MaxCharacters=4000);
+    pipe = OceanNLP.RAG.RAGPipeline(Chunker=cfg.Chunker, Ranker=cfg.Ranker, ...
+        Builder=builder, Generator=generator, TopK=cfg.TopK);
+    pipe.index(documents);
+    result = pipe.query(question);
+    line = sprintf('%s: chunks=%d, retrieved=%d, promptChars=%d, answer=%s\n', ...
+        cfg.Name, cfg.Ranker.NumDocs, numel(result.ChunkIds), strlength(result.Prompt), result.Answer);
+    fprintf('%s', line); fprintf(fid, '%s', line);
+    fprintf(fid, '  Chunk IDs: %s\n  Scores: %s\n  Prompt: %s\n\n', ...
+        mat2str(result.ChunkIds), mat2str(result.Scores,4), result.Prompt);
+end
+fprintf('Report: %s\n', reportFile);

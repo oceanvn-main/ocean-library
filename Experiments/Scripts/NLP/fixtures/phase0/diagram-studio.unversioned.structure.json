@@ -1,0 +1,7 @@
+{
+  "formatStatus": "legacy-unversioned",
+  "description": "Sanitized structural fingerprint of the Phase-0 Diagram Studio JSON export. Values and generated IDs are deliberately omitted.",
+  "topLevelKeys": ["extractedFunctions", "canvasNodes", "canvasEdges"],
+  "canvasNodeKeys": ["id", "fnData", "inputs", "outputs", "x", "y"],
+  "canvasEdgeKeys": ["id", "srcNode", "srcPort", "srcPortPos", "tgtNode", "tgtPort", "tgtPortPos"]
+}

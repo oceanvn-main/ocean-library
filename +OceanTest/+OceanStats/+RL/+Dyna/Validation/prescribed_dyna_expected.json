@@ -1,0 +1,319 @@
+{
+  "reference": "Sutton and Barto (2018), Chapter 8 prescribed Dyna-Q",
+  "pythonVersion": "3.12.14",
+  "parameters": {
+    "numStates": 3,
+    "numActions": 2,
+    "alpha": 0.5,
+    "gamma": 0.9,
+    "kappa": 0.1
+  },
+  "uniformDraws": [
+    0.0,
+    0.74,
+    0.34,
+    0.99
+  ],
+  "selectedPairIDs": [
+    1,
+    2,
+    2,
+    5
+  ],
+  "updates": [
+    {
+      "origin": "real",
+      "realStep": 1,
+      "state": 1,
+      "action": 1,
+      "oldQ": 0.0,
+      "target": 0.0,
+      "newQ": 0.0,
+      "q": [
+        [
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ]
+    },
+    {
+      "origin": "planning",
+      "realStep": 1,
+      "state": 1,
+      "action": 1,
+      "oldQ": 0.0,
+      "target": 0.0,
+      "newQ": 0.0,
+      "q": [
+        [
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ]
+    },
+    {
+      "origin": "real",
+      "realStep": 2,
+      "state": 2,
+      "action": 1,
+      "oldQ": 0.0,
+      "target": 1.0,
+      "newQ": 0.5,
+      "q": [
+        [
+          0.0,
+          0.0
+        ],
+        [
+          0.5,
+          0.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ]
+    },
+    {
+      "origin": "planning",
+      "realStep": 2,
+      "state": 2,
+      "action": 1,
+      "oldQ": 0.5,
+      "target": 1.0,
+      "newQ": 0.75,
+      "q": [
+        [
+          0.0,
+          0.0
+        ],
+        [
+          0.75,
+          0.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ]
+    },
+    {
+      "origin": "real",
+      "realStep": 3,
+      "state": 1,
+      "action": 2,
+      "oldQ": 0.0,
+      "target": 0.2,
+      "newQ": 0.1,
+      "q": [
+        [
+          0.0,
+          0.1
+        ],
+        [
+          0.75,
+          0.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ]
+    },
+    {
+      "origin": "planning",
+      "realStep": 3,
+      "state": 2,
+      "action": 1,
+      "oldQ": 0.75,
+      "target": 1.0,
+      "newQ": 0.875,
+      "q": [
+        [
+          0.0,
+          0.1
+        ],
+        [
+          0.875,
+          0.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ]
+    },
+    {
+      "origin": "real",
+      "realStep": 4,
+      "state": 2,
+      "action": 2,
+      "oldQ": 0.0,
+      "target": -0.009999999999999995,
+      "newQ": -0.0049999999999999975,
+      "q": [
+        [
+          0.0,
+          0.1
+        ],
+        [
+          0.875,
+          -0.0049999999999999975
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ]
+    },
+    {
+      "origin": "planning",
+      "realStep": 4,
+      "state": 2,
+      "action": 2,
+      "oldQ": -0.0049999999999999975,
+      "target": -0.009999999999999995,
+      "newQ": -0.007499999999999996,
+      "q": [
+        [
+          0.0,
+          0.1
+        ],
+        [
+          0.875,
+          -0.007499999999999996
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ]
+    }
+  ],
+  "finalQ": [
+    [
+      0.0,
+      0.1
+    ],
+    [
+      0.875,
+      -0.007499999999999996
+    ],
+    [
+      0.0,
+      0.0
+    ]
+  ],
+  "model": [
+    {
+      "pairID": 1,
+      "state": 1,
+      "action": 1,
+      "reward": 0.0,
+      "nextState": 2,
+      "terminated": false,
+      "count": 1
+    },
+    {
+      "pairID": 2,
+      "state": 2,
+      "action": 1,
+      "reward": 1.0,
+      "nextState": 3,
+      "terminated": true,
+      "count": 1
+    },
+    {
+      "pairID": 4,
+      "state": 1,
+      "action": 2,
+      "reward": 0.2,
+      "nextState": 1,
+      "terminated": false,
+      "count": 1
+    },
+    {
+      "pairID": 5,
+      "state": 2,
+      "action": 2,
+      "reward": -0.1,
+      "nextState": 1,
+      "terminated": false,
+      "count": 1
+    }
+  ],
+  "recencyBonuses": [
+    0.0,
+    0.1,
+    0.2,
+    0.30000000000000004,
+    0.4
+  ],
+  "queueEvolution": [
+    {
+      "operation": "push",
+      "pairID": 4,
+      "priority": 0.5
+    },
+    {
+      "operation": "push",
+      "pairID": 2,
+      "priority": 0.5
+    },
+    {
+      "operation": "push",
+      "pairID": 1,
+      "priority": 0.9
+    },
+    {
+      "operation": "push",
+      "pairID": 1,
+      "priority": 0.4
+    },
+    {
+      "operation": "pop",
+      "pairID": 2,
+      "priority": 0.5
+    },
+    {
+      "operation": "pop",
+      "pairID": 4,
+      "priority": 0.5
+    },
+    {
+      "operation": "pop",
+      "pairID": 1,
+      "priority": 0.4
+    }
+  ],
+  "queuePops": [
+    {
+      "pairID": 2,
+      "priority": 0.5
+    },
+    {
+      "pairID": 4,
+      "priority": 0.5
+    },
+    {
+      "pairID": 1,
+      "priority": 0.4
+    }
+  ]
+}

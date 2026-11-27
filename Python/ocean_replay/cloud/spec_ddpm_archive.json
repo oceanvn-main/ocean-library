@@ -1,0 +1,66 @@
+{
+  "schemaVersion": "1.0",
+  "precision": "float32",
+  "sizeCapBytes": 1000000000.0,
+  "groups": [
+    {
+      "name": "numbers",
+      "level": 0.0,
+      "channels": [
+        "tLevel",
+        "tNext",
+        "alphaBar",
+        "alphaBarNext",
+        "sigma",
+        "varNext",
+        "epsRms",
+        "identityResidual"
+      ],
+      "at": {}
+    },
+    {
+      "name": "images",
+      "level": 1.0,
+      "channels": [
+        "x",
+        "eps",
+        "x0hat",
+        "mu"
+      ],
+      "at": {}
+    },
+    {
+      "name": "final",
+      "level": 1.0,
+      "channels": [
+        "result"
+      ],
+      "at": {}
+    }
+  ],
+  "views": [
+    {
+      "name": "occlusion",
+      "method": "occlusion",
+      "params": {
+        "size": 8,
+        "stride": 4
+      },
+      "at": {
+        "step": {
+          "rule": "list",
+          "values": [
+            1000.0,
+            900.0,
+            700.0,
+            500.0,
+            300.0,
+            100.0,
+            50.0,
+            10.0
+          ]
+        }
+      }
+    }
+  ]
+}

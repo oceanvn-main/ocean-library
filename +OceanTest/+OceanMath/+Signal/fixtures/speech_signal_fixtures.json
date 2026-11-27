@@ -1,0 +1,90 @@
+{
+ "frame_input_file": "recordings/0_jackson_0.wav",
+ "frame_input_n": 1001,
+ "mel_cfgs": [
+  {
+   "name": "mel_8k_256_40_htk_none",
+   "sr": 8000,
+   "n_fft": 256,
+   "n_mels": 40,
+   "fmin": 0.0,
+   "fmax": 4000.0,
+   "htk": true,
+   "norm": "none"
+  },
+  {
+   "name": "mel_16k_512_64_slaney_slaney",
+   "sr": 16000,
+   "n_fft": 512,
+   "n_mels": 64,
+   "fmin": 20.0,
+   "fmax": 7600.0,
+   "htk": false,
+   "norm": "slaney"
+  },
+  {
+   "name": "mel_8k_255_26_htk_slaney",
+   "sr": 8000,
+   "n_fft": 255,
+   "n_mels": 26,
+   "fmin": 60.0,
+   "fmax": 3800.0,
+   "htk": true,
+   "norm": "slaney"
+  },
+  {
+   "name": "mel_44k_1024_80_slaney_none",
+   "sr": 44100,
+   "n_fft": 1024,
+   "n_mels": 80,
+   "fmin": 0.0,
+   "fmax": 22050.0,
+   "htk": false,
+   "norm": "none"
+  }
+ ],
+ "res_cases": [
+  {
+   "name": "res_8k_16k",
+   "fs_in": 8000,
+   "fs_out": 16000,
+   "half_width": 16,
+   "beta": 8.6,
+   "up": 2,
+   "down": 1
+  },
+  {
+   "name": "res_8k_11025",
+   "fs_in": 8000,
+   "fs_out": 11025,
+   "half_width": 16,
+   "beta": 8.6,
+   "up": 441,
+   "down": 320
+  },
+  {
+   "name": "res_44k_8k",
+   "fs_in": 44100,
+   "fs_out": 8000,
+   "half_width": 16,
+   "beta": 8.6,
+   "up": 80,
+   "down": 441
+  },
+  {
+   "name": "res_8k_16k_hw10_b5",
+   "fs_in": 8000,
+   "fs_out": 16000,
+   "half_width": 10,
+   "beta": 5.0,
+   "up": 2,
+   "down": 1
+  }
+ ],
+ "res_in_44k_file": "toolbox/audio/samples/Counting-16-44p1-mono-15secs.wav (samples 44101..88200, second 1 s)",
+ "generator": {
+  "numpy": "2.4.2",
+  "scipy": "1.17.1",
+  "librosa": "1.0.0"
+ }
+}

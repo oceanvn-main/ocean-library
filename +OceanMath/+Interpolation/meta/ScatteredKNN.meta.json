@@ -1,0 +1,101 @@
+{
+  "id": "ScatteredKNN",
+  "display_name": "K-Nearest Neighbour (KNN) Regression",
+  "short_description": "Estimates the function value at a query point as the (possibly weighted) average of the K closest training observations.",
+  "category": "Instance-based / Lazy Learning",
+
+  "textbook": {
+    "reference": "Szeliski, R. Computer Vision: Algorithms and Applications (2e), §4.1 (proximity-weighted methods); see also Hastie, Tibshirani, Friedman — ESL §2.3.2 for KNN regression",
+    "section": "§4.1 (general proximity principle)",
+    "equations": []
+  },
+
+  "pedagogy": {
+    "motivation": "The simplest possible interpolation idea: to estimate the value at a new location x, find the K training points closest to x and average their values. This requires no global model, no linear system, and no distributional assumptions — it works by pure proximity. The intuition is universal: 'I don't know the exact value here, but points nearby have similar values, so I'll average them.'",
+
+    "assumptions": [
+      "Locality: the unknown function varies slowly enough that the K nearest training points are representative of the local function value.",
+      "The distance metric (Euclidean, Manhattan, Chebyshev) meaningfully measures how 'similar' two input locations are — inputs must be on comparable scales.",
+      "The number of neighbours K is small relative to N, so only a local neighbourhood is used.",
+      "No assumption about the global shape of the function — KNN is entirely non-parametric."
+    ],
+
+    "data_model": "No explicit parametric model for f. The prediction at any query point x is defined directly in terms of the K nearest training points: f_hat(x) = (1/Z) * sum_{k in N_K(x)} w_k * d_k, where N_K(x) is the index set of the K nearest training points to x, d_k are their observed values, w_k are per-neighbour weights, and Z is a normalizing constant. For uniform weighting: w_k = 1/K. For distance weighting: w_k = 1/||x - x_k|| (closer points contribute more).",
+
+    "what_is_missing": "The function value at the unmeasured query location x is unknown. KNN estimates it by finding K training points that are close in input space (under the chosen distance metric) and blending their values. The key design choice is K: too small causes noisy estimates (only 1-2 points), too large causes oversmoothing (far points dilute the estimate).",
+
+    "how_it_solves": "1. Store all N training locations and values. 2. For each query point x: (a) compute distances from x to all N training points under the chosen metric, (b) find the K smallest distances — the K nearest neighbours, (c) compute the blending weights (uniform: each gets 1/K; distance: inverse-distance weighting), (d) return the weighted average of their values. 3. No linear system or optimization is required — the computation is entirely at prediction time."
+  },
+
+  "equations": {
+    "uniform_estimate": {
+      "label": "Uniform KNN estimate",
+      "latex": "\\hat{f}(\\mathbf{x}) = \\frac{1}{K} \\sum_{k \\in \\mathcal{N}_K(\\mathbf{x})} d_k",
+      "description": "With uniform weights, the estimate is the arithmetic mean of the K nearest training values. All K neighbours contribute equally regardless of their exact distance."
+    },
+    "distance_weighted_estimate": {
+      "label": "Distance-weighted KNN estimate",
+      "latex": "\\hat{f}(\\mathbf{x}) = \\frac{\\displaystyle\\sum_{k \\in \\mathcal{N}_K(\\mathbf{x})} \\frac{d_k}{\\|\\mathbf{x} - \\mathbf{x}_k\\|}}{\\displaystyle\\sum_{k \\in \\mathcal{N}_K(\\mathbf{x})} \\frac{1}{\\|\\mathbf{x} - \\mathbf{x}_k\\|}}",
+      "description": "Closer neighbours receive higher weight proportional to the inverse of their distance. This gives a smoother, more locally sensitive estimate than uniform weighting."
+    },
+    "neighbourhood": {
+      "label": "K-nearest neighbourhood",
+      "latex": "\\mathcal{N}_K(\\mathbf{x}) = \\underset{\\text{K smallest}}{\\operatorname{argsort}}_{k=1,\\ldots,N} \\|\\mathbf{x} - \\mathbf{x}_k\\|",
+      "description": "The index set of the K training points with smallest distance to the query point x."
+    }
+  },
+
+  "parameters": [
+    {
+      "name": "K",
+      "latex_symbol": "K",
+      "default": "5",
+      "description": "Number of nearest neighbours to use for each prediction.",
+      "effect": "K=1: nearest-neighbour lookup — exact at training points but noisy everywhere else. Increasing K: smoother, more stable estimates. Very large K: nearly a global constant (the mean of all training values). Optimal K balances bias and variance — choose via cross-validation (InterpolationCV with TuneParam='knn-k')."
+    },
+    {
+      "name": "Weights",
+      "latex_symbol": "",
+      "default": "distance",
+      "description": "How to weight the K neighbours when computing the average.",
+      "effect": "'distance': inverse-distance weighting — closer points matter more. Smoother, more accurate near dense regions. 'uniform': all K neighbours contribute equally, simpler but less locally sensitive."
+    },
+    {
+      "name": "Metric",
+      "latex_symbol": "d(\\cdot,\\cdot)",
+      "default": "euclidean",
+      "description": "Distance metric used to find neighbours.",
+      "effect": "'euclidean': standard L2 distance, isotropic. 'manhattan': L1 distance, less sensitive to outliers in individual dimensions. 'chebyshev': L-infinity, uniform weight on all dimensions. Choice matters most when input dimensions have very different scales — always normalise inputs first."
+    }
+  ],
+
+  "complexity": {
+    "training": "O(N) — just store the data",
+    "prediction": "O(MN) naive; O(M * K * log N) with a KD-tree spatial index",
+    "memory": "O(N) — training data only"
+  },
+
+  "strengths": [
+    "No training phase: immediately usable after storing training data.",
+    "Non-parametric: no assumption about the global function shape.",
+    "Naturally adapts to local density: denser regions are better estimated.",
+    "Works in any dimensionality D (though performance degrades in high D — the 'curse of dimensionality').",
+    "Easy to interpret: the prediction is literally an average of nearby observations."
+  ],
+
+  "weaknesses": [
+    "Does NOT exactly interpolate: K=1 gets close but K > 1 smooths through training points.",
+    "Sensitive to the scale of input features — always normalise inputs to similar ranges.",
+    "Suffers from the curse of dimensionality: in high D, all points become equidistant, making 'nearest' meaningless.",
+    "Prediction requires comparing to all N training points (O(MN) naive).",
+    "Not smooth: the estimated function has discontinuous derivatives at training points."
+  ],
+
+  "when_to_use": "Use KNN regression as a fast baseline or when you have no prior knowledge of the function shape and want a parameter-light method. It is especially useful for quick exploratory analysis before committing to a more principled method like RBF. Prefer it over kernel regression when you want hard boundaries on how many points influence each prediction (K neighbours), rather than the soft decay of kernel regression (all N points, but distant ones down-weighted).",
+
+  "references": [
+    "Szeliski §4.1 (proximity methods context)",
+    "Hastie, Tibshirani, Friedman — The Elements of Statistical Learning (ESL), §2.3.2",
+    "Cover & Hart (1967) — Nearest neighbor pattern classification"
+  ]
+}
