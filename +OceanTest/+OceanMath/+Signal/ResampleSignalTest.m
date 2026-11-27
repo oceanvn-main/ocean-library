@@ -32,7 +32,9 @@ classdef ResampleSignalTest < OceanTest.BaseTestCase
 
         function testRealAudioInputsAreTheFiles(testCase)
             fx = OceanTest.OceanMath.Signal.FrameSignalTest.fixtures();
-            x = audioread(fullfile(testCase.LibraryRoot, 'Data', 'Datasets', 'Speech', 'FSDD', 'recordings', '3_theo_10.wav'), 'double');
+            wavFile = fullfile(testCase.LibraryRoot, 'Data', 'Datasets', 'Speech', 'FSDD', 'recordings', '3_theo_10.wav');
+            testCase.assumeTrue(isfile(wavFile), 'FSDD recording not present; dataset is not distributed with the library.');
+            x = audioread(wavFile, 'double');
             testCase.verifyEqual(x, fx.col('res_in_8k'));
         end
 

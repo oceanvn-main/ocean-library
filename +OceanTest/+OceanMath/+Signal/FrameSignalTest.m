@@ -6,7 +6,9 @@ classdef FrameSignalTest < OceanTest.BaseTestCase
     methods (Test)
         function testInputFixtureIsTheRealRecording(testCase)
             fx = OceanTest.OceanMath.Signal.FrameSignalTest.fixtures();
-            x = audioread(fullfile(testCase.LibraryRoot, 'Data', 'Datasets', 'Speech', 'FSDD', 'recordings', '0_jackson_0.wav'), 'double');
+            wavFile = fullfile(testCase.LibraryRoot, 'Data', 'Datasets', 'Speech', 'FSDD', 'recordings', '0_jackson_0.wav');
+            testCase.assumeTrue(isfile(wavFile), 'FSDD recording not present; dataset is not distributed with the library.');
+            x = audioread(wavFile, 'double');
             testCase.verifyEqual(x(1:numel(fx.col('frame_input'))), fx.col('frame_input'));
         end
 
