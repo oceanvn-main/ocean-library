@@ -42,7 +42,7 @@ classdef PNormPenalty < OceanMath.Image.Regularization.IRobustPenalty
             %   pen = PNormPenalty('P', 0.8)
             %   pen = PNormPenalty('P', 0.8, 'Epsilon', 1e-8)
             arguments
-                options.P       (1,1) double {mustBeInRange(options.P, 0, 2, 'exclusive-inclusive')} = 1.0
+                options.P       (1,1) double {mustBeInRange(options.P, 0, 2, 'exclude-lower')} = 1.0
                 options.Epsilon (1,1) double {mustBePositive} = 1e-6
             end
             obj.P       = options.P;

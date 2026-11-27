@@ -44,7 +44,7 @@ classdef test_image_regularization < OceanTest.BaseTestCase
             ref    = [dx_ref(:); dy_ref(:)];
 
             % ── Our implementation ───────────────────────────────────────────
-            pen    = OceanMath.Image.Regularization.QuadraticPenalty();
+            pen    = OceanMath.Regularization.QuadraticPenalty();
             energy = OceanMath.Image.Variational.ImageRegularizationEnergy(pen);
             D      = energy.buildDifferenceMatrix(rows, cols);
             out    = D * f(:);
@@ -64,23 +64,23 @@ classdef test_image_regularization < OceanTest.BaseTestCase
             d = linspace(-3, 3, 201)';
 
             % 2a — Quadratic
-            pen = OceanMath.Image.Regularization.QuadraticPenalty();
+            pen = OceanMath.Regularization.QuadraticPenalty();
             testCase.verifyEqual(pen.evaluate(d), d.^2, 'AbsTol', 1e-12, ...
                 'QuadraticPenalty.evaluate must equal d.^2');
 
             % 2b — L1
-            pen = OceanMath.Image.Regularization.L1Penalty();
+            pen = OceanMath.Regularization.L1Penalty();
             testCase.verifyEqual(pen.evaluate(d), abs(d), 'AbsTol', 1e-12, ...
                 'L1Penalty.evaluate must equal abs(d)');
 
             % 2c — PNorm (p=0.8)
-            pen = OceanMath.Image.Regularization.PNormPenalty('P', 0.8);
+            pen = OceanMath.Regularization.PNormPenalty('P', 0.8);
             testCase.verifyEqual(pen.evaluate(d), abs(d).^0.8, 'AbsTol', 1e-12, ...
                 'PNormPenalty(p=0.8).evaluate must equal abs(d).^0.8');
 
             % 2d — Huber (sigma=1)
             sigma = 1.0;
-            pen   = OceanMath.Image.Regularization.HuberPenalty('Sigma', sigma);
+            pen   = OceanMath.Regularization.HuberPenalty('Sigma', sigma);
             ad    = abs(d);
             ref_huber = 0.5 .* d.^2 .* (ad <= sigma) + ...
                         sigma .* (ad - 0.5.*sigma) .* (ad > sigma);
@@ -89,7 +89,7 @@ classdef test_image_regularization < OceanTest.BaseTestCase
 
             % 2e — GNC (V=4)
             V   = 4;
-            pen = OceanMath.Image.Regularization.GNCPenalty('V', V);
+            pen = OceanMath.Regularization.GNCPenalty('V', V);
             testCase.verifyEqual(pen.evaluate(d), min(d.^2, V), 'AbsTol', 1e-12, ...
                 'GNCPenalty(V=4).evaluate must equal min(d.^2, 4)');
         end
@@ -105,11 +105,11 @@ classdef test_image_regularization < OceanTest.BaseTestCase
             d_test = [0.5; 1.0; 2.0];
 
             penalties = { ...
-                OceanMath.Image.Regularization.QuadraticPenalty(), ...
-                OceanMath.Image.Regularization.L1Penalty(), ...
-                OceanMath.Image.Regularization.PNormPenalty('P', 0.8), ...
-                OceanMath.Image.Regularization.HuberPenalty('Sigma', 0.5), ...
-                OceanMath.Image.Regularization.GNCPenalty('V', 2.0) ...
+                OceanMath.Regularization.QuadraticPenalty(), ...
+                OceanMath.Regularization.L1Penalty(), ...
+                OceanMath.Regularization.PNormPenalty('P', 0.8), ...
+                OceanMath.Regularization.HuberPenalty('Sigma', 0.5), ...
+                OceanMath.Regularization.GNCPenalty('V', 2.0) ...
             };
 
             for i = 1:numel(penalties)
@@ -145,7 +145,7 @@ classdef test_image_regularization < OceanTest.BaseTestCase
             lambda = 0.1;
 
             % ── MATLAB ground truth ──────────────────────────────────────────
-            pen    = OceanMath.Image.Regularization.QuadraticPenalty();
+            pen    = OceanMath.Regularization.QuadraticPenalty();
             energy = OceanMath.Image.Variational.ImageRegularizationEnergy(pen, ...
                          'Lambda', lambda);
             N = rows * cols;
@@ -176,7 +176,7 @@ classdef test_image_regularization < OceanTest.BaseTestCase
             g      = rand(rows, cols);
             lambda = 0.2;
 
-            pen    = OceanMath.Image.Regularization.L1Penalty();
+            pen    = OceanMath.Regularization.L1Penalty();
             energy = OceanMath.Image.Variational.ImageRegularizationEnergy(pen, ...
                          'Lambda', lambda);
 
@@ -203,12 +203,12 @@ classdef test_image_regularization < OceanTest.BaseTestCase
             % Verify with MATLAB's normest().
 
             rows = 10;  cols = 10;
-            pen    = OceanMath.Image.Regularization.L1Penalty();
+            pen    = OceanMath.Regularization.L1Penalty();
             energy = OceanMath.Image.Variational.ImageRegularizationEnergy(pen, ...
                          'Lambda', 0.1);
 
             % Run a minimal solve to trigger auto-computation of Tau and Sigma
-            solver = OceanMath.Image.Regularization.Solvers.PrimalDualSolver( ...
+            solver = OceanMath.Image.Variational.Solvers.PrimalDualSolver( ...
                          'MaxIter', 2);
             rng(7);
             solver.solve(energy, rand(rows, cols));
@@ -237,8 +237,8 @@ classdef test_image_regularization < OceanTest.BaseTestCase
 
             d = linspace(-2, 2, 200)';
 
-            gnc  = OceanMath.Image.Regularization.GNCPenalty('V', 1e8);
-            quad = OceanMath.Image.Regularization.QuadraticPenalty();
+            gnc  = OceanMath.Regularization.GNCPenalty('V', 1e8);
+            quad = OceanMath.Regularization.QuadraticPenalty();
 
             testCase.verifyEqual(gnc.evaluate(d), quad.evaluate(d), 'AbsTol', 1e-6, ...
                 'GNCPenalty(V=1e8).evaluate must match QuadraticPenalty for |d| <= 2');
@@ -249,7 +249,7 @@ classdef test_image_regularization < OceanTest.BaseTestCase
             g  = rand(rows, cols);
 
             % GNC with very large V (one scale, no true annealing)
-            pen_gnc    = OceanMath.Image.Regularization.GNCPenalty('V', 1e8);
+            pen_gnc    = OceanMath.Regularization.GNCPenalty('V', 1e8);
             energy_gnc = OceanMath.Image.Variational.ImageRegularizationEnergy(pen_gnc, ...
                              'Lambda', 0.1);
             solver_gnc = OceanMath.Image.Variational.Solvers.GNCSolver( ...
@@ -257,7 +257,7 @@ classdef test_image_regularization < OceanTest.BaseTestCase
             f_gnc = solver_gnc.solve(energy_gnc, g);
 
             % Quadratic IRLS (exact 1-iteration solve)
-            pen_q    = OceanMath.Image.Regularization.QuadraticPenalty();
+            pen_q    = OceanMath.Regularization.QuadraticPenalty();
             energy_q = OceanMath.Image.Variational.ImageRegularizationEnergy(pen_q, ...
                            'Lambda', 0.1);
             solver_q = OceanMath.Image.Variational.Solvers.IRLSSolver( ...

@@ -28,7 +28,7 @@ classdef IRLSSolver < OceanMath.Image.Variational.Solvers.ISolver
     %   Package: OceanMath.Image.Variational.Solvers
     %
     %   Usage:
-    %       import OceanMath.Image.Regularization.*
+    %       import OceanMath.Regularization.*
     %       import OceanMath.Image.Variational.*
     %       import OceanMath.Image.Variational.Solvers.*
     %

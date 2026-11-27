@@ -101,7 +101,7 @@ classdef TestKdtree < OceanTest.BaseTestCase
             X1 = (1:50)';
             kd6 = OceanAlgo.Spatial.KDTree(X1);
             [ids6, d6] = kd6.findKNearest(25.3, 3);
-            testCase.verifyTrue(isequal(sort(ids6(ids6>0)), [25;26;24]) && all(d6(ids6>0) < 2));
+            testCase.verifyTrue(isequal(ids6(ids6>0), [25;26;24]) && all(d6(ids6>0) < 2));
         end
 
         function test7ExactMatchDist0(testCase)

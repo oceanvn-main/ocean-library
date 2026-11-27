@@ -5,6 +5,7 @@ classdef SearchQualityEvaluator
             arguments
                 approximate (1,1) OceanAlgo.Search.IVectorIndex
                 exact (1,1) OceanAlgo.Search.IVectorIndex
+                X (:,:) double
                 queries (:,:) double
                 k (1,1) double {mustBeInteger,mustBePositive}
             end

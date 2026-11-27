@@ -90,9 +90,9 @@ classdef KDTree < handle
                 k     (1,1) double = 1
             end
             obj.assertDim_(query);
-            k   = min(k, obj.N_);
-            heap = struct('dists', inf(1,k), 'ids', zeros(1,k), ...
-                          'k', k, 'count', 0);
+            kHeap = min(k, obj.N_);               % cannot find more than N points
+            heap = struct('dists', inf(1,kHeap), 'ids', zeros(1,kHeap), ...
+                          'k', kHeap, 'count', 0);
             heap = obj.searchKNN_(obj.Root_, query, heap);
 
             n = heap.count;

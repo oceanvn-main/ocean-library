@@ -12,7 +12,7 @@ classdef test_levin_colorization < OceanTest.BaseTestCase
             L = op_affinity.buildMatrix([20, 20]);
             W_affinity = speye(400) - L;
 
-            row_sums = sum(W_affinity, 2);
+            row_sums = full(sum(W_affinity, 2));
             testCase.verifyEqual(row_sums, ones(400, 1), 'AbsTol', 1e-10, ...
                 'Affinity matrix rows must sum to 1.0.');
         end
@@ -32,11 +32,19 @@ classdef test_levin_colorization < OceanTest.BaseTestCase
             colorizer = LevinColorizer('Sigma', 0.05);
             I_colorized = colorizer.colorize(I_gray, scribbles_rgb, mask_binary);
 
-            % Verify scribble positions maintain requested colors
-            testCase.verifyEqual(squeeze(I_colorized(4, 4, :)), [1; 0; 0], 'AbsTol', 0.05, ...
+            % Levin's method keeps the grayscale image as luminance and only
+            % propagates chrominance, so a scribble keeps its hue, not its
+            % exact RGB value: at luminance 0.5 pure red is out of gamut.
+            red  = squeeze(I_colorized(4, 4, :));
+            blue = squeeze(I_colorized(12, 12, :));
+            testCase.verifyEqual(red(1), 1, 'AbsTol', 0.05, ...
                 'Scribble pixel (4,4) must remain Red.');
-            testCase.verifyEqual(squeeze(I_colorized(12, 12, :)), [0; 0; 1], 'AbsTol', 0.05, ...
+            testCase.verifyGreaterThan(red(1) - max(red(2:3)), 0.5, ...
+                'Scribble pixel (4,4) must be dominated by Red.');
+            testCase.verifyEqual(blue(3), 1, 'AbsTol', 0.05, ...
                 'Scribble pixel (12,12) must remain Blue.');
+            testCase.verifyGreaterThan(blue(3) - max(blue(1:2)), 0.5, ...
+                'Scribble pixel (12,12) must be dominated by Blue.');
         end
     end
 end

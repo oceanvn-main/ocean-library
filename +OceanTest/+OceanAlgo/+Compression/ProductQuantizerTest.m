@@ -6,7 +6,9 @@ classdef ProductQuantizerTest < OceanTest.BaseTestCase
             pq.fit(X); codes=pq.encode(X); Xhat=pq.decode(codes);
             testCase.verifySize(codes,[8 2]); testCase.verifySize(Xhat,size(X));
             D=pq.approximateDistances(X(1:3,:),codes); testCase.verifyEqual(size(D),[3 8]);
-            testCase.verifyEqual(D(1,1),0,'AbsTol',1e-12);
+            % Asymmetric distance from a point to its own code is its
+            % squared reconstruction error (quantisation is lossy), not zero.
+            testCase.verifyEqual(D(1,1),sum((X(1,:)-Xhat(1,:)).^2),'AbsTol',1e-12);
             testCase.verifyGreaterThanOrEqual(pq.ReconstructionError,0);
         end
     end

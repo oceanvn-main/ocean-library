@@ -39,7 +39,7 @@ Use `PenaltyFactory.create(name)` for string-based construction.
 ### Basic TV Denoising (IRLS)
 
 ```matlab
-import OceanMath.Image.Regularization.*
+import OceanMath.Regularization.*
 import OceanMath.Image.Variational.*
 import OceanMath.Image.Variational.Solvers.*
 
