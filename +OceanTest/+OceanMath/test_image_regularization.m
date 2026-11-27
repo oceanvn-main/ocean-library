@@ -180,9 +180,11 @@ classdef test_image_regularization < OceanTest.BaseTestCase
             energy = OceanMath.Image.Variational.ImageRegularizationEnergy(pen, ...
                          'Lambda', lambda);
 
-            % IRLS with many iterations (tight convergence)
+            % IRLS with many iterations (tight convergence). IRLS on TV
+            % converges slowly: 300 iterations leave a 4e-4 gap to the
+            % minimiser, 2000 bring it to about 3e-6.
             solver_irls = OceanMath.Image.Variational.Solvers.IRLSSolver( ...
-                              'MaxIter', 300, 'Tol', 1e-9);
+                              'MaxIter', 2000, 'Tol', 1e-13);
             f_irls = solver_irls.solve(energy, g);
 
             % Primal-Dual with many iterations (tight convergence)
@@ -217,9 +219,10 @@ classdef test_image_regularization < OceanTest.BaseTestCase
             tau   = solver.Tau;
             sigma = solver.Sigma;
 
-            % MATLAB built-in: normest gives a reliable estimate of ||D||_2
+            % Exact spectral norm (the matrix is small): an estimate could
+            % undershoot ||D||_2 and hide a violated condition.
             D        = energy.buildDifferenceMatrix(rows, cols);
-            normD_sq = normest(D)^2;
+            normD_sq = norm(full(D))^2;
 
             condition_value = tau * sigma * normD_sq;
 

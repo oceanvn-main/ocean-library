@@ -14,7 +14,7 @@ classdef PrimalDualSolver < OceanMath.Image.Variational.Solvers.ISolver
     %   Initialise: f_0 = g, p_0 = 0, f_bar_0 = f_0
     %
     %   For k = 0, 1, 2, ...
-    %       p_{k+1}     = proj_Ball( p_k + sigma * D * f_bar_k )
+    %       p_{k+1}     = proj_{|p| <= lambda}( p_k + sigma * D * f_bar_k )
     %       f_{k+1}     = (f_k - tau * D' * p_{k+1} + tau * g) / (1 + tau)
     %       f_bar_{k+1} = f_{k+1} + theta * (f_{k+1} - f_k)
     %
@@ -85,13 +85,16 @@ classdef PrimalDualSolver < OceanMath.Image.Variational.Solvers.ISolver
             sigma = obj.Sigma;
 
             if isnan(tau) || isnan(sigma)
-                % Estimate ||D|| via MATLAB's built-in power-iteration normest.
                 % tau * sigma * ||D||^2 <= 1 is the Chambolle-Pock convergence
                 % condition (verified in testPrimalDualStepCondition).
-                normD    = normest(D, 1e-2);
+                % Use the guaranteed upper bound ||D||_2 <= sqrt(||D||_1 * ||D||_inf)
+                % (= sqrt(8) for 2-D forward differences, as in Chambolle & Pock).
+                % A loose power-iteration estimate can undershoot ||D|| and
+                % break the condition, which makes the iteration diverge.
+                normD    = sqrt(norm(D, 1) * norm(D, inf));
                 tau_auto = 0.99 / normD;
                 sigma_auto = 0.99 / normD;
-                % Check: tau_auto * sigma_auto * normD^2 = 0.99^2 < 1 ✓
+                % Check: tau_auto * sigma_auto * ||D||^2 <= 0.99^2 < 1
 
                 if isnan(tau);   tau   = tau_auto;   end
                 if isnan(sigma); sigma = sigma_auto; end
@@ -109,9 +112,11 @@ classdef PrimalDualSolver < OceanMath.Image.Variational.Solvers.ISolver
             residual_hist = zeros(1, obj.MaxIter);
 
             for k = 1:obj.MaxIter
-                % ── Dual ascent + projection onto [-1, 1] ball ───────────────
+                % ── Dual ascent + projection onto [-lambda, lambda] ball ─────
+                %   The conjugate of lambda*||.||_1 is the indicator of the
+                %   l-infinity ball of radius lambda.
                 p_new = p + sigma .* (D * f_bar_vec);
-                p_new = max(-1, min(1, p_new));
+                p_new = max(-lambda, min(lambda, p_new));
 
                 % ── Primal descent (proximal step for L2 data term) ──────────
                 %   f_{k+1} = (f_k - tau*D'*p_{k+1} + tau*g) / (1 + tau)
