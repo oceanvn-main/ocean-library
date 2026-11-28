@@ -85,7 +85,3 @@ Experiments that need a dataset expect it under a local `Data/` folder; the
 third-party datasets used (for example the ESL datasets, 20 Newsgroups and
 AffectNet) must be obtained from their original sources under their own
 licences. Database drivers (JDBC JARs) are not bundled either.
-
-## Licence
-
-[MIT](LICENSE)
