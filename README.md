@@ -48,9 +48,7 @@ unit tests.
   from (for example Hastie, Tibshirani and Friedman; Sutton and Barto;
   Goodfellow, Bengio and Courville).
 
-The full architecture reference is in
-[`.agents/architecture.md`](.agents/architecture.md), with the entry point in
-[`AGENTS.md`](AGENTS.md). Guides and recipes are in [`docs/`](docs/index.md).
+Guides and recipes are in [`docs/`](docs/index.md).
 
 ## Getting started
 
