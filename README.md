@@ -16,6 +16,40 @@ unit tests.
 | Experiment and demo scripts | about 265 |
 | Other languages | Python (replay twin, experiments), Rust (storage engine) |
 
+## Results
+
+Four small experiments, all computed by the library on a CPU in a few
+minutes. They are reproduced by
+[`Experiments/Scripts/Showcase/make_readme_figures.m`](Experiments/Scripts/Showcase/make_readme_figures.m).
+
+**Robust image denoising.** Gaussian noise (σ = 0.1) removed by minimising
+½‖f − g‖² + λ Σ ρ(Df). The quadratic penalty (Tikhonov, solved by IRLS)
+blurs edges; total variation (solved by the Chambolle–Pock primal-dual
+algorithm) keeps them. λ for each penalty was picked from a small PSNR grid.
+
+![Clean, noisy, Tikhonov and total-variation denoised cameraman image](docs/images/denoising.png)
+
+**Prototype classifiers vs a neural network.** The three-class Gaussian
+mixture setting of *The Elements of Statistical Learning*, Figure 13.1:
+K-means and LVQ prototypes against a 2-32-32-3 MLP trained with the
+library's own autograd engine. Purple is the Bayes decision boundary
+(Bayes test error 0.305).
+
+![Decision regions of K-means, LVQ and an MLP on a three-class mixture](docs/images/prototypes_vs_mlp.png)
+
+**Overfitting and weight decay.** With 113 training points, the MLP without
+weight decay drives training error to zero while its test loss climbs past 7.
+Decoupled weight decay (AdamW) keeps the test loss below 0.8; the test error
+of both stays near the Bayes rate.
+
+![Training and test loss and error of the MLP with and without weight decay](docs/images/mlp_learning_curves.png)
+
+**Jack's car rental (Sutton & Barto, Example 4.2).** Policy iteration on the
+441-state problem converges in four iterations to the optimal policy (cars
+moved overnight) and state values.
+
+![Optimal policy and state-value surface for Jack's car rental](docs/images/car_rental_policy_iteration.png)
+
 ## Packages
 
 | Package | What it contains |
